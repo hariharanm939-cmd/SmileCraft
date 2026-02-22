@@ -113,12 +113,14 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // "Book Appointment" links open popup
-  document.querySelectorAll('a[href="book.html"]').forEach(function (link) {
-    link.addEventListener('click', function (e) {
-      e.preventDefault();
-      openPopup();
-    });
-  });
+    if (document.body.dataset.page === "home") {
+      document.querySelectorAll('a[href="book.html"]').forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          openPopup();
+        });
+      });
+    }
 
   // Form submit → success state
   if (bkForm && bkSuccess) {
