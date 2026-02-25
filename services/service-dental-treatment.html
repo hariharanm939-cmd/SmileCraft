@@ -1,119 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dental Treatment – Smile Craft Dental Clinic</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap"
+    rel="stylesheet" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/css/service-detail.css" />
   <link rel="stylesheet" href="../assets/css/premium-mobile-nav.css" />
 </head>
+
 <body>
 
-  
-<!-- Backdrop -->
-<div class="pmn-backdrop" id="pmnBackdrop" aria-hidden="true"></div>
 
-<!-- Drawer -->
-<aside class="pmn-drawer" id="pmnDrawer" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <!-- Backdrop -->
+  <div class="pmn-backdrop" id="pmnBackdrop" aria-hidden="true"></div>
 
-  <!-- Drawer header -->
-  <div class="pmn-header">
-    <a href="index.html" class="pmn-logo">
-      <div class="pmn-logo-mark">
-        <span class="material-icons">medical_services</span>
+  <!-- Drawer -->
+  <aside class="pmn-drawer" id="pmnDrawer" role="dialog" aria-modal="true" aria-label="Navigation menu">
+
+    <!-- Drawer header -->
+    <div class="pmn-header">
+      <a href="index.html" class="pmn-logo">
+        <div class="pmn-logo-mark">
+          <span class="material-icons">medical_services</span>
+        </div>
+        <span class="pmn-logo-text">Smile<span>Craft</span></span>
+      </a>
+      <button class="pmn-close" id="pmnClose" aria-label="Close menu">
+        <span class="material-icons">close</span>
+      </button>
+    </div>
+
+    <!-- Scrollable body -->
+    <div class="pmn-body">
+
+      <!-- Main navigation -->
+      <nav aria-label="Mobile navigation">
+        <div class="pmn-section-label">Navigation</div>
+        <div class="pmn-nav">
+          <a href="index.html" class="pmn-nav-link">
+            Home
+            <span class="pmn-nav-arrow"><span class="material-icons">arrow_forward_ios</span></span>
+          </a>
+          <a href="services.html" class="pmn-nav-link active">
+            Services
+            <span class="pmn-nav-arrow"><span class="material-icons">arrow_forward_ios</span></span>
+          </a>
+          <a href="about.html" class="pmn-nav-link">
+            About Us
+            <span class="pmn-nav-arrow"><span class="material-icons">arrow_forward_ios</span></span>
+          </a>
+          <a href="contact.html" class="pmn-nav-link">
+            Contact
+            <span class="pmn-nav-arrow"><span class="material-icons">arrow_forward_ios</span></span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Branches -->
+      <div>
+        <div class="pmn-section-label">Our Branches</div>
+        <div class="pmn-branches">
+          <a href="branch-anna-nagar.html" class="pmn-branch-card">
+            <div class="pmn-branch-icon">
+              <span class="material-icons">location_city</span>
+            </div>
+            <div class="pmn-branch-info">
+              <div class="pmn-branch-name">Anna Nagar Branch</div>
+              <div class="pmn-branch-addr">South Austin Merry Road 38, Chennai</div>
+            </div>
+            <span class="pmn-branch-chevron"><span class="material-icons">chevron_right</span></span>
+          </a>
+          <a href="branch-velachery.html" class="pmn-branch-card">
+            <div class="pmn-branch-icon">
+              <span class="material-icons">location_city</span>
+            </div>
+            <div class="pmn-branch-info">
+              <div class="pmn-branch-name">Velachery Branch</div>
+              <div class="pmn-branch-addr">Road 3 Banking Place Millennium, Chennai</div>
+            </div>
+            <span class="pmn-branch-chevron"><span class="material-icons">chevron_right</span></span>
+          </a>
+        </div>
       </div>
-      <span class="pmn-logo-text">Smile<span>Craft</span></span>
-    </a>
-    <button class="pmn-close" id="pmnClose" aria-label="Close menu">
-      <span class="material-icons">close</span>
-    </button>
-  </div>
 
-  <!-- Scrollable body -->
-  <div class="pmn-body">
+      <!-- CTA -->
+      <a href="book.html" class="pmn-cta">
+        <span class="material-icons">calendar_today</span>
+        Book an Appointment
+      </a>
 
-    <!-- Main navigation -->
-    <nav aria-label="Mobile navigation">
-      <div class="pmn-section-label">Navigation</div>
-      <div class="pmn-nav">
-        <a href="index.html"    class="pmn-nav-link">
-          Home
-          <span class="pmn-nav-arrow"><span class="material-icons">arrow_forward_ios</span></span>
-        </a>
-        <a href="services.html" class="pmn-nav-link active">
-          Services
-          <span class="pmn-nav-arrow"><span class="material-icons">arrow_forward_ios</span></span>
-        </a>
-        <a href="about.html"    class="pmn-nav-link">
-          About Us
-          <span class="pmn-nav-arrow"><span class="material-icons">arrow_forward_ios</span></span>
-        </a>
-        <a href="contact.html"  class="pmn-nav-link">
-          Contact
-          <span class="pmn-nav-arrow"><span class="material-icons">arrow_forward_ios</span></span>
-        </a>
+    </div><!-- /pmn-body -->
+
+    <!-- Drawer footer -->
+    <div class="pmn-footer">
+      <div class="pmn-footer-contact">
+        <span class="material-icons">phone</span>
+        <span>+60 456 789 101</span>
       </div>
-    </nav>
-
-    <!-- Branches -->
-    <div>
-      <div class="pmn-section-label">Our Branches</div>
-      <div class="pmn-branches">
-        <a href="branch-anna-nagar.html" class="pmn-branch-card">
-          <div class="pmn-branch-icon">
-            <span class="material-icons">location_city</span>
-          </div>
-          <div class="pmn-branch-info">
-            <div class="pmn-branch-name">Anna Nagar Branch</div>
-            <div class="pmn-branch-addr">South Austin Merry Road 38, Chennai</div>
-          </div>
-          <span class="pmn-branch-chevron"><span class="material-icons">chevron_right</span></span>
-        </a>
-        <a href="branch-velachery.html" class="pmn-branch-card">
-          <div class="pmn-branch-icon">
-            <span class="material-icons">location_city</span>
-          </div>
-          <div class="pmn-branch-info">
-            <div class="pmn-branch-name">Velachery Branch</div>
-            <div class="pmn-branch-addr">Road 3 Banking Place Millennium, Chennai</div>
-          </div>
-          <span class="pmn-branch-chevron"><span class="material-icons">chevron_right</span></span>
-        </a>
+      <div class="pmn-footer-contact">
+        <span class="material-icons">alternate_email</span>
+        <span>hello@smilecraft.com</span>
+      </div>
+      <div class="pmn-socials">
+        <a href="#" class="pmn-social" aria-label="Facebook"><span class="material-icons">facebook</span></a>
+        <a href="#" class="pmn-social" aria-label="Instagram"><span class="material-icons">camera_alt</span></a>
+        <a href="#" class="pmn-social" aria-label="WhatsApp"><span class="material-icons">chat</span></a>
+        <a href="#" class="pmn-social" aria-label="YouTube"><span class="material-icons">play_circle</span></a>
       </div>
     </div>
 
-    <!-- CTA -->
-    <a href="book.html" class="pmn-cta">
-      <span class="material-icons">calendar_today</span>
-      Book an Appointment
-    </a>
-
-  </div><!-- /pmn-body -->
-
-  <!-- Drawer footer -->
-  <div class="pmn-footer">
-    <div class="pmn-footer-contact">
-      <span class="material-icons">phone</span>
-      <span>+60 456 789 101</span>
-    </div>
-    <div class="pmn-footer-contact">
-      <span class="material-icons">alternate_email</span>
-      <span>hello@smilecraft.com</span>
-    </div>
-    <div class="pmn-socials">
-      <a href="#" class="pmn-social" aria-label="Facebook"><span class="material-icons">facebook</span></a>
-      <a href="#" class="pmn-social" aria-label="Instagram"><span class="material-icons">camera_alt</span></a>
-      <a href="#" class="pmn-social" aria-label="WhatsApp"><span class="material-icons">chat</span></a>
-      <a href="#" class="pmn-social" aria-label="YouTube"><span class="material-icons">play_circle</span></a>
-    </div>
-  </div>
-
-</aside>
-<!-- /PREMIUM MOBILE NAV -->
+  </aside>
+  <!-- /PREMIUM MOBILE NAV -->
 
   <header class="site-header" id="site-header">
     <div class="container header-inner">
@@ -125,7 +129,8 @@
         <a href="index.html" class="nav-link">Home</a>
         <a href="services.html" class="nav-link active">Services</a>
         <div class="nav-dropdown">
-          <button class="nav-dropdown-trigger">Branches <span class="arrow material-icons" style="font-size:.9rem!important">expand_more</span></button>
+          <button class="nav-dropdown-trigger">Branches <span class="arrow material-icons"
+              style="font-size:.9rem!important">expand_more</span></button>
           <div class="dropdown-menu">
             <a href="branch-anna-nagar.html" class="dropdown-link">Anna Nagar Branch</a>
             <a href="branch-velachery.html" class="dropdown-link">Velachery Branch</a>
@@ -136,7 +141,8 @@
       </nav>
       <div class="header-actions">
         <a href="book.html" class="btn btn-mint header-cta">Book Now</a>
-        <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="pmnDrawer">
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false"
+          aria-controls="pmnDrawer">
           <span class="hamburger-bar hamburger-bar--top"></span>
           <span class="hamburger-bar hamburger-bar--mid"></span>
           <span class="hamburger-bar hamburger-bar--bot"></span>
@@ -154,15 +160,29 @@
         <div class="reveal">
           <p class="breadcrumb">
             <a href="index.html">Home</a><span class="material-icons breadcrumb-sep">chevron_right</span>
-            <a href="services.html">Services</a><span class="material-icons breadcrumb-sep">chevron_right</span>Dental Treatment
+            <a href="services.html">Services</a><span class="material-icons breadcrumb-sep">chevron_right</span>Dental
+            Treatment
           </p>
-          <div class="svc-detail-hero-tag"><span class="material-icons" style="font-size:.9rem!important">healing</span>Dental Treatment</div>
-          <h1 class="svc-detail-hero-title">Expert Care for <br />Every <em>Dental Need</em></h1>
-          <p class="svc-detail-hero-desc">From routine fillings to complex restorations, our dentists deliver precise, comfortable treatment that protects your natural teeth and restores full function.</p>
+          <div class="svc-detail-hero-tag"><span class="material-icons"
+              style="font-size:.9rem!important">healing</span>Dental Treatment</div>
+          <h1 class="svc-detail-hero-title"
+            style="font-size: clamp(1.8rem, 3.5vw, 2.6rem) !important; line-height: 1.2 !important;">Expert Care for
+            <br />Every <em>Dental Need</em></h1>
+          <p class="svc-detail-hero-desc">From routine fillings to complex restorations, our dentists deliver precise,
+            comfortable treatment that protects your natural teeth and restores full function.</p>
           <div class="hero-stats">
-            <div class="hero-stat"><div class="hero-stat-num" data-count="10000" data-suffix="+">0+</div><div class="hero-stat-label">Treatments Delivered</div></div>
-            <div class="hero-stat"><div class="hero-stat-num" data-count="99" data-suffix="%">0%</div><div class="hero-stat-label">Pain-Free Procedures</div></div>
-            <div class="hero-stat"><div class="hero-stat-num" data-count="20" data-suffix="yr+">0yr+</div><div class="hero-stat-label">Combined Experience</div></div>
+            <div class="hero-stat">
+              <div class="hero-stat-num" data-count="10000" data-suffix="+">0+</div>
+              <div class="hero-stat-label">Treatments Delivered</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-num" data-count="99" data-suffix="%">0%</div>
+              <div class="hero-stat-label">Pain-Free Procedures</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-num" data-count="20" data-suffix="yr+">0yr+</div>
+              <div class="hero-stat-label">Combined Experience</div>
+            </div>
           </div>
           <div class="hero-actions">
             <a href="book.html" class="btn btn-mint btn-lg">Book an Appointment</a>
@@ -186,13 +206,16 @@
     <section class="overview-section">
       <div class="container overview-grid">
         <div class="overview-img reveal">
-          <img src="https://images.unsplash.com/photo-1588776814546-1ffedbe36cf5?w=700&q=80" alt="Dental treatment overview" />
-          <div class="overview-img-badge"><span class="material-icons">verified</span><span>Pain-Free Technology</span></div>
+          <img src="https://images.unsplash.com/photo-1588776814546-1ffedbe36cf5?w=700&q=80"
+            alt="Dental treatment overview" />
+          <div class="overview-img-badge"><span class="material-icons">verified</span><span>Pain-Free Technology</span>
+          </div>
         </div>
         <div class="reveal reveal-d1">
           <div class="section-tag">What We Treat</div>
           <h2 class="section-title">Restoring Teeth <em>Beautifully</em></h2>
-          <p class="section-desc">Modern dental treatment is a world away from the experiences of the past. We combine the latest technology with a genuinely caring approach to make every visit comfortable and effective.</p>
+          <p class="section-desc">Modern dental treatment is a world away from the experiences of the past. We combine
+            the latest technology with a genuinely caring approach to make every visit comfortable and effective.</p>
           <ul class="detail-list">
             <li><span class="material-icons">check_circle</span>Tooth-coloured composite fillings</li>
             <li><span class="material-icons">check_circle</span>Porcelain crowns &amp; inlays/onlays</li>
@@ -212,15 +235,58 @@
         <div class="section-header">
           <div class="section-tag reveal">Our Approach</div>
           <h2 class="section-title reveal reveal-d1">Gentle, <em>Precise</em> Dentistry</h2>
-          <p class="section-desc reveal reveal-d2">We believe high-quality dental care should never mean discomfort. Our team goes the extra mile so you feel safe and at ease.</p>
+          <p class="section-desc reveal reveal-d2">We believe high-quality dental care should never mean discomfort. Our
+            team goes the extra mile so you feel safe and at ease.</p>
         </div>
         <div class="benefits-grid">
-          <div class="benefit-card reveal"><div class="benefit-icon"><span class="material-icons">sensors</span></div><div><div class="benefit-title">Digital X-Rays</div><div class="benefit-desc">Low-radiation digital imaging gives us instant, detailed diagnostics to plan your treatment with precision.</div></div></div>
-          <div class="benefit-card reveal reveal-d1"><div class="benefit-icon"><span class="material-icons">local_pharmacy</span></div><div><div class="benefit-title">Anaesthetic Options</div><div class="benefit-desc">Topical gels, fine-needle injection and sedation options mean no treatment need ever be uncomfortable.</div></div></div>
-          <div class="benefit-card reveal reveal-d2"><div class="benefit-icon"><span class="material-icons">palette</span></div><div><div class="benefit-title">Tooth-Coloured Restorations</div><div class="benefit-desc">All our fillings, crowns and restorations are matched precisely to your natural tooth colour for invisible results.</div></div></div>
-          <div class="benefit-card reveal"><div class="benefit-icon"><span class="material-icons">bolt</span></div><div><div class="benefit-title">Same-Day Treatment</div><div class="benefit-desc">With digital crowns and CEREC technology, many restorations can be designed, milled and fitted in a single visit.</div></div></div>
-          <div class="benefit-card reveal reveal-d1"><div class="benefit-icon"><span class="material-icons">save</span></div><div><div class="benefit-title">Tooth-Preserving Approach</div><div class="benefit-desc">We always prioritise saving your natural teeth using the most conservative treatment options available.</div></div></div>
-          <div class="benefit-card reveal reveal-d2"><div class="benefit-icon"><span class="material-icons">emergency_share</span></div><div><div class="benefit-title">Emergency Appointments</div><div class="benefit-desc">Same-day emergency slots for toothache, cracked teeth, lost restorations and dental trauma.</div></div></div>
+          <div class="benefit-card reveal">
+            <div class="benefit-icon"><span class="material-icons">sensors</span></div>
+            <div>
+              <div class="benefit-title">Digital X-Rays</div>
+              <div class="benefit-desc">Low-radiation digital imaging gives us instant, detailed diagnostics to plan
+                your treatment with precision.</div>
+            </div>
+          </div>
+          <div class="benefit-card reveal reveal-d1">
+            <div class="benefit-icon"><span class="material-icons">local_pharmacy</span></div>
+            <div>
+              <div class="benefit-title">Anaesthetic Options</div>
+              <div class="benefit-desc">Topical gels, fine-needle injection and sedation options mean no treatment need
+                ever be uncomfortable.</div>
+            </div>
+          </div>
+          <div class="benefit-card reveal reveal-d2">
+            <div class="benefit-icon"><span class="material-icons">palette</span></div>
+            <div>
+              <div class="benefit-title">Tooth-Coloured Restorations</div>
+              <div class="benefit-desc">All our fillings, crowns and restorations are matched precisely to your natural
+                tooth colour for invisible results.</div>
+            </div>
+          </div>
+          <div class="benefit-card reveal">
+            <div class="benefit-icon"><span class="material-icons">bolt</span></div>
+            <div>
+              <div class="benefit-title">Same-Day Treatment</div>
+              <div class="benefit-desc">With digital crowns and CEREC technology, many restorations can be designed,
+                milled and fitted in a single visit.</div>
+            </div>
+          </div>
+          <div class="benefit-card reveal reveal-d1">
+            <div class="benefit-icon"><span class="material-icons">save</span></div>
+            <div>
+              <div class="benefit-title">Tooth-Preserving Approach</div>
+              <div class="benefit-desc">We always prioritise saving your natural teeth using the most conservative
+                treatment options available.</div>
+            </div>
+          </div>
+          <div class="benefit-card reveal reveal-d2">
+            <div class="benefit-icon"><span class="material-icons">emergency_share</span></div>
+            <div>
+              <div class="benefit-title">Emergency Appointments</div>
+              <div class="benefit-desc">Same-day emergency slots for toothache, cracked teeth, lost restorations and
+                dental trauma.</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -231,13 +297,34 @@
         <div class="section-header">
           <div class="section-tag reveal">Treatment Journey</div>
           <h2 class="section-title reveal reveal-d1">From <em>Diagnosis</em> to Restored Smile</h2>
-          <p class="section-desc reveal reveal-d2">A thorough, transparent process so you always know exactly what's happening and why.</p>
+          <p class="section-desc reveal reveal-d2">A thorough, transparent process so you always know exactly what's
+            happening and why.</p>
         </div>
         <div class="process-steps">
-          <div class="process-step reveal"><div class="step-num">01</div><div class="step-icon-wrap"><span class="material-icons">search</span></div><h4 class="step-title">Diagnosis</h4><p class="step-desc">X-rays, intraoral camera and clinical exam to identify issues accurately.</p></div>
-          <div class="process-step reveal reveal-d1"><div class="step-num">02</div><div class="step-icon-wrap"><span class="material-icons">assignment</span></div><h4 class="step-title">Treatment Plan</h4><p class="step-desc">Clear explanation of your options, costs and what to expect at every stage.</p></div>
-          <div class="process-step reveal reveal-d2"><div class="step-num">03</div><div class="step-icon-wrap"><span class="material-icons">medical_services</span></div><h4 class="step-title">Treatment</h4><p class="step-desc">Precise, pain-free treatment delivered with care and the latest equipment.</p></div>
-          <div class="process-step reveal reveal-d3"><div class="step-num">04</div><div class="step-icon-wrap"><span class="material-icons">follow_the_signs</span></div><h4 class="step-title">Follow-Up</h4><p class="step-desc">Post-treatment check-up and guidance to keep your restored tooth healthy.</p></div>
+          <div class="process-step reveal">
+            <div class="step-num">01</div>
+            <div class="step-icon-wrap"><span class="material-icons">search</span></div>
+            <h4 class="step-title">Diagnosis</h4>
+            <p class="step-desc">X-rays, intraoral camera and clinical exam to identify issues accurately.</p>
+          </div>
+          <div class="process-step reveal reveal-d1">
+            <div class="step-num">02</div>
+            <div class="step-icon-wrap"><span class="material-icons">assignment</span></div>
+            <h4 class="step-title">Treatment Plan</h4>
+            <p class="step-desc">Clear explanation of your options, costs and what to expect at every stage.</p>
+          </div>
+          <div class="process-step reveal reveal-d2">
+            <div class="step-num">03</div>
+            <div class="step-icon-wrap"><span class="material-icons">medical_services</span></div>
+            <h4 class="step-title">Treatment</h4>
+            <p class="step-desc">Precise, pain-free treatment delivered with care and the latest equipment.</p>
+          </div>
+          <div class="process-step reveal reveal-d3">
+            <div class="step-num">04</div>
+            <div class="step-icon-wrap"><span class="material-icons">follow_the_signs</span></div>
+            <h4 class="step-title">Follow-Up</h4>
+            <p class="step-desc">Post-treatment check-up and guidance to keep your restored tooth healthy.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -252,11 +339,41 @@
           <a href="contact.html" class="btn btn-mint">Contact Us</a>
         </div>
         <div class="faq-right reveal reveal-d1">
-          <div class="faq-item"><button class="faq-question" aria-expanded="false">Does having a filling hurt?<span class="material-icons faq-icon">add</span></button><div class="faq-answer"><p>With modern anaesthetics, getting a filling is virtually painless. You may feel slight pressure, but no sharp pain. We always take time to ensure you are fully numb before starting.</p></div></div>
-          <div class="faq-item"><button class="faq-question" aria-expanded="false">How long do fillings last?<span class="material-icons faq-icon">add</span></button><div class="faq-answer"><p>Composite (tooth-coloured) fillings typically last 7–10 years. Porcelain inlays can last 15–20 years. Longevity depends on oral hygiene, diet and the size of the restoration.</p></div></div>
-          <div class="faq-item"><button class="faq-question" aria-expanded="false">Is root canal treatment painful?<span class="material-icons faq-icon">add</span></button><div class="faq-answer"><p>Root canal treatment has an undeserved reputation. With proper anaesthesia, it is no more uncomfortable than a filling. The goal is to relieve the pain caused by infection — not create it.</p></div></div>
-          <div class="faq-item"><button class="faq-question" aria-expanded="false">Can a cracked tooth be saved?<span class="material-icons faq-icon">add</span></button><div class="faq-answer"><p>In many cases, yes. The treatment depends on the severity of the crack. A crown can protect and restore a cracked tooth. We always attempt to save your natural tooth before considering extraction.</p></div></div>
-          <div class="faq-item"><button class="faq-question" aria-expanded="false">Do you see dental emergencies?<span class="material-icons faq-icon">add</span></button><div class="faq-answer"><p>Yes — we reserve same-day emergency slots and you can call our emergency line at any time. Common emergencies we treat include toothache, broken teeth, lost fillings and dental trauma.</p></div></div>
+          <div class="faq-item"><button class="faq-question" aria-expanded="false">Does having a filling hurt?<span
+                class="material-icons faq-icon">add</span></button>
+            <div class="faq-answer">
+              <p>With modern anaesthetics, getting a filling is virtually painless. You may feel slight pressure, but no
+                sharp pain. We always take time to ensure you are fully numb before starting.</p>
+            </div>
+          </div>
+          <div class="faq-item"><button class="faq-question" aria-expanded="false">How long do fillings last?<span
+                class="material-icons faq-icon">add</span></button>
+            <div class="faq-answer">
+              <p>Composite (tooth-coloured) fillings typically last 7–10 years. Porcelain inlays can last 15–20 years.
+                Longevity depends on oral hygiene, diet and the size of the restoration.</p>
+            </div>
+          </div>
+          <div class="faq-item"><button class="faq-question" aria-expanded="false">Is root canal treatment painful?<span
+                class="material-icons faq-icon">add</span></button>
+            <div class="faq-answer">
+              <p>Root canal treatment has an undeserved reputation. With proper anaesthesia, it is no more uncomfortable
+                than a filling. The goal is to relieve the pain caused by infection — not create it.</p>
+            </div>
+          </div>
+          <div class="faq-item"><button class="faq-question" aria-expanded="false">Can a cracked tooth be saved?<span
+                class="material-icons faq-icon">add</span></button>
+            <div class="faq-answer">
+              <p>In many cases, yes. The treatment depends on the severity of the crack. A crown can protect and restore
+                a cracked tooth. We always attempt to save your natural tooth before considering extraction.</p>
+            </div>
+          </div>
+          <div class="faq-item"><button class="faq-question" aria-expanded="false">Do you see dental emergencies?<span
+                class="material-icons faq-icon">add</span></button>
+            <div class="faq-answer">
+              <p>Yes — we reserve same-day emergency slots and you can call our emergency line at any time. Common
+                emergencies we treat include toothache, broken teeth, lost fillings and dental trauma.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -267,7 +384,8 @@
         <div class="section-header">
           <div class="section-tag reveal">Popular Articles</div>
           <h2 class="section-title reveal reveal-d1">Dental Treatment <em>Insights</em></h2>
-          <p class="section-desc reveal reveal-d2">Honest, informative articles to help you understand your dental health and treatment options.</p>
+          <p class="section-desc reveal reveal-d2">Honest, informative articles to help you understand your dental
+            health and treatment options.</p>
         </div>
         <div class="blog-grid">
           <div class="blog-card blog-card--featured reveal">
@@ -281,11 +399,16 @@
                 <span class="blog-meta-item"><span class="material-icons">calendar_today</span>Jan 18, 2025</span>
               </div>
               <h3 class="blog-card-title">Root Canal Myths Debunked: Why This Common Procedure Is Nothing to Fear</h3>
-              <p class="blog-card-excerpt">Root canals are among the most feared dental procedures — yet they're often no more uncomfortable than a filling. Our endodontic specialist separates fact from fiction and explains what to really expect.</p>
+              <p class="blog-card-excerpt">Root canals are among the most feared dental procedures — yet they're often
+                no more uncomfortable than a filling. Our endodontic specialist separates fact from fiction and explains
+                what to really expect.</p>
               <div class="blog-card-footer">
                 <div class="blog-card-author">
                   <div class="blog-author-avatar">DR</div>
-                  <div><div class="blog-author-name">Dr. Rohit Balan</div><div class="blog-author-role">Endodontist</div></div>
+                  <div>
+                    <div class="blog-author-name">Dr. Rohit Balan</div>
+                    <div class="blog-author-role">Endodontist</div>
+                  </div>
                 </div>
                 <a href="#" class="blog-card-link">Read More <span class="material-icons">arrow_forward</span></a>
               </div>
@@ -293,7 +416,8 @@
           </div>
           <div class="blog-card reveal">
             <div class="blog-card-img">
-              <img src="https://images.unsplash.com/photo-1595078475328-1ab05d0a6a0e?w=600&q=80" alt="Crowns vs Veneers" />
+              <img src="https://images.unsplash.com/photo-1595078475328-1ab05d0a6a0e?w=600&q=80"
+                alt="Crowns vs Veneers" />
               <span class="blog-card-category">Guide</span>
             </div>
             <div class="blog-card-body">
@@ -302,11 +426,16 @@
                 <span class="blog-meta-item"><span class="material-icons">calendar_today</span>Feb 20, 2025</span>
               </div>
               <h3 class="blog-card-title">Dental Crown vs Veneer: Which One Do You Actually Need?</h3>
-              <p class="blog-card-excerpt">Both crowns and veneers can transform a damaged or discoloured tooth — but they serve very different purposes. We break down when each is appropriate and what makes them different.</p>
+              <p class="blog-card-excerpt">Both crowns and veneers can transform a damaged or discoloured tooth — but
+                they serve very different purposes. We break down when each is appropriate and what makes them
+                different.</p>
               <div class="blog-card-footer">
                 <div class="blog-card-author">
                   <div class="blog-author-avatar">DS</div>
-                  <div><div class="blog-author-name">Dr. Shalini Raj</div><div class="blog-author-role">Restorative Dentist</div></div>
+                  <div>
+                    <div class="blog-author-name">Dr. Shalini Raj</div>
+                    <div class="blog-author-role">Restorative Dentist</div>
+                  </div>
                 </div>
                 <a href="#" class="blog-card-link">Read More <span class="material-icons">arrow_forward</span></a>
               </div>
@@ -323,11 +452,16 @@
                 <span class="blog-meta-item"><span class="material-icons">calendar_today</span>Mar 14, 2025</span>
               </div>
               <h3 class="blog-card-title">What to Do in a Dental Emergency: A Practical Step-by-Step Guide</h3>
-              <p class="blog-card-excerpt">Knocked-out tooth? Severe toothache? Lost filling at midnight? Here's exactly what to do in the most common dental emergencies to protect your tooth and manage pain until you can see a dentist.</p>
+              <p class="blog-card-excerpt">Knocked-out tooth? Severe toothache? Lost filling at midnight? Here's exactly
+                what to do in the most common dental emergencies to protect your tooth and manage pain until you can see
+                a dentist.</p>
               <div class="blog-card-footer">
                 <div class="blog-card-author">
                   <div class="blog-author-avatar">SC</div>
-                  <div><div class="blog-author-name">SmileCraft Team</div><div class="blog-author-role">Editorial</div></div>
+                  <div>
+                    <div class="blog-author-name">SmileCraft Team</div>
+                    <div class="blog-author-role">Editorial</div>
+                  </div>
                 </div>
                 <a href="#" class="blog-card-link">Read More <span class="material-icons">arrow_forward</span></a>
               </div>
@@ -346,7 +480,8 @@
           <a href="book.html" class="btn btn-white btn-lg">Book an Appointment</a>
         </div>
         <div class="cta-img-wrap reveal reveal-d1">
-          <img src="https://images.unsplash.com/photo-1588776814546-1ffedbe36cf5?w=700&q=80" alt="Dental treatment patient" />
+          <img src="https://images.unsplash.com/photo-1588776814546-1ffedbe36cf5?w=700&q=80"
+            alt="Dental treatment patient" />
           <div class="cta-img-decal"></div>
         </div>
       </div>
@@ -355,20 +490,81 @@
 
   <footer class="site-footer">
     <div class="container">
-      <div class="footer-newsletter reveal"><div class="footer-newsletter-text"><h3 class="footer-newsletter-title">Subscribe to our Newsletter</h3><p class="footer-newsletter-sub">Get dental tips, special offers and updates delivered straight to your inbox.</p></div><form class="footer-newsletter-form" id="nlForm"><input type="email" class="nl-input" placeholder="Enter your email" required /><button type="submit" class="btn btn-mint nl-btn">Subscribe</button></form></div>
-      <div class="footer-divider"></div>
-      <div class="footer-cols">
-        <div class="footer-brand"><div class="footer-logo-wrap"><div class="footer-logo-mark"><span class="material-icons">medical_services</span></div><span class="footer-logo-text">Smile<span>Craft</span></span></div><div class="footer-socials"><a href="#" class="footer-social"><span class="material-icons">facebook</span></a><a href="#" class="footer-social"><span class="material-icons">camera_alt</span></a><a href="#" class="footer-social"><span class="material-icons">play_circle</span></a><a href="#" class="footer-social"><span class="material-icons">chat</span></a></div></div>
-        <div class="footer-col"><h4 class="footer-col-title">Services</h4><ul class="footer-links"><li><a href="service-cosmetic.html">Cosmetic Dentistry</a></li><li><a href="service-orthodontics.html">Orthodontics</a></li><li><a href="service-oral-hygiene.html">Oral Hygiene</a></li><li><a href="service-dental-treatment.html">Dental Treatment</a></li><li><a href="service-dental-surgery.html">Dental Surgery</a></li><li><a href="service-dental-implants.html">Dental Implants</a></li></ul></div>
-        <div class="footer-col"><h4 class="footer-col-title">Company</h4><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-        <div class="footer-col"><h4 class="footer-col-title">Contact</h4><div class="footer-contact-item"><span class="material-icons">alternate_email</span><a href="mailto:contact@dentist.com">contact@dentist.com</a></div><div class="footer-contact-item"><span class="material-icons">phone</span><span>(487) 120 – 7980</span></div><div class="footer-contact-item"><span class="material-icons">location_on</span><span>24 Broadcast Drive Charlotte<br />NC 28202, USA</span></div></div>
+      <div class="footer-newsletter reveal">
+        <div class="footer-newsletter-text">
+          <h3 class="footer-newsletter-title">Subscribe to our Newsletter</h3>
+          <p class="footer-newsletter-sub">Get dental tips, special offers and updates delivered straight to your inbox.
+          </p>
+        </div>
+        <form class="footer-newsletter-form" id="nlForm"><input type="email" class="nl-input"
+            placeholder="Enter your email" required /><button type="submit"
+            class="btn btn-mint nl-btn">Subscribe</button></form>
       </div>
       <div class="footer-divider"></div>
-      <div class="footer-bottom"><div class="footer-logo-bottom"><div class="footer-logo-mark footer-logo-mark--sm"><span class="material-icons">medical_services</span></div><span class="footer-logo-text footer-logo-text--sm">Smile<span>Craft</span></span></div><p class="footer-copy">Copyright &copy; SmileCraft — Designed by <a href="#">Brix Templates</a></p></div>
+      <div class="footer-cols">
+        <div class="footer-brand">
+          <div class="footer-logo-wrap">
+            <div class="footer-logo-mark"><span class="material-icons">medical_services</span></div><span
+              class="footer-logo-text">Smile<span>Craft</span></span>
+          </div>
+          <div class="footer-socials"><a href="#" class="footer-social"><span
+                class="material-icons">facebook</span></a><a href="#" class="footer-social"><span
+                class="material-icons">camera_alt</span></a><a href="#" class="footer-social"><span
+                class="material-icons">play_circle</span></a><a href="#" class="footer-social"><span
+                class="material-icons">chat</span></a></div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col-title">Services</h4>
+          <ul class="footer-links">
+            <li><a href="service-cosmetic.html">Cosmetic Dentistry</a></li>
+            <li><a href="service-orthodontics.html">Orthodontics</a></li>
+            <li><a href="service-oral-hygiene.html">Oral Hygiene</a></li>
+            <li><a href="service-dental-treatment.html">Dental Treatment</a></li>
+            <li><a href="service-dental-surgery.html">Dental Surgery</a></li>
+            <li><a href="service-dental-implants.html">Dental Implants</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col-title">Company</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col-title">Contact</h4>
+          <div class="footer-contact-item"><span class="material-icons">alternate_email</span><a
+              href="mailto:contact@dentist.com">contact@dentist.com</a></div>
+          <div class="footer-contact-item"><span class="material-icons">phone</span><span>(487) 120 – 7980</span></div>
+          <div class="footer-contact-item"><span class="material-icons">location_on</span><span>24 Broadcast Drive
+              Charlotte<br />NC 28202, USA</span></div>
+        </div>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-bottom">
+        <div class="footer-logo-bottom">
+          <div class="footer-logo-mark footer-logo-mark--sm"><span class="material-icons">medical_services</span></div>
+          <span class="footer-logo-text footer-logo-text--sm">Smile<span>Craft</span></span>
+        </div>
+        <p class="footer-copy">Copyright &copy; SmileCraft — Designed by <a href="#">Brix Templates</a></p>
+      </div>
     </div>
   </footer>
-  <nav class="mfn" id="mobileFloatNav"><div class="mfn-track"><a href="index.html" class="mfn-item"><span class="material-icons mfn-icon">home</span><span class="mfn-label">Home</span></a><a href="services.html" class="mfn-item mfn-item--active"><span class="material-icons mfn-icon">medical_services</span><span class="mfn-label">Services</span></a><a href="book.html" class="mfn-item"><span class="material-icons mfn-icon">calendar_today</span><span class="mfn-label">Book</span></a><a href="contact.html" class="mfn-item"><span class="material-icons mfn-icon">more_horiz</span><span class="mfn-label">More</span></a></div></nav>
+  <nav class="mfn" id="mobileFloatNav">
+    <div class="mfn-track"><a href="index.html" class="mfn-item"><span class="material-icons mfn-icon">home</span><span
+          class="mfn-label">Home</span></a><a href="services.html" class="mfn-item mfn-item--active"><span
+          class="material-icons mfn-icon">medical_services</span><span class="mfn-label">Services</span></a>
+      <a href="blog.html" class="mfn-item"><span class="material-icons mfn-icon">article</span><span
+          class="mfn-label">Blog</span></a><a href="book.html" class="mfn-item"><span
+          class="material-icons mfn-icon">calendar_today</span><span class="mfn-label">Book</span></a><a
+        href="contact.html" class="mfn-item"><span class="material-icons mfn-icon">more_horiz</span><span
+          class="mfn-label">More</span></a>
+    </div>
+  </nav>
   <script src="../assets/js/service-detail.js"></script>
   <script src="../assets/js/premium-mobile-nav.js"></script>
 </body>
+
 </html>

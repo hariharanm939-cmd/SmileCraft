@@ -58,4 +58,39 @@
     if (dx > 60) closeDrawer(); /* swipe right → close */
   }, { passive: true });
 
+  /* Desktop Branch Dropdown Logic (Delay + Click Outside) */
+  const dropdownTrigger = document.querySelector('.nav-dropdown-trigger');
+  const navDropdown = document.querySelector('.nav-dropdown');
+
+  if (dropdownTrigger && navDropdown) {
+    let dropdownTimeout;
+
+    dropdownTrigger.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const isActive = navDropdown.classList.contains('is-active');
+
+      if (isActive) {
+        navDropdown.classList.remove('is-active');
+        dropdownTrigger.setAttribute('aria-expanded', 'false');
+      } else {
+        // Add delay before opening
+        clearTimeout(dropdownTimeout);
+        dropdownTimeout = setTimeout(() => {
+          navDropdown.classList.add('is-active');
+          dropdownTrigger.setAttribute('aria-expanded', 'true');
+        }, 250); // 250ms delay
+      }
+    });
+
+    // Close on click outside
+    document.addEventListener('click', function(e) {
+      if (!navDropdown.contains(e.target)) {
+        navDropdown.classList.remove('is-active');
+        dropdownTrigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
 })();

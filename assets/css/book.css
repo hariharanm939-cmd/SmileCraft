@@ -125,8 +125,8 @@ input, select, textarea { font-family: inherit; }
   cursor: pointer; transition: color var(--transition);
 }
 .nav-dropdown-trigger .arrow { font-size: .7rem; transition: transform var(--transition); }
-.nav-dropdown:hover .nav-dropdown-trigger { color: var(--mint-dark); }
-.nav-dropdown:hover .arrow { transform: rotate(180deg); }
+.nav-dropdown.is-active .nav-dropdown-trigger { color: var(--mint-dark); }
+.nav-dropdown.is-active .arrow { transform: rotate(180deg); }
 
 .dropdown-menu {
   display: none; position: absolute; top: calc(100% + 14px); left: 0;
@@ -134,7 +134,7 @@ input, select, textarea { font-family: inherit; }
   border-radius: var(--radius); box-shadow: var(--shadow-lg);
   min-width: 200px; overflow: hidden; z-index: 300;
 }
-.nav-dropdown:hover .dropdown-menu { display: block; }
+.nav-dropdown.is-active .dropdown-menu { display: block; }
 .dropdown-link {
   display: block; padding: .75rem 1.25rem;
   font-size: .875rem; font-weight: 600; color: var(--text); transition: all var(--transition);
