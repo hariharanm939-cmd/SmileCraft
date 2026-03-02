@@ -21,16 +21,16 @@
   <title>Dentist in Porur | Smile Craft Dental Clinic</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Syne:wght@700;800&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=IBM+Plex+Sans:wght@100..900&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/css/style.css" />
   <link rel="stylesheet" href="../assets/css/premium-mobile-nav.css" />
   <link rel="canonical" href="https://yourdomain.com/branch-porur.html" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
   <meta name="description"
     content="Dental implants, braces, RCT & emergency dental care in Porur, Chennai. Book an appointment at Smile Craft Dental Clinic - Porur." />
   <meta name="robots" content="index, follow" />
+  
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -714,102 +714,80 @@
     }
 
     /* ══ TEAM ══ */
-    .an-team {
-      background: var(--bg);
-      padding: 6rem 0;
+    .team-section {
+      background: var(--white);
+      padding: var(--section-py) 0;
     }
 
-    .an-team-grid {
+    .team-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 280px));
+      gap: 30px;
+      justify-content: center;
     }
 
-    .an-team-card {
-      background: white;
+    .team-card {
+      background: var(--white);
+      border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       overflow: hidden;
-      border: 1px solid var(--border);
       transition: all var(--transition);
-      position: relative;
+      /* these don’t apply here, but grid container already centers items */
     }
 
-    .an-team-card:hover {
+    .team-card:hover {
       box-shadow: var(--shadow-lg);
-      transform: translateY(-5px);
+      transform: translateY(-4px);
       border-color: var(--mint);
     }
 
-    .an-team-img {
+    .team-card-img-wrap {
       height: 16rem;
       overflow: hidden;
-      position: relative;
     }
 
-    .an-team-img img {
+    .team-card-body {
+      text-align: center;
+    }
+
+    .team-card-img-wrap img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform .5s ease;
+      transition: transform var(--transition);
     }
 
-    .an-team-card:hover .an-team-img img {
-      transform: scale(1.07);
+    .team-card:hover .team-card-img-wrap img {
+      transform: scale(1.06);
     }
 
-    .an-team-img-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(13, 148, 136, .5) 0%, transparent 55%);
-      opacity: 0;
-      transition: opacity var(--transition);
+    .team-card-body {
+      padding: 1.25rem;
     }
 
-    .an-team-card:hover .an-team-img-overlay {
-      opacity: 1;
-    }
-
-    .an-team-body {
-      padding: 1.25rem 1.25rem 1.5rem;
-    }
-
-    .an-team-name {
+    .team-card-name {
       font-size: 1rem;
       font-weight: 800;
       color: var(--dark);
-      margin-bottom: .15rem;
+      margin-bottom: 0.2rem;
     }
 
-    .an-team-role {
-      font-size: .8rem;
+    .team-card-role {
+      font-size: 0.8rem;
       font-weight: 600;
       color: var(--mint-dark);
-      margin-bottom: .2rem;
+      margin-bottom: 0.75rem;
     }
 
-    .an-team-exp {
-      font-size: .75rem;
-      color: var(--muted);
-      margin-bottom: .875rem;
+    .team-card-socials {
       display: flex;
-      align-items: center;
-      gap: .3rem;
+      gap: 0.75rem;
     }
 
-    .an-team-exp .material-icons {
-      font-size: .85rem !important;
-      color: var(--mint);
-    }
-
-    .an-team-socials {
-      display: flex;
-      gap: .6rem;
-    }
-
-    .an-social {
-      width: 1.9rem;
-      height: 1.9rem;
-      border-radius: 9px;
+    .team-social {
+      width: 1.8rem;
+      height: 1.8rem;
+      border-radius: 8px;
       background: var(--mint-light);
       color: var(--mint-dark);
       display: flex;
@@ -818,15 +796,21 @@
       transition: all var(--transition);
     }
 
-    .an-social:hover {
+    .team-social:hover {
       background: var(--mint);
       color: white;
-      transform: translateY(-2px);
     }
 
-    .an-social .material-icons {
-      font-size: .95rem !important;
+    .team-social .material-icons {
+      font-size: 0.95rem !important;
     }
+
+    /* Team */
+    .team-grid {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 280px));
+      justify-content: center;
+    }
+
 
     /* ══ EXPERIENCE BAND ══ */
     .an-exp-band {
@@ -1300,7 +1284,7 @@
       }
 
       .an-team-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .an-map-inner {
@@ -1330,8 +1314,7 @@
   <aside class="pmn-drawer" id="pmnDrawer" role="dialog" aria-modal="true" aria-label="Navigation menu">
     <div class="pmn-header">
       <a href="../index.html" class="pmn-logo">
-        <div class="pmn-logo-mark"><span class="material-icons">medical_services</span></div>
-        <span class="pmn-logo-text">Smile<span>Craft</span></span>
+        <img src="../assets/images/logo.png" alt="Smile Craft Dental Clinic" class="logo-img" />
       </a>
       <button class="pmn-close" id="pmnClose" aria-label="Close menu"><span class="material-icons">close</span></button>
     </div>
@@ -1390,9 +1373,7 @@
   <header class="site-header" id="siteHeader">
     <div class="container header-inner">
       <a href="../index.html" class="logo">
-        <div class="logo-mark"><span class="material-icons" style="font-size:1.2rem!important">medical_services</span>
-        </div>
-        <span class="logo-text">Smile<span>Craft</span></span>
+       <img src="../assets/images/logo.png" alt="Smile Craft Dental Clinic" class="logo-img" />
       </a>
       <nav class="desktop-nav" aria-label="Main navigation">
         <a href="../index.html" class="nav-link">Home</a>
@@ -1402,8 +1383,8 @@
             Branches <span class="arrow material-icons" style="font-size:.9rem!important">expand_more</span>
           </button>
           <div class="dropdown-menu">
-            <a href="porur-branch.html" class="dropdown-link active">Porur Branch</a>
-            <a href="kolapakkam-branch.html" class="dropdown-link">Kolapakkam Branch</a>
+            <a href="porur-branch.html" class="dropdown-link">Porur Branch</a>
+            <a href="kolapakkam-branch.html" class="dropdown-link active">Kolapakkam Branch</a>
           </div>
         </div>
         <a href="../blog.html" class="nav-link">Blog</a>
@@ -1693,149 +1674,142 @@
     </div>
 
     <!-- ══ TEAM ══ -->
-    <section class="an-team">
+    <section class="team-section">
       <div class="container">
         <div class="section-header">
-          <div class="section-tag reveal">Our Specialists</div>
-          <h2 class="section-title reveal reveal-d1">Meet Our Dental Specialists in Porur</h2>
-          <p class="section-desc reveal reveal-d2">Our experienced dental specialists in Porur provide advanced dental
-            implants, braces, cosmetic dentistry, and comprehensive oral care using modern technology and
-            patient-focused treatment approaches.</p>
+          <div class="section-tag reveal">Team</div>
+          <h2 class="section-title reveal reveal-d1">Meet Our Experienced Dental Specialists</h2>
+          <p class="section-desc reveal reveal-d2">Our experienced team of dentists and implant specialists is committed
+            to providing advanced dental implants, braces, cosmetic dentistry, and patient-focused care using modern
+            technology and proven techniques.</p>
         </div>
-        <div class="an-team-grid">
-          <div class="an-team-card reveal">
-            <div class="an-team-img">
-              <img
+        <div class="team-grid">
+          <div class="team-card reveal">
+            <div class="team-card-img-wrap"><img
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDopGzD_O6EvM_ueT5cdy2WdhYHfuxGgEpzsz2pqbEPUT_FdFPAybofQylsP7S9BwBVqnEFPapk2NXwwmVRXKi9854Az4Q7Llj92l1o6axu_2lmc5dwBPAyADTKX_5I0qH-8kamyp6nU_CMetSuH719pKzJ1KcJb5VcEzhryKbSdtzR2yOZCdP5hM8IDlKPr3jBN_R4HvHt4aohF0bNutRPpgo_bq8YlE6jBd43CevbvLGlRt51jZjZ8lo1gzrG7-9OXD5G8T_fmwKM"
-                alt="Dr. Sonia Alam" />
-              <div class="an-team-img-overlay"></div>
-            </div>
-            <div class="an-team-body">
-              <div class="an-team-name">Dr. Sonia Alam</div>
-              <div class="an-team-role">Lead Orthodontist · Branch Head</div>
-              <div class="an-team-exp"><span class="material-icons">workspace_premium</span>12 Years Experience</div>
-              <div class="an-team-socials">
-                <a href="#" class="an-social"><span class="material-icons">facebook</span></a>
-                <a href="#" class="an-social"><span class="material-icons">camera_alt</span></a>
-                <a href="#" class="an-social"><span class="material-icons">alternate_email</span></a>
-              </div>
+                alt="Sonia Alam" /></div>
+            <div class="team-card-body">
+              <div class="team-card-name">Sonia Alam</div>
+              <div class="team-card-role">Orthodontist</div>
+              <div class="team-card-socials"><a href="#" class="team-social"><span
+                    class="material-icons">facebook</span></a><a href="#" class="team-social"><span
+                    class="material-icons">camera_alt</span></a><a href="#" class="team-social"><span
+                    class="material-icons">alternate_email</span></a></div>
             </div>
           </div>
-          <div class="an-team-card reveal reveal-d1">
-            <div class="an-team-img">
-              <img
+          <div class="team-card reveal reveal-d1">
+            <div class="team-card-img-wrap"><img
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcIdsbpoBAEmDCyvGTYiAcoZQMdEL8_o4jUb1fI3t1mltSZgcDNOk8Eg0CQA3Hm9Q_-OEI6f23nrH9WmXuvTSxL3uRX5S_xXYe-Y3epvtocwbALvSAl6w2EVdcaelMLERBbDQ6WkqJsfhL_vnSTOXrQ8nAODGp5gWMEvr-o4YgyyY_NMbwGxx5VLQg_odnl6fgfZirpGBUBrzQw6ohsAO6HxZBKdu3V4aXttXnmuVRhGe_ING7Mu4OqbAkcuz4Gr3D4mhB47mNFatV"
-                alt="Dr. Iqbal John" />
-              <div class="an-team-img-overlay"></div>
-            </div>
-            <div class="an-team-body">
-              <div class="an-team-name">Dr. Iqbal John</div>
-              <div class="an-team-role">Implant Surgeon</div>
-              <div class="an-team-exp"><span class="material-icons">workspace_premium</span>9 Years Experience</div>
-              <div class="an-team-socials">
-                <a href="#" class="an-social"><span class="material-icons">facebook</span></a>
-                <a href="#" class="an-social"><span class="material-icons">camera_alt</span></a>
-                <a href="#" class="an-social"><span class="material-icons">alternate_email</span></a>
-              </div>
-            </div>
-          </div>
-          <div class="an-team-card reveal reveal-d2">
-            <div class="an-team-img">
-              <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuChmbX5bsBuD-jSvUTuSP11_M1lwWSOUhIW6lZ1zyoItFHYKPsLZQcVVMtUZyrbXzsvfrpUlv3C1v6ByvkI3ykHH_GqDPXKFIo7x_gDSEijIf-A60rYhrU-hfmVrScR9v3p1KXx04SG2jOWv69NooHk7VWQtc6Lkcy0zgG5nCHZhvZgwsXSitbn9k7v-KpR0ioeQIm6AeziceTIG2kWN310fQNU3BNhMAxBEhSE8-13J1EOT6I7S0nsmGiqEP9UwglgiCBYVnkCSqWQ"
-                alt="Dr. David William" />
-              <div class="an-team-img-overlay"></div>
-            </div>
-            <div class="an-team-body">
-              <div class="an-team-name">Dr. David William</div>
-              <div class="an-team-role">General &amp; Cosmetic Dentist</div>
-              <div class="an-team-exp"><span class="material-icons">workspace_premium</span>7 Years Experience</div>
-              <div class="an-team-socials">
-                <a href="#" class="an-social"><span class="material-icons">facebook</span></a>
-                <a href="#" class="an-social"><span class="material-icons">camera_alt</span></a>
-                <a href="#" class="an-social"><span class="material-icons">alternate_email</span></a>
-              </div>
+                alt="Iqbal John" /></div>
+            <div class="team-card-body">
+              <div class="team-card-name">Iqbal John</div>
+              <div class="team-card-role">Implant Surgeon</div>
+              <div class="team-card-socials"><a href="#" class="team-social"><span
+                    class="material-icons">facebook</span></a><a href="#" class="team-social"><span
+                    class="material-icons">camera_alt</span></a><a href="#" class="team-social"><span
+                    class="material-icons">alternate_email</span></a></div>
             </div>
           </div>
         </div>
-      </div>
     </section>
-
     <!-- ══ TESTIMONIALS ══ -->
-    <section class="an-testi">
+    <section class="testimonials-section">
       <div class="container">
         <div class="section-header">
           <div class="section-tag reveal">Reviews</div>
-          <h2 class="section-title reveal reveal-d1">What Porur Patients Say</h2>
-          <p class="section-desc reveal reveal-d2">Real stories from real patients who chose Smile Craft Porur for their
-            dental care.</p>
+          <h2 class="section-title reveal reveal-d1">What Kolapakkam Patients Say</h2>
+          <p class="section-desc reveal reveal-d2">Real words from real patients in Kolapakkam, Pallikaranai,
+            Nanganallur and surrounding areas who trusted us with their smiles.</p>
         </div>
-        <div class="an-testi-grid">
-          <div class="an-testi-card reveal">
-            <div class="an-testi-header">
-              <div class="an-testi-avatar" style="background:var(--mint-light);color:var(--mint-dark)">RK</div>
-              <div>
-                <div class="an-testi-name">Ramesh Kumar</div>
-                <div class="an-testi-role">Porur Resident</div>
+        <div class="testi-content">
+          <div class="swiper testimonials-slider js-kola-testi-slider">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide testi-card">
+                <div class="testi-header">
+                  <div class="testi-avatar">AK</div>
+                  <div>
+                    <div class="testi-name">Arun Kumar</div>
+                    <div class="testi-role">IT Professional, Kolapakkam</div>
+                  </div>
+                </div>
+                <div class="testi-stars"><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span></div>
+                <p class="testi-text">"Had laser gum treatment here and it was completely painless. Back to work the
+                  same afternoon. Dr. Luca explained everything so clearly. This is genuinely the most advanced clinic
+                  in South Chennai."</p>
+                <div class="testi-date"><span class="material-icons">location_on</span>Kolapakkam · May 2024</div>
+              </div>
+              <div class="swiper-slide testi-card">
+                <div class="testi-header">
+                  <div class="testi-avatar testi-avatar--dark">NG</div>
+                  <div>
+                    <div class="testi-name">Nithya Gopalakrishnan</div>
+                    <div class="testi-role">Doctor, Adambakkam</div>
+                  </div>
+                </div>
+                <div class="testi-stars"><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span></div>
+                <p class="testi-text">"As a doctor myself, I notice sterilisation standards immediately. Smile Craft
+                  Kolapakkam is impeccable — the equipment is brand new and the team follows every protocol. My entire
+                  family comes here now."</p>
+                <div class="testi-date"><span class="material-icons">location_on</span>Adambakkam · June 2024</div>
+              </div>
+              <div class="swiper-slide testi-card">
+                <div class="testi-header">
+                  <div class="testi-avatar testi-avatar--dark">SK</div>
+                  <div>
+                    <div class="testi-name">Suresh Krishnaswamy</div>
+                    <div class="testi-role">Entrepreneur, Pallikaranai</div>
+                  </div>
+                </div>
+                <div class="testi-stars"><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span></div>
+                <p class="testi-text">"Got my crown done in one visit using their digital lab. Walked in at 10 AM, crown
+                  fitted by 2 PM. That's technology! Perfectly matched colour and an incredibly precise fit. Absolutely
+                  no complaints."</p>
+                <div class="testi-date"><span class="material-icons">location_on</span>Pallikaranai · April 2024</div>
+              </div>
+              <div class="swiper-slide testi-card">
+                <div class="testi-header">
+                  <div class="testi-avatar testi-avatar--dark">DM</div>
+                  <div>
+                    <div class="testi-name">Divya Murugasamy</div>
+                    <div class="testi-role">Teacher, Nanganallur</div>
+                  </div>
+                </div>
+                <div class="testi-stars"><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span></div>
+                <p class="testi-text">"Zoom whitening was quick, comfortable, and the results are stunning. The clinic
+                  is open late which worked perfectly for my schedule. Professional, warm staff from the receptionist to
+                  the doctors."</p>
+                <div class="testi-date"><span class="material-icons">location_on</span>Nanganallur · March 2024</div>
+              </div>
+              <div class="swiper-slide testi-card">
+                <div class="testi-header">
+                  <div class="testi-avatar testi-avatar--dark">RV</div>
+                  <div>
+                    <div class="testi-name">Ramya Venkatesh</div>
+                    <div class="testi-role">Homemaker, Gerugambakkam</div>
+                  </div>
+                </div>
+                <div class="testi-stars"><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span></div>
+                <p class="testi-text">"Visited for root canal pain. The procedure was explained clearly and treatment
+                  was completely comfortable. Clinic is clean and well maintained. Highly recommended for everyone in
+                  the Kolapakkam area!"</p>
+                <div class="testi-date"><span class="material-icons">location_on</span>Gerugambakkam · Feb 2024</div>
               </div>
             </div>
-            <div class="an-testi-stars"><span class="material-icons">star</span><span
-                class="material-icons">star</span><span class="material-icons">star</span><span
-                class="material-icons">star</span><span class="material-icons">star</span></div>
-            <p class="an-testi-text">"Dr. Sonia fixed my daughter's teeth alignment in just 18 months. The team was
-              incredibly patient with her — she actually looks forward to her appointments now. Truly outstanding
-              clinic."</p>
-            <div class="an-testi-date"><span class="material-icons">location_on</span>Porur · January 2024</div>
           </div>
-          <div class="an-testi-card reveal reveal-d1">
-            <div class="an-testi-header">
-              <div class="an-testi-avatar" style="background:var(--mint-dark);color:white">PL</div>
-              <div>
-                <div class="an-testi-name">Priya Lakshmi</div>
-                <div class="an-testi-role">Software Engineer</div>
-              </div>
-            </div>
-            <div class="an-testi-stars"><span class="material-icons">star</span><span
-                class="material-icons">star</span><span class="material-icons">star</span><span
-                class="material-icons">star</span><span class="material-icons">star</span></div>
-            <p class="an-testi-text">"Got my Invisalign from Smile Craft and I couldn't be happier. The results were
-              faster than expected and the entire process was so seamless. The staff are warm and professional."</p>
-            <div class="an-testi-date"><span class="material-icons">location_on</span>Kilpauk · March 2024</div>
-          </div>
-          <div class="an-testi-card reveal">
-            <div class="an-testi-header">
-              <div class="an-testi-avatar" style="background:rgba(245,158,11,.12);color:#d97706">MV</div>
-              <div>
-                <div class="an-testi-name">Mohan Venkatesan</div>
-                <div class="an-testi-role">Business Owner</div>
-              </div>
-            </div>
-            <div class="an-testi-stars"><span class="material-icons">star</span><span
-                class="material-icons">star</span><span class="material-icons">star</span><span
-                class="material-icons">star</span><span class="material-icons">star</span></div>
-            <p class="an-testi-text">"Had two implants done by Dr. Iqbal. Zero pain, zero downtime. The 3D guided
-              surgery was incredible — I was back at work the very next day. Worth every rupee."</p>
-            <div class="an-testi-date"><span class="material-icons">location_on</span>Nungambakkam · February 2024</div>
-          </div>
-          <div class="an-testi-card reveal reveal-d1">
-            <div class="an-testi-header">
-              <div class="an-testi-avatar" style="background:rgba(139,92,246,.1);color:#7c3aed">SA</div>
-              <div>
-                <div class="an-testi-name">Shalini Arumugam</div>
-                <div class="an-testi-role">Teacher</div>
-              </div>
-            </div>
-            <div class="an-testi-stars"><span class="material-icons">star</span><span
-                class="material-icons">star</span><span class="material-icons">star</span><span
-                class="material-icons">star</span><span class="material-icons">star</span></div>
-            <p class="an-testi-text">"The teeth whitening results were amazing — multiple shades lighter in just one
-              session. The clinic is spotless, the equipment is modern, and the staff are absolutely lovely."</p>
-            <div class="an-testi-date"><span class="material-icons">location_on</span>Shenoy Nagar · April 2024</div>
-          </div>
+          <div class="swiper-pagination js-kola-testi-pagination"></div>
         </div>
       </div>
     </section>
-
     <!-- ══ MAP ══ -->
     <section class="an-map" id="an-map">
       <div class="container an-map-inner">
@@ -1936,8 +1910,7 @@
       <div class="footer-grid">
         <div>
           <div class="footer-logo-wrap">
-            <div class="footer-logo-mark"><span class="material-icons">medical_services</span></div>
-            <div class="footer-logo-text">Smile<span>Craft</span></div>
+           <img src="../assets/images/logo.png" alt="Smile Craft Dental Clinic" class="logo-img" />
           </div>
           <p class="footer-tagline">Trusted dental care for Chennai families since 2012. Two branches, one standard of
             excellence.</p>
@@ -1996,9 +1969,24 @@
           class="mfn-label">Book</span></a>
     </div>
   </nav>
-
   <script src="../assets/js/index.js"></script>
   <script src="../assets/js/premium-mobile-nav.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+  <script>
+    const kolaSwiper = new Swiper('.js-kola-testi-slider', {
+      grabCursor: true,
+      spaceBetween: 30,
+      pagination: {
+        el: '.js-kola-testi-pagination',
+        clickable: true
+      },
+      breakpoints: {
+        767: {
+          slidesPerView: 3
+        }
+      }
+    });
+  </script>
 </body>
 
 </html>

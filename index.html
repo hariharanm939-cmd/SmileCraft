@@ -9,7 +9,7 @@
   "@id": "https://yourdomain.com/#organization",
   "name": "Smile Craft Dental Clinic",
   "url": "https://yourdomain.com/",
-  "logo": "https://yourdomain.com/assets/images/logo.png",
+  "logo": "https://yourdomain.com/assets/images/Logo.png",
   "image": "https://yourdomain.com/assets/images/og-image.jpg",
   "description": "Smile Craft Dental Clinic provides dental implants, braces, root canal treatment, cosmetic dentistry, and emergency dental care across Chennai with two convenient branches.",
   "telephone": "+91-9999999999",
@@ -109,10 +109,12 @@
     href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap"
     rel="stylesheet" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="stylesheet" href="assets/css/premium-mobile-nav.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#0bb" />
+
   <style>
     /* Mobile view: make the 4 cards stack 1 by 1 (1,2,3,4) */
     @media (max-width: 768px) {
@@ -130,7 +132,7 @@
   <style>
     @media (max-width: 768px) {
       .services-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
+        grid-template-columns: repeat(1, 1fr) !important;
         gap: 12px !important;
       }
 
@@ -158,10 +160,7 @@
     <!-- Drawer header -->
     <div class="pmn-header">
       <a href="index.html" class="pmn-logo">
-        <div class="pmn-logo-mark">
-          <span class="material-icons">medical_services</span>
-        </div>
-        <span class="pmn-logo-text">Smile<span>Craft</span></span>
+        <img src="assets/images/logo.png" alt="Smile Craft Dental Clinic" class="logo-img" />
       </a>
       <button class="pmn-close" id="pmnClose" aria-label="Close menu">
         <span class="material-icons">close</span>
@@ -173,6 +172,12 @@
 
       <!-- Main navigation -->
       <nav aria-label="Mobile navigation">
+        <!-- CTA -->
+      <a href="book.html" class="pmn-cta">
+        <span class="material-icons">calendar_today</span>
+        Book an Appointment
+      </a>
+
         <div class="pmn-section-label">Navigation</div>
         <div class="pmn-nav">
           <a href="index.html" class="pmn-nav-link active">
@@ -188,10 +193,13 @@
             <span class="pmn-nav-arrow"><span class="material-icons">arrow_forward_ios</span></span>
           </a>
           <a href="about.html" class="pmn-nav-link">
-            <a href="contact.html" class="pmn-nav-link">
-              Contact
-              <span class="pmn-nav-arrow"><span class="material-icons">arrow_forward_ios</span></span>
-            </a>
+            About Us
+          <span class="pmn-nav-arrow"><span class="material-icons">arrow_forward_ios</span></span>
+          </a>
+          <a href="contact.html" class="pmn-nav-link">
+            Contact
+          <span class="pmn-nav-arrow"><span class="material-icons">arrow_forward_ios</span></span>
+          </a>
         </div>
       </nav>
 
@@ -210,7 +218,7 @@
             </div>
             <span class="pmn-branch-chevron"><span class="material-icons">chevron_right</span></span>
           </a>
-          <a href="branches/branch-2.html" class="pmn-branch-card">
+          <a href="branches/kolapakkam-branch.html" class="pmn-branch-card">
             <div class="pmn-branch-icon">
               <span class="material-icons">location_city</span>
             </div>
@@ -223,13 +231,6 @@
           </a>
         </div>
       </div>
-
-      <!-- CTA -->
-      <a href="book.html" class="pmn-cta">
-        <span class="material-icons">calendar_today</span>
-        Book an Appointment
-      </a>
-
     </div><!-- /pmn-body -->
 
     <!-- Drawer footer -->
@@ -258,10 +259,7 @@
   <header class="site-header" id="site-header">
     <div class="container header-inner">
       <a href="index.html" class="logo">
-        <div class="logo-mark">
-          <span class="material-icons" style="font-size:1.2rem!important">medical_services</span>
-        </div>
-        <span class="logo-text">Smile<span>Craft</span></span>
+        <img src="assets/images/logo.png" alt="Smile Craft Dental Clinic" class="logo-img" />
       </a>
 
       <!-- Desktop nav (unchanged) -->
@@ -285,7 +283,7 @@
 
       <div class="header-actions">
         <a href="book.html" class="btn btn-mint header-cta" style="padding:.6rem 1.4rem;font-size:.875rem">
-          Join Us
+          Book an Appointment
           <span class="material-icons" style="font-size:.9rem!important">arrow_forward</span>
         </a>
 
@@ -310,7 +308,7 @@
       <div class="hero-blob hero-blob--2"></div>
       <div class="container hero-inner">
         <div class="hero-content">
-          <div class="hero-tag"><span class="hero-tag-dot"></span>Save Us</div>
+          <!-- <div class="hero-tag"><span class="hero-tag-dot"></span>Save Us</div> -->
           <h1 class="hero-title reveal"
             style="font-size: clamp(1.8rem, 3.5vw, 2.6rem) !important; line-height: 1.2 !important; font-size: clamp(1.8rem, 5vw, 3rem); line-height: 1.1;">
             Advanced &
@@ -318,6 +316,10 @@
           <p class="hero-desc reveal reveal-d1">Smile Craft Dental Clinic offers dental implants, braces, root canal
             treatment, and complete oral care with modern technology and experienced specialists. We provide safe,
             painless, and patient-focused dentistry across our convenient locations.</p>
+          <div class="hero-btns reveal reveal-d2">
+            <a href="book.html" class="btn btn-mint">Take an Appointment</a>
+            <a href="services.html" class="btn btn-outline">Call Now</a>
+          </div>
           <div class="reveal reveal-d2"
             style="display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.25rem;margin-bottom:.5rem;">
             <a href="branches/porur-branch.html" class="btn btn-outline"
@@ -330,10 +332,6 @@
               <span class="material-icons"
                 style="font-size:1rem;vertical-align:middle;margin-right:.35rem;">location_on</span>Kolapakkam
             </a>
-          </div>
-          <div class="hero-btns reveal reveal-d2">
-            <a href="book.html" class="btn btn-mint">Take an Appointment</a>
-            <a href="services.html" class="btn btn-outline">Learn More</a>
           </div>
         </div>
         <div class="hero-visual reveal reveal-d1">
@@ -372,7 +370,7 @@
                   response and patient-first care.</p>
               </div>
             </div>
-            <div class="quick-card quick-card--teal">
+            <div class="quick-card ">
               <div class="quick-card-icon quick-card-icon--white"><span class="material-icons">person</span></div>
               <div>
                 <div class="quick-card-title">Experienced & Certified Dentists</div>
@@ -643,34 +641,7 @@
                     class="material-icons">alternate_email</span></a></div>
             </div>
           </div>
-          <div class="team-card reveal reveal-d2">
-            <div class="team-card-img-wrap"><img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuChmbX5bsBuD-jSvUTuSP11_M1lwWSOUhIW6lZ1zyoItFHYKPsLZQcVVMtUZyrbXzsvfrpUlv3C1v6ByvkI3ykHH_GqDPXKFIo7x_gDSEijIf-A60rYhrU-hfmVrScR9v3p1KXx04SG2jOWv69NooHk7VWQtc6Lkcy0zgG5nCHZhvZgwsXSitbn9k7v-KpR0ioeQIm6AeziceTIG2kWN310fQNU3BNhMAxBEhSE8-13J1EOT6I7S0nsmGiqEP9UwglgiCBYVnkCSqWQ"
-                alt="David William" /></div>
-            <div class="team-card-body">
-              <div class="team-card-name">David William</div>
-              <div class="team-card-role">Executive Specialist</div>
-              <div class="team-card-socials"><a href="#" class="team-social"><span
-                    class="material-icons">facebook</span></a><a href="#" class="team-social"><span
-                    class="material-icons">camera_alt</span></a><a href="#" class="team-social"><span
-                    class="material-icons">alternate_email</span></a></div>
-            </div>
-          </div>
-          <div class="team-card reveal reveal-d3">
-            <div class="team-card-img-wrap"><img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOfhDMflfCUIPQ0WJO01Ql3Wp8brlt-lU6WjFXaf2J_yGFJLPkDk2qjBVz8OmNxVrRzCZy6fDyOLZ4_OGwgSvwiSW08GeDEIKagR-wZbN5PGY29-U5nr48mp02Q2K-Wn-SGdj53v8PpCOAQ6gAijjRNw1lT_-XlJsCT_eVBcufyX-arwmvFzP4YLt8fNwIthJJqX7RLjk5Mm9cVQ1e6KtZfuZHfRw-x9Ecp09bIm4DrrAISkBICS6Y2plAuKTc18bawViIzUu15Ar5"
-                alt="Luca Williams" /></div>
-            <div class="team-card-body">
-              <div class="team-card-name">Luca Williams</div>
-              <div class="team-card-role">Care Specialist</div>
-              <div class="team-card-socials"><a href="#" class="team-social"><span
-                    class="material-icons">facebook</span></a><a href="#" class="team-social"><span
-                    class="material-icons">camera_alt</span></a><a href="#" class="team-social"><span
-                    class="material-icons">alternate_email</span></a></div>
-            </div>
-          </div>
         </div>
-      </div>
     </section>
 
     <!-- TESTIMONIALS -->
@@ -682,84 +653,160 @@
           <p class="section-desc reveal reveal-d2">Our clients speak volumes about their experience with us, praising
             our exceptional service and unwavering commitment.</p>
         </div>
-        <div class="testi-grid">
-          <div class="testi-card reveal">
-            <div class="testi-header">
-              <div class="testi-avatar">SW</div>
-              <div>
-                <div class="testi-name">Sohail Williams</div>
-                <div class="testi-role">Orthopedist of Surgeon</div>
+        <div class="testi-content">
+          <div class="swiper testimonials-slider js-testmonials-slider">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide testi-card ">
+                <div class="testi-header">
+                  <div class="testi-avatar">SW</div>
+                  <div>
+                    <div class="testi-name">Sohail Williams</div>
+                    <div class="testi-role">Orthopedist of Surgeon</div>
+                  </div>
+                </div>
+                <div class="testi-stars"><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span></div>
+                <p class="testi-text">"Life-changing insights! This health website empowered me to make informed choices
+                  for
+                  a healthier lifestyle. Highly recommend to anyone looking for expert dental care."</p>
+                <div class="testi-date"><span class="material-icons">location_on</span>North America, 2023.49.20</div>
+              </div>
+              <div class=" swiper-slide testi-card ">
+                <div class="testi-header">
+                  <div class="testi-avatar testi-avatar--dark">AK</div>
+                  <div>
+                    <div class="testi-name">Anees Khan</div>
+                    <div class="testi-role">Executive Manager</div>
+                  </div>
+                </div>
+                <div class="testi-stars"><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span></div>
+                <p class="testi-text">"Grateful for this resource! The practical tips on the health website have been a
+                  game-changer for my well-being. The team is truly dedicated to patient care."</p>
+                <div class="testi-date"><span class="material-icons">location_on</span>Central Asia, 2023.93.0</div>
+              </div>
+              <div class=" swiper-slide testi-card ">
+                <div class="testi-header">
+                  <div class="testi-avatar testi-avatar--dark">AK</div>
+                  <div>
+                    <div class="testi-name">Anees Khan</div>
+                    <div class="testi-role">Executive Manager</div>
+                  </div>
+                </div>
+                <div class="testi-stars"><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span></div>
+                <p class="testi-text">"Grateful for this resource! The practical tips on the health website have been a
+                  game-changer for my well-being. The team is truly dedicated to patient care."</p>
+                <div class="testi-date"><span class="material-icons">location_on</span>Central Asia, 2023.93.0</div>
+              </div>
+              <div class=" swiper-slide testi-card ">
+                <div class="testi-header">
+                  <div class="testi-avatar testi-avatar--dark">AK</div>
+                  <div>
+                    <div class="testi-name">Anees Khan</div>
+                    <div class="testi-role">Executive Manager</div>
+                  </div>
+                </div>
+                <div class="testi-stars"><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span></div>
+                <p class="testi-text">"Grateful for this resource! The practical tips on the health website have been a
+                  game-changer for my well-being. The team is truly dedicated to patient care."</p>
+                <div class="testi-date"><span class="material-icons">location_on</span>Central Asia, 2023.93.0</div>
               </div>
             </div>
-            <div class="testi-stars"><span class="material-icons">star</span><span
-                class="material-icons">star</span><span class="material-icons">star</span><span
-                class="material-icons">star</span><span class="material-icons">star</span></div>
-            <p class="testi-text">"Life-changing insights! This health website empowered me to make informed choices for
-              a healthier lifestyle. Highly recommend to anyone looking for expert dental care."</p>
-            <div class="testi-date"><span class="material-icons">location_on</span>North America, 2023.49.20</div>
           </div>
-          <div class="testi-card reveal reveal-d1">
-            <div class="testi-header">
-              <div class="testi-avatar testi-avatar--dark">AK</div>
-              <div>
-                <div class="testi-name">Anees Khan</div>
-                <div class="testi-role">Executive Manager</div>
-              </div>
-            </div>
-            <div class="testi-stars"><span class="material-icons">star</span><span
-                class="material-icons">star</span><span class="material-icons">star</span><span
-                class="material-icons">star</span><span class="material-icons">star</span></div>
-            <p class="testi-text">"Grateful for this resource! The practical tips on the health website have been a
-              game-changer for my well-being. The team is truly dedicated to patient care."</p>
-            <div class="testi-date"><span class="material-icons">location_on</span>Central Asia, 2023.93.0</div>
-          </div>
+          <div class="swiper-pagination js-testmonials-pagination"></div>
         </div>
       </div>
     </section>
 
     <!-- CLINIC LOCATOR -->
-    <section class="locator-section">
+    <section class="branches-section">
       <div class="container">
-        <div class="locator-search-bar reveal">
-          <div class="locator-pin"><span class="material-icons">location_on</span></div>
-          <div class="locator-tabs">
-            <span class="locator-tab active" role="button" tabindex="0">List</span>
-            <span class="locator-tab" role="button" tabindex="0">Map</span>
-          </div>
-          <div class="locator-input-wrap">
-            <span class="material-icons">search</span>
-            <input type="text" class="locator-input" placeholder="Search for hospital location"
-              aria-label="Search clinics" />
-          </div>
-          <button class="btn btn-mint" style="padding:.65rem 1.5rem;font-size:.875rem">Search</button>
+        <div class="section-header">
+          <div class="section-tag reveal">Find Us</div>
+          <h2 class="section-title reveal reveal-d1">Our Two Chennai Clinics</h2>
+          <p class="branches-seo-text">
+            Your neighborhood dental clinic in Porur and Kolapakkam, offering advanced implants, RCT and cosmetic
+            dentistry in Chennai.
+          </p>
         </div>
-        <div class="locator-inner reveal reveal-d1">
-          <div class="locator-sidebar">
-            <div class="locator-title">Our Clinics</div>
-            <div class="locator-sub">Find your nearest Smile Craft clinic</div>
-            <div class="clinic-list">
-              <div class="clinic-item active">
-                <div class="clinic-item-name">Porur Branch</div>
-                <div class="clinic-item-addr"><span class="material-icons">place</span>G9/1 ground floor ssl green park
-                  Mugalivakkam Main Road Next to water tank Madanandapuram, Porur, Chennai, Tamil Nadu 600125</div>
+
+        <div class="branches-grid">
+          <!-- Porur -->
+          <div class="branch-card reveal">
+            <div class="branch-card-map">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.2!2d80.2142!3d13.0878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526f5f8c6e0001%3A0x1!2sAnna+Nagar+Chennai!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Porur Branch">
+              </iframe>
+            </div>
+            <div class="branch-card-body">
+              <div class="branch-badge branch-badge--main">Main Branch</div>
+              <h3 class="branch-card-name">Porur Branch</h3>
+              <div class="branch-card-details">
+                <div class="branch-detail">
+                  <span class="material-icons">location_on</span>
+                  <span>G9/1 ground floor ssl green park Mugalivakkam Main Road Next to water tank Madanandapuram,
+                    Porur, Chennai, Tamil Nadu 600125<br />Porur, Chennai, Tamil Nadu 600125</span>
+                </div>
+                <div class="branch-detail">
+                  <span class="material-icons">phone</span>
+                  <a href="tel:+919876543210">+91 8825745091</a>
+                </div>
+                <div class="branch-detail">
+                  <span class="material-icons">schedule</span>
+                  <span>Mon–Fri: 8 AM – 8 PM &nbsp;|&nbsp; Sat: 9 AM – 4 PM</span>
+                </div>
               </div>
-              <!-- <div class="clinic-item">
-                <div class="clinic-item-name">Porur Branch</div>
-                <div class="clinic-item-addr"><span class="material-icons">place</span>South Austin Merry Road 38, Porur, Chennai</div>
-              </div> -->
-              <div class="clinic-item">
-                <div class="clinic-item-name">Kolapakkam Branch</div>
-                <div class="clinic-item-addr"><span class="material-icons">place</span>Plot no.C2 & C3, 1st Main Rd,
-                  opposite to PON VIDYASHRAM SCHOOL back gate, Vinod Garden, Maxworth Nagar Phase II, Kolapakkam,
-                  Chennai, Tamil Nadu 600128</div>
+              <div class="branch-card-btns">
+                <a href="branches/porur-branch.html" class="btn btn-mint">View Branch</a>
+                <a href="hhttps://maps.app.goo.gl/j4aAZLHTQT9LUM6NA" class="btn btn-outline" target="_blank"
+                  rel="noopener">
+                  <span class="material-icons">directions</span> Directions
+                </a>
               </div>
             </div>
           </div>
-          <div class="locator-map">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.565983756306!2d-122.41846172346761!3d37.77669141253683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c2a3f78e7%3A0xe2a818e69818815!2sMarket%20St%2C%20San%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
-              allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-              title="Clinic Location"></iframe>
+
+          <!-- Kolapakkam -->
+          <div class="branch-card reveal reveal-d1">
+            <div class="branch-card-map">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.9!2d80.2209!3d12.9788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525d2a9c83a5c5%3A0x1!2sVelachery+Chennai!5e0!3m2!1sen!2sin!4v1700000000001!5m2!1sen!2sin"
+                allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Kolapakkam Branch">
+              </iframe>
+            </div>
+            <div class="branch-card-body">
+              <div class="branch-badge">South Chennai</div>
+              <h3 class="branch-card-name">Kolapakkam Branch</h3>
+              <div class="branch-card-details">
+                <div class="branch-detail">
+                  <span class="material-icons">location_on</span>
+                  <span>Plot no.C2 & C3, 1st Main Rd, opposite to PON VIDYASHRAM SCHOOL back gate, Vinod Garden,
+                    Maxworth Nagar Phase II, Kolapakkam, Chennai, Tamil Nadu 600128<br />Kolapakkam, Chennai, Tamil Nadu
+                    600128</span>
+                </div>
+                <div class="branch-detail">
+                  <span class="material-icons">phone</span>
+                  <a href="tel:+919876509876">+91 63824 73705</a>
+                </div>
+                <div class="branch-detail">
+                  <span class="material-icons">schedule</span>
+                  <span>Mon–Fri: 8 AM – 8 PM &nbsp;|&nbsp; Sat: 9 AM – 4 PM</span>
+                </div>
+              </div>
+              <div class="branch-card-btns">
+                <a href="branches/kolapakkam-branch.html" class="btn btn-mint">View Branch</a>
+                <a href="https://share.google/6ktxNjqponHSTa201" class="btn btn-outline" target="_blank" rel="noopener">
+                  <span class="material-icons">directions</span> Directions
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -773,8 +820,7 @@
       <div class="footer-grid">
         <div>
           <div class="footer-logo-wrap">
-            <div class="footer-logo-mark"><span class="material-icons">medical_services</span></div>
-            <div class="footer-logo-text">Smile<span>Care</span></div>
+            <img src="assets/images/logo.png" alt="Smile Craft Dental Clinic" class="logo-img" />
           </div>
           <p class="footer-tagline">Your trusted dental partner. Providing world-class care with a warm, personalized
             touch for over 15 years.</p>
@@ -851,6 +897,30 @@
 
   <script src="assets/js/index.js"></script>
   <script src="assets/js/premium-mobile-nav.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('.js-testmonials-slider', {
+      grabCursor: true,
+      spaceBetween: 30,
+      pagination: {
+        el: '.js-testmonials-pagination',
+        clickable: true
+      },
+      breakpoints: {
+        767: {
+          slidesPerView: 3
+        }
+      }
+    });
+  </script>
+
+  <script>
+    fetch('partials/navbar.html')
+      .then(function (r) { return r.text(); })
+      .then(function (html) {
+        document.getElementById('site-navbar').innerHTML = html;
+      });
+  </script>
 </body>
 
 </html>

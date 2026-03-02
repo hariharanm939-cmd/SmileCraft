@@ -7,12 +7,11 @@
   <title>About Us – Smile Craft Dental Clinic | Chennai</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=IBM+Plex+Sans:wght@100..900&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/about.css" />
   <link rel="stylesheet" href="assets/css/premium-mobile-nav.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
 </head>
 
 <body>
@@ -27,10 +26,7 @@
     <!-- Drawer header -->
     <div class="pmn-header">
       <a href="index.html" class="pmn-logo">
-        <div class="pmn-logo-mark">
-          <span class="material-icons">medical_services</span>
-        </div>
-        <span class="pmn-logo-text">Smile<span>Craft</span></span>
+        <img src="assets/images/logo.png" alt="Smile Craft Dental Clinic" class="logo-img" />
       </a>
       <button class="pmn-close" id="pmnClose" aria-label="Close menu">
         <span class="material-icons">close</span>
@@ -129,10 +125,7 @@
   <header class="site-header" id="site-header">
     <div class="container header-inner">
       <a href="index.html" class="logo">
-        <div class="logo-mark">
-          <span class="material-icons">medical_services</span>
-        </div>
-        <span class="logo-text">Smile<span>Craft</span></span>
+        <img src="assets/images/logo.png" alt="Smile Craft Dental Clinic" class="logo-img" />
       </a>
 
       <nav class="desktop-nav" aria-label="Main navigation">
@@ -712,7 +705,7 @@
     <!-- ══════════════════════════════════════════
          TESTIMONIALS
     ══════════════════════════════════════════ -->
-    <section class="testi-section">
+    <section class="testimonials-section">
       <div class="container">
         <div class="section-header">
           <div class="section-tag reveal">Testimonials</div>
@@ -720,65 +713,91 @@
           <p class="section-desc reveal reveal-d2">Real words from real patients — our neighbours who trusted us with
             their smiles.</p>
         </div>
-
-        <div class="testi-grid">
-          <div class="testi-card reveal">
-            <div class="testi-quote-mark">"</div>
-            <p class="testi-text">Best dental clinic in Porur, no doubt. Dr. Priya treated my root canal so gently I
-              barely felt anything. The staff speaks Tamil which made it so comfortable. Highly recommend to all Chennai
-              families!</p>
-            <div class="testi-footer">
-              <div class="testi-avatar" style="background:#0d9488">KR</div>
-              <div>
-                <div class="testi-name">Kavitha Rajan</div>
-                <div class="testi-loc"><span class="material-icons">location_on</span>Porur, Chennai</div>
+        <div class="testi-content">
+          <div class="swiper testimonials-slider js-testmonials-slider">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide testi-card">
+                <div class="testi-header">
+                  <div class="testi-avatar">KR</div>
+                  <div>
+                    <div class="testi-name">Kavitha Rajan</div>
+                    <div class="testi-role">Porur, Chennai</div>
+                  </div>
+                </div>
+                <div class="testi-stars"><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span></div>
+                <p class="testi-text">"Best dental clinic in Porur, no doubt. Dr. Priya treated my root canal so gently
+                  I barely felt anything. The staff speaks Tamil which made it so comfortable. Highly recommend to all
+                  Chennai families!"</p>
+                <div class="testi-date"><span class="material-icons">location_on</span>Porur, Chennai</div>
               </div>
-              <div class="testi-stars">
-                <span class="material-icons">star</span><span class="material-icons">star</span>
-                <span class="material-icons">star</span><span class="material-icons">star</span><span
-                  class="material-icons">star</span>
+              <div class="swiper-slide testi-card">
+                <div class="testi-header">
+                  <div class="testi-avatar testi-avatar--dark">SM</div>
+                  <div>
+                    <div class="testi-name">Suresh Murugan</div>
+                    <div class="testi-role">Kolapakkam, Chennai</div>
+                  </div>
+                </div>
+                <div class="testi-stars"><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span></div>
+                <p class="testi-text">"Took my 6-year-old son here and he actually enjoyed it! The play area, the
+                  cartoon TV, the gentle doctor — he came out asking when he can come back. As a parent, that means
+                  everything to me."</p>
+                <div class="testi-date"><span class="material-icons">location_on</span>Kolapakkam, Chennai</div>
+              </div>
+              <div class="swiper-slide testi-card">
+                <div class="testi-header">
+                  <div class="testi-avatar testi-avatar--dark">PN</div>
+                  <div>
+                    <div class="testi-name">Pradeep Nair</div>
+                    <div class="testi-role">Adyar, Chennai</div>
+                  </div>
+                </div>
+                <div class="testi-stars"><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span></div>
+                <p class="testi-text">"Got my dental implants done here under the EMI plan. Zero interest, excellent
+                  result. The team guided me through every step and was always available on WhatsApp. Very professional
+                  and very human."</p>
+                <div class="testi-date"><span class="material-icons">location_on</span>Adyar, Chennai</div>
+              </div>
+              <div class="swiper-slide testi-card">
+                <div class="testi-header">
+                  <div class="testi-avatar testi-avatar--dark">LR</div>
+                  <div>
+                    <div class="testi-name">Lakshmi Ravi</div>
+                    <div class="testi-role">Tambaram, Chennai</div>
+                  </div>
+                </div>
+                <div class="testi-stars"><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span></div>
+                <p class="testi-text">"The smile makeover Dr. Sonia gave me has completely changed my confidence. I
+                  smile freely now. The whole team at Smile Craft is so warm and professional. Worth every rupee!"</p>
+                <div class="testi-date"><span class="material-icons">location_on</span>Tambaram, Chennai</div>
+              </div>
+              <div class="swiper-slide testi-card">
+                <div class="testi-header">
+                  <div class="testi-avatar testi-avatar--dark">AR</div>
+                  <div>
+                    <div class="testi-name">Arjun Rajendran</div>
+                    <div class="testi-role">Velachery, Chennai</div>
+                  </div>
+                </div>
+                <div class="testi-stars"><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span></div>
+                <p class="testi-text">"I was terrified of dentists before coming here. Dr. Iqbal's patience and the
+                  calming environment completely changed my experience. My implants look and feel completely natural.
+                  Thank you Smile Craft!"</p>
+                <div class="testi-date"><span class="material-icons">location_on</span>Velachery, Chennai</div>
               </div>
             </div>
           </div>
-
-          <div class="testi-card testi-card--featured reveal reveal-d1">
-            <div class="testi-quote-mark testi-quote-mark--white">"</div>
-            <p class="testi-text testi-text--white">Took my 6-year-old son here and he actually enjoyed it! The play
-              area, the cartoon TV, the gentle doctor — he came out asking when he can come back. As a parent, that
-              means everything to me.</p>
-            <div class="testi-footer">
-              <div class="testi-avatar testi-avatar--white">SM</div>
-              <div>
-                <div class="testi-name testi-name--white">Suresh Murugan</div>
-                <div class="testi-loc testi-loc--white"><span class="material-icons">location_on</span>Kolapakkam,
-                  Chennai</div>
-              </div>
-              <div class="testi-stars">
-                <span class="material-icons">star</span><span class="material-icons">star</span>
-                <span class="material-icons">star</span><span class="material-icons">star</span><span
-                  class="material-icons">star</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="testi-card reveal reveal-d2">
-            <div class="testi-quote-mark">"</div>
-            <p class="testi-text">Got my dental implants done here under the EMI plan. Zero interest, excellent result.
-              The team guided me through every step and was always available on WhatsApp. Very professional and very
-              human.</p>
-            <div class="testi-footer">
-              <div class="testi-avatar" style="background:#1a3a4a">PN</div>
-              <div>
-                <div class="testi-name">Pradeep Nair</div>
-                <div class="testi-loc"><span class="material-icons">location_on</span>Adyar, Chennai</div>
-              </div>
-              <div class="testi-stars">
-                <span class="material-icons">star</span><span class="material-icons">star</span>
-                <span class="material-icons">star</span><span class="material-icons">star</span><span
-                  class="material-icons">star</span>
-              </div>
-            </div>
-          </div>
+          <div class="swiper-pagination js-testmonials-pagination"></div>
         </div>
       </div>
     </section>
@@ -830,8 +849,7 @@
       <div class="footer-grid">
         <div>
           <div class="footer-logo-wrap">
-            <div class="footer-logo-mark"><span class="material-icons">medical_services</span></div>
-            <div class="footer-logo-text">Smile<span>Craft</span></div>
+            <img src="assets/images/logo.png" alt="Smile Craft Dental Clinic" class="logo-img" />
           </div>
           <p class="footer-tagline">Your trusted dental partner in Chennai. Providing world-class care with the warmth
             of Tamil hospitality for over 15 years.</p>
@@ -897,6 +915,22 @@
 
   <script src="assets/js/about.js"></script>
   <script src="assets/js/premium-mobile-nav.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+  <script>
+    const aboutSwiper = new Swiper('.js-testmonials-slider', {
+      grabCursor: true,
+      spaceBetween: 30,
+      pagination: {
+        el: '.js-testmonials-pagination',
+        clickable: true
+      },
+      breakpoints: {
+        767: {
+          slidesPerView: 3
+        }
+      }
+    });
+  </script>
 </body>
 
 </html>

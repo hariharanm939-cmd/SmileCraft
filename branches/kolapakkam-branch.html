@@ -68,12 +68,11 @@
   ...
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Syne:wght@700;800&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=IBM+Plex+Sans:wght@100..900&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/css/style.css" />
   <link rel="stylesheet" href="../assets/css/premium-mobile-nav.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
   <style>
     :root {
       --grain-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
@@ -84,7 +83,7 @@
       background: var(--dark);
       position: relative;
       overflow: hidden;
-      padding: 0;
+      padding-top: 0 !important;
     }
 
     .vl-hero-sub {
@@ -832,111 +831,80 @@
     }
 
     /* ══ TEAM ══ */
-    .vl-team {
-      background: var(--bg);
-      padding: 6rem 0;
+    .team-section {
+      background: var(--white);
+      padding: var(--section-py) 0;
     }
 
-    .vl-team-grid {
+    .team-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 280px));
+      gap: 30px;
+      justify-content: center;
     }
 
-    .vl-team-card {
-      background: white;
+    .team-card {
+      background: var(--white);
+      border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       overflow: hidden;
-      border: 1px solid var(--border);
       transition: all var(--transition);
+      /* these don’t apply here, but grid container already centers items */
     }
 
-    .vl-team-card:hover {
+    .team-card:hover {
       box-shadow: var(--shadow-lg);
-      transform: translateY(-5px);
+      transform: translateY(-4px);
       border-color: var(--mint);
     }
 
-    .vl-team-img {
-      height: 17rem;
+    .team-card-img-wrap {
+      height: 16rem;
       overflow: hidden;
-      position: relative;
     }
 
-    .vl-team-img img {
+    .team-card-body {
+      text-align: center;
+    }
+
+    .team-card-img-wrap img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform .5s ease;
+      transition: transform var(--transition);
     }
 
-    .vl-team-card:hover .vl-team-img img {
-      transform: scale(1.07);
+    .team-card:hover .team-card-img-wrap img {
+      transform: scale(1.06);
     }
 
-    .vl-team-tag {
-      position: absolute;
-      bottom: 1rem;
-      left: 1rem;
-      background: var(--mint);
-      color: white;
-      border-radius: 50px;
-      padding: .3rem .875rem;
-      font-size: .72rem;
-      font-weight: 800;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-      opacity: 0;
-      transform: translateY(8px);
-      transition: all var(--transition);
+    .team-card-body {
+      padding: 1.25rem;
     }
 
-    .vl-team-card:hover .vl-team-tag {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .vl-team-body {
-      padding: 1.25rem 1.25rem 1.5rem;
-    }
-
-    .vl-team-name {
+    .team-card-name {
       font-size: 1rem;
       font-weight: 800;
       color: var(--dark);
-      margin-bottom: .15rem;
+      margin-bottom: 0.2rem;
     }
 
-    .vl-team-role {
-      font-size: .8rem;
+    .team-card-role {
+      font-size: 0.8rem;
       font-weight: 600;
       color: var(--mint-dark);
-      margin-bottom: .2rem;
+      margin-bottom: 0.75rem;
     }
 
-    .vl-team-exp {
-      font-size: .75rem;
-      color: var(--muted);
-      margin-bottom: .875rem;
+    .team-card-socials {
       display: flex;
-      align-items: center;
-      gap: .3rem;
+      gap: 0.75rem;
     }
 
-    .vl-team-exp .material-icons {
-      font-size: .85rem !important;
-      color: var(--mint);
-    }
-
-    .vl-team-socials {
-      display: flex;
-      gap: .6rem;
-    }
-
-    .vl-social {
-      width: 1.9rem;
-      height: 1.9rem;
-      border-radius: 9px;
+    .team-social {
+      width: 1.8rem;
+      height: 1.8rem;
+      border-radius: 8px;
       background: var(--mint-light);
       color: var(--mint-dark);
       display: flex;
@@ -945,15 +913,15 @@
       transition: all var(--transition);
     }
 
-    .vl-social:hover {
+    .team-social:hover {
       background: var(--mint);
       color: white;
-      transform: translateY(-2px);
     }
 
-    .vl-social .material-icons {
-      font-size: .95rem !important;
+    .team-social .material-icons {
+      font-size: 0.95rem !important;
     }
+
 
     /* ══ TESTIMONIALS ══ */
     .vl-testi {
@@ -1356,9 +1324,10 @@
         grid-template-columns: repeat(3, 1fr);
       }
 
-      .vl-why-inner {
-        grid-template-columns: 1fr 1fr;
-        gap: 5rem;
+      /* Team */
+      .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 280px));
+        justify-content: center;
       }
 
       .vl-team-grid {
@@ -1394,10 +1363,7 @@
     <!-- Drawer header -->
     <div class="pmn-header">
       <a href="../index.html" class="pmn-logo">
-        <div class="pmn-logo-mark">
-          <span class="material-icons">medical_services</span>
-        </div>
-        <span class="pmn-logo-text">Smile<span>Craft</span></span>
+       <img src="../assets/images/logo.png" alt="Smile Craft Dental Clinic" class="logo-img" />
       </a>
       <button class="pmn-close" id="pmnClose" aria-label="Close menu">
         <span class="material-icons">close</span>
@@ -1496,9 +1462,7 @@
   <header class="site-header" id="siteHeader">
     <div class="container header-inner">
       <a href="../index.html" class="logo">
-        <div class="logo-mark"><span class="material-icons" style="font-size:1.2rem!important">medical_services</span>
-        </div>
-        <span class="logo-text">Smile<span>Craft</span></span>
+        <img src="../assets/images/logo.png" alt="Smile Craft Dental Clinic" class="logo-img" />
       </a>
       <nav class="desktop-nav" aria-label="Main navigation">
         <a href="../index.html" class="nav-link">Home</a>
@@ -1587,9 +1551,12 @@
         <!-- Desktop visual -->
         <div class="vl-hero-visual reveal reveal-d1">
           <div class="vl-hero-img-main">
-            <img src="../assets/images/dentalClinic3.jfif" alt="Kolapakkam Clinic"
-              alt="Smile Craft Dental Clinic Kolapakkam interior in Chennai" loading="lazy" width="1200" height="800" />
-            onerror="this.src='https://images.unsplash.com/photo-1629909615184-74f495363b67?w=800&q=80'" />
+            <img src="../assets/images/dentalClinic3.jfif" 
+                 alt="Smile Craft Dental Clinic Kolapakkam interior in Chennai" 
+                loading="lazy" 
+                width="1200" 
+                height="800"
+                 onerror="this.src='https://images.unsplash.com/photo-1629909615184-74f495363b67?w=800&q=80'" />
           </div>
           <div class="vl-hero-img-pill">
             <img src="../assets/images/img5.jpg" alt="Kolapakkam Team"
@@ -1867,149 +1834,140 @@
     </section>
 
     <!-- ══ TEAM ══ -->
-    <section class="vl-team">
+    <section class="team-section">
       <div class="container">
         <div class="section-header">
-          <div class="section-tag reveal">Our Specialists</div>
-          <h2 class="section-title reveal reveal-d1">Meet the Kolapakkam Team</h2>
-          <p class="section-desc reveal reveal-d2">Hand-picked specialists with expertise in the latest dental
-            technologies and a shared passion for transforming smiles.</p>
+          <div class="section-tag reveal">Team</div>
+          <h2 class="section-title reveal reveal-d1">Meet Our Experienced Dental Specialists</h2>
+          <p class="section-desc reveal reveal-d2">Our experienced team of dentists and implant specialists is committed
+            to providing advanced dental implants, braces, cosmetic dentistry, and patient-focused care using modern
+            technology and proven techniques.</p>
         </div>
-        <div class="vl-team-grid">
-          <div class="vl-team-card reveal">
-            <div class="vl-team-img">
-              <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOfhDMflfCUIPQ0WJO01Ql3Wp8brlt-lU6WjFXaf2J_yGFJLPkDk2qjBVz8OmNxVrRzCZy6fDyOLZ4_OGwgSvwiSW08GeDEIKagR-wZbN5PGY29-U5nr48mp02Q2K-Wn-SGdj53v8PpCOAQ6gAijjRNw1lT_-XlJsCT_eVBcufyX-arwmvFzP4YLt8fNwIthJJqX7RLjk5Mm9cVQ1e6KtZfuZHfRw-x9Ecp09bIm4DrrAISkBICS6Y2plAuKTc18bawViIzUu15Ar5"
-                alt="Dr. Luca Williams" />
-              <div class="vl-team-tag">Branch Head</div>
-            </div>
-            <div class="vl-team-body">
-              <div class="vl-team-name">Dr. Luca Williams</div>
-              <div class="vl-team-role">Head of Cosmetics &amp; Laser</div>
-              <div class="vl-team-exp"><span class="material-icons">workspace_premium</span>10 Years Experience</div>
-              <div class="vl-team-socials">
-                <a href="#" class="vl-social"><span class="material-icons">facebook</span></a>
-                <a href="#" class="vl-social"><span class="material-icons">camera_alt</span></a>
-                <a href="#" class="vl-social"><span class="material-icons">alternate_email</span></a>
-              </div>
+        <div class="team-grid">
+          <div class="team-card reveal">
+            <div class="team-card-img-wrap"><img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDopGzD_O6EvM_ueT5cdy2WdhYHfuxGgEpzsz2pqbEPUT_FdFPAybofQylsP7S9BwBVqnEFPapk2NXwwmVRXKi9854Az4Q7Llj92l1o6axu_2lmc5dwBPAyADTKX_5I0qH-8kamyp6nU_CMetSuH719pKzJ1KcJb5VcEzhryKbSdtzR2yOZCdP5hM8IDlKPr3jBN_R4HvHt4aohF0bNutRPpgo_bq8YlE6jBd43CevbvLGlRt51jZjZ8lo1gzrG7-9OXD5G8T_fmwKM"
+                alt="Sonia Alam" /></div>
+            <div class="team-card-body">
+              <div class="team-card-name">Sonia Alam</div>
+              <div class="team-card-role">Orthodontist</div>
+              <div class="team-card-socials"><a href="#" class="team-social"><span
+                    class="material-icons">facebook</span></a><a href="#" class="team-social"><span
+                    class="material-icons">camera_alt</span></a><a href="#" class="team-social"><span
+                    class="material-icons">alternate_email</span></a></div>
             </div>
           </div>
-          <div class="vl-team-card reveal reveal-d1">
-            <div class="vl-team-img">
-              <img
+          <div class="team-card reveal reveal-d1">
+            <div class="team-card-img-wrap"><img
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcIdsbpoBAEmDCyvGTYiAcoZQMdEL8_o4jUb1fI3t1mltSZgcDNOk8Eg0CQA3Hm9Q_-OEI6f23nrH9WmXuvTSxL3uRX5S_xXYe-Y3epvtocwbALvSAl6w2EVdcaelMLERBbDQ6WkqJsfhL_vnSTOXrQ8nAODGp5gWMEvr-o4YgyyY_NMbwGxx5VLQg_odnl6fgfZirpGBUBrzQw6ohsAO6HxZBKdu3V4aXttXnmuVRhGe_ING7Mu4OqbAkcuz4Gr3D4mhB47mNFatV"
-                alt="Dr. Iqbal John" />
-              <div class="vl-team-tag">Implant Expert</div>
-            </div>
-            <div class="vl-team-body">
-              <div class="vl-team-name">Dr. Iqbal John</div>
-              <div class="vl-team-role">Restorative &amp; Implant Specialist</div>
-              <div class="vl-team-exp"><span class="material-icons">workspace_premium</span>9 Years Experience</div>
-              <div class="vl-team-socials">
-                <a href="#" class="vl-social"><span class="material-icons">facebook</span></a>
-                <a href="#" class="vl-social"><span class="material-icons">camera_alt</span></a>
-                <a href="#" class="vl-social"><span class="material-icons">alternate_email</span></a>
-              </div>
-            </div>
-          </div>
-          <div class="vl-team-card reveal reveal-d2">
-            <div class="vl-team-img">
-              <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuChmbX5bsBuD-jSvUTuSP11_M1lwWSOUhIW6lZ1zyoItFHYKPsLZQcVVMtUZyrbXzsvfrpUlv3C1v6ByvkI3ykHH_GqDPXKFIo7x_gDSEijIf-A60rYhrU-hfmVrScR9v3p1KXx04SG2jOWv69NooHk7VWQtc6Lkcy0zgG5nCHZhvZgwsXSitbn9k7v-KpR0ioeQIm6AeziceTIG2kWN310fQNU3BNhMAxBEhSE8-13J1EOT6I7S0nsmGiqEP9UwglgiCBYVnkCSqWQ"
-                alt="Dr. David William" />
-              <div class="vl-team-tag">Laser Certified</div>
-            </div>
-            <div class="vl-team-body">
-              <div class="vl-team-name">Dr. David William</div>
-              <div class="vl-team-role">Laser &amp; Aesthetic Dentist</div>
-              <div class="vl-team-exp"><span class="material-icons">workspace_premium</span>7 Years Experience</div>
-              <div class="vl-team-socials">
-                <a href="#" class="vl-social"><span class="material-icons">facebook</span></a>
-                <a href="#" class="vl-social"><span class="material-icons">camera_alt</span></a>
-                <a href="#" class="vl-social"><span class="material-icons">alternate_email</span></a>
-              </div>
+                alt="Iqbal John" /></div>
+            <div class="team-card-body">
+              <div class="team-card-name">Iqbal John</div>
+              <div class="team-card-role">Implant Surgeon</div>
+              <div class="team-card-socials"><a href="#" class="team-social"><span
+                    class="material-icons">facebook</span></a><a href="#" class="team-social"><span
+                    class="material-icons">camera_alt</span></a><a href="#" class="team-social"><span
+                    class="material-icons">alternate_email</span></a></div>
             </div>
           </div>
         </div>
-      </div>
     </section>
 
     <!-- ══ TESTIMONIALS ══ -->
-    <section class="vl-testi">
+    <section class="testimonials-section">
       <div class="container">
         <div class="section-header">
           <div class="section-tag reveal">Reviews</div>
           <h2 class="section-title reveal reveal-d1">What Kolapakkam Patients Say</h2>
-          <p class="vl-testi-text">
-            "Visited for root canal pain. The procedure was explained clearly and treatment was comfortable.
-            Clinic is clean and well maintained. Highly recommended for Kolapakkam area."
-          </p>
+          <p class="section-desc reveal reveal-d2">Real words from real patients in Kolapakkam, Pallikaranai,
+            Nanganallur and surrounding areas who trusted us with their smiles.</p>
         </div>
-        <div class="vl-testi-grid">
-          <div class="vl-testi-card reveal">
-            <div class="vl-testi-header">
-              <div class="vl-testi-avatar" style="background:var(--mint-light);color:var(--mint-dark)">AK</div>
-              <div>
-                <div class="vl-testi-name">Arun Kumar</div>
-                <div class="vl-testi-role">IT Professional, Kolapakkam</div>
+        <div class="testi-content">
+          <div class="swiper testimonials-slider js-kola-testi-slider">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide testi-card">
+                <div class="testi-header">
+                  <div class="testi-avatar">AK</div>
+                  <div>
+                    <div class="testi-name">Arun Kumar</div>
+                    <div class="testi-role">IT Professional, Kolapakkam</div>
+                  </div>
+                </div>
+                <div class="testi-stars"><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span></div>
+                <p class="testi-text">"Had laser gum treatment here and it was completely painless. Back to work the
+                  same afternoon. Dr. Luca explained everything so clearly. This is genuinely the most advanced clinic
+                  in South Chennai."</p>
+                <div class="testi-date"><span class="material-icons">location_on</span>Kolapakkam · May 2024</div>
+              </div>
+              <div class="swiper-slide testi-card">
+                <div class="testi-header">
+                  <div class="testi-avatar testi-avatar--dark">NG</div>
+                  <div>
+                    <div class="testi-name">Nithya Gopalakrishnan</div>
+                    <div class="testi-role">Doctor, Adambakkam</div>
+                  </div>
+                </div>
+                <div class="testi-stars"><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span></div>
+                <p class="testi-text">"As a doctor myself, I notice sterilisation standards immediately. Smile Craft
+                  Kolapakkam is impeccable — the equipment is brand new and the team follows every protocol. My entire
+                  family comes here now."</p>
+                <div class="testi-date"><span class="material-icons">location_on</span>Adambakkam · June 2024</div>
+              </div>
+              <div class="swiper-slide testi-card">
+                <div class="testi-header">
+                  <div class="testi-avatar testi-avatar--dark">SK</div>
+                  <div>
+                    <div class="testi-name">Suresh Krishnaswamy</div>
+                    <div class="testi-role">Entrepreneur, Pallikaranai</div>
+                  </div>
+                </div>
+                <div class="testi-stars"><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span></div>
+                <p class="testi-text">"Got my crown done in one visit using their digital lab. Walked in at 10 AM, crown
+                  fitted by 2 PM. That's technology! Perfectly matched colour and an incredibly precise fit. Absolutely
+                  no complaints."</p>
+                <div class="testi-date"><span class="material-icons">location_on</span>Pallikaranai · April 2024</div>
+              </div>
+              <div class="swiper-slide testi-card">
+                <div class="testi-header">
+                  <div class="testi-avatar testi-avatar--dark">DM</div>
+                  <div>
+                    <div class="testi-name">Divya Murugasamy</div>
+                    <div class="testi-role">Teacher, Nanganallur</div>
+                  </div>
+                </div>
+                <div class="testi-stars"><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span></div>
+                <p class="testi-text">"Zoom whitening was quick, comfortable, and the results are stunning. The clinic
+                  is open late which worked perfectly for my schedule. Professional, warm staff from the receptionist to
+                  the doctors."</p>
+                <div class="testi-date"><span class="material-icons">location_on</span>Nanganallur · March 2024</div>
+              </div>
+              <div class="swiper-slide testi-card">
+                <div class="testi-header">
+                  <div class="testi-avatar testi-avatar--dark">RV</div>
+                  <div>
+                    <div class="testi-name">Ramya Venkatesh</div>
+                    <div class="testi-role">Homemaker, Gerugambakkam</div>
+                  </div>
+                </div>
+                <div class="testi-stars"><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span><span
+                    class="material-icons">star</span><span class="material-icons">star</span></div>
+                <p class="testi-text">"Visited for root canal pain. The procedure was explained clearly and treatment
+                  was completely comfortable. Clinic is clean and well maintained. Highly recommended for everyone in
+                  the Kolapakkam area!"</p>
+                <div class="testi-date"><span class="material-icons">location_on</span>Gerugambakkam · Feb 2024</div>
               </div>
             </div>
-            <div class="vl-testi-stars"><span class="material-icons">star</span><span
-                class="material-icons">star</span><span class="material-icons">star</span><span
-                class="material-icons">star</span><span class="material-icons">star</span></div>
-            <p class="vl-testi-text">"Had laser gum treatment here and it was completely painless. Back to work the same
-              afternoon. Dr. Luca explained everything so clearly. This is genuinely the most advanced clinic in South
-              Chennai."</p>
-            <div class="vl-testi-date"><span class="material-icons">location_on</span>Kolapakkam · May 2024</div>
           </div>
-          <div class="vl-testi-card reveal reveal-d1">
-            <div class="vl-testi-header">
-              <div class="vl-testi-avatar" style="background:var(--mint-dark);color:white">NG</div>
-              <div>
-                <div class="vl-testi-name">Nithya Gopalakrishnan</div>
-                <div class="vl-testi-role">Doctor</div>
-              </div>
-            </div>
-            <div class="vl-testi-stars"><span class="material-icons">star</span><span
-                class="material-icons">star</span><span class="material-icons">star</span><span
-                class="material-icons">star</span><span class="material-icons">star</span></div>
-            <p class="vl-testi-text">"As a doctor myself, I notice sterilisation standards immediately. Smile Craft
-              kolapakkam is impeccable — the equipment is brand new and the team follows every protocol. My entire
-              family comes here now."</p>
-            <div class="vl-testi-date"><span class="material-icons">location_on</span>Adambakkam · June 2024</div>
-          </div>
-          <div class="vl-testi-card reveal">
-            <div class="vl-testi-header">
-              <div class="vl-testi-avatar" style="background:rgba(236,72,153,.1);color:#db2777">SK</div>
-              <div>
-                <div class="vl-testi-name">Suresh Krishnaswamy</div>
-                <div class="vl-testi-role">Entrepreneur</div>
-              </div>
-            </div>
-            <div class="vl-testi-stars"><span class="material-icons">star</span><span
-                class="material-icons">star</span><span class="material-icons">star</span><span
-                class="material-icons">star</span><span class="material-icons">star</span></div>
-            <p class="vl-testi-text">"Got my crown done in one visit using their digital lab. Walked in at 10 AM, crown
-              fitted by 2 PM. That's technology! Perfectly matched colour and an incredibly precise fit. Absolutely no
-              complaints."</p>
-            <div class="vl-testi-date"><span class="material-icons">location_on</span>Pallikaranai · April 2024</div>
-          </div>
-          <div class="vl-testi-card reveal reveal-d1">
-            <div class="vl-testi-header">
-              <div class="vl-testi-avatar" style="background:rgba(139,92,246,.1);color:#7c3aed">DM</div>
-              <div>
-                <div class="vl-testi-name">Divya Murugasamy</div>
-                <div class="vl-testi-role">Teacher</div>
-              </div>
-            </div>
-            <div class="vl-testi-stars"><span class="material-icons">star</span><span
-                class="material-icons">star</span><span class="material-icons">star</span><span
-                class="material-icons">star</span><span class="material-icons">star</span></div>
-            <p class="vl-testi-text">"Zoom whitening was quick, comfortable, and the results are stunning. The clinic is
-              open late which worked perfectly for my schedule. Professional, warm staff from the receptionist to the
-              doctors."</p>
-            <div class="vl-testi-date"><span class="material-icons">location_on</span>Nanganallur · March 2024</div>
-          </div>
+          <div class="swiper-pagination js-kola-testi-pagination"></div>
         </div>
       </div>
     </section>
@@ -2118,8 +2076,7 @@
       <div class="footer-grid">
         <div>
           <div class="footer-logo-wrap">
-            <div class="footer-logo-mark"><span class="material-icons">medical_services</span></div>
-            <div class="footer-logo-text">Smile<span>Craft</span></div>
+           <img src="../assets/images/logo.png" alt="Smile Craft Dental Clinic" class="logo-img" />
           </div>
           <p class="footer-tagline">Trusted dental care for Chennai families since 2012. Two branches, one standard of
             excellence.</p>
@@ -2181,6 +2138,22 @@
 
   <script src="../assets/js/index.js"></script>
   <script src="../assets/js/premium-mobile-nav.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+  <script>
+    const kolaSwiper = new Swiper('.js-kola-testi-slider', {
+      grabCursor: true,
+      spaceBetween: 30,
+      pagination: {
+        el: '.js-kola-testi-pagination',
+        clickable: true
+      },
+      breakpoints: {
+        767: {
+          slidesPerView: 3
+        }
+      }
+    });
+  </script>
 </body>
 
 </html>
