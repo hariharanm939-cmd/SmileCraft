@@ -672,7 +672,7 @@ input, select, textarea { font-family: inherit; }
 }
 
 /* Team Grid */
-.team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; justify-items: center; }
 
 .team-card {
   background: var(--white); border: 1px solid var(--border);
@@ -685,7 +685,7 @@ input, select, textarea { font-family: inherit; }
 .team-card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition); }
 .team-card:hover .team-card-img-wrap img { transform: scale(1.06); }
 
-.team-card-body { padding: 1.25rem; }
+.team-card-body { padding: 1.25rem;  }
 .team-card-name { font-size: 1rem; font-weight: 800; color: var(--dark); margin-bottom: .2rem; }
 .team-card-role { font-size: .8rem; font-weight: 700; color: var(--primary); margin-bottom: .2rem; }
 .team-card-cred { font-size: .72rem; color: var(--muted); margin-bottom: .85rem; }
@@ -921,7 +921,7 @@ input, select, textarea { font-family: inherit; }
   body { padding-bottom: 0; }
   .mfn { display: none !important; }
 
-  .team-grid { grid-template-columns: repeat(4, 1fr); }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* ============================================================

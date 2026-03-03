@@ -56,7 +56,83 @@ document.addEventListener('DOMContentLoaded', function () {
   } else {
     revealEls.forEach(function (el) { el.classList.add('visible'); });
   }
+  /* ──────────────────────────────────────────────
+   BEFORE & AFTER DRAG SLIDER
+────────────────────────────────────────────── */
+(function () {
+  function initSlider(slider) {
+    var beforeDiv = slider.querySelector('.ba-before');
+    var beforeImg = slider.querySelector('.ba-before img');
+    var handle    = slider.querySelector('.ba-handle');
+    var active    = false;
 
+    function syncWidths() {
+      var w = slider.getBoundingClientRect().width;
+      if (!w) return;
+      // Tell the image to always be the full slider width
+      beforeImg.style.width = w + 'px';
+      // Start at 50%
+      var half = w * 0.5;
+      beforeDiv.style.width = half + 'px';
+      handle.style.left     = half + 'px';
+      handle.style.transform = 'translateX(-50%)';
+    }
+
+    function update(clientX) {
+      var rect = slider.getBoundingClientRect();
+      var px   = clientX - rect.left;
+      px = Math.min(Math.max(px, 4), rect.width - 4);
+
+      beforeDiv.style.width  = px + 'px';
+      beforeImg.style.width  = rect.width + 'px'; // always full width
+      handle.style.left      = px + 'px';
+      handle.style.transform = 'translateX(-50%)';
+    }
+
+    // Init on load + resize
+    if (document.readyState === 'complete') {
+      syncWidths();
+    } else {
+      window.addEventListener('load', syncWidths);
+    }
+    window.addEventListener('resize', syncWidths);
+
+    // Mouse events
+    slider.addEventListener('mousedown', function (e) {
+      active = true;
+      update(e.clientX);
+      e.preventDefault();
+    });
+    document.addEventListener('mousemove', function (e) {
+      if (active) update(e.clientX);
+    });
+    document.addEventListener('mouseup', function () {
+      active = false;
+    });
+
+    // Touch events
+    slider.addEventListener('touchstart', function (e) {
+      active = true;
+      update(e.touches[0].clientX);
+    }, { passive: true });
+
+    slider.addEventListener('touchmove', function (e) {
+      if (active) {
+        update(e.touches[0].clientX);
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    slider.addEventListener('touchend', function () {
+      active = false;
+    });
+  }
+
+  // Init all sliders
+  document.querySelectorAll('.ba-slider').forEach(function (slider) {
+    initSlider(slider);
+  });
+})();
   /* ──────────────────────────────────────────────
      4. FAQ ACCORDION
   ────────────────────────────────────────────── */

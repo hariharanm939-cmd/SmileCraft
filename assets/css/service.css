@@ -126,7 +126,12 @@ input, select { font-family: inherit; }
 .reveal-d1.visible { transition-delay: .1s; }
 .reveal-d2.visible { transition-delay: .2s; }
 .reveal-d3.visible { transition-delay: .3s; }
-
+.logo-img {
+  height: 3rem;        /* adjust height to fit your navbar */
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
 /* ============================================================
    HEADER / NAV — Solid Primary Blue
    ============================================================ */
@@ -841,4 +846,223 @@ input, select { font-family: inherit; }
   .process-steps  { grid-template-columns: 1fr; max-width: 22rem; margin-inline: auto; }
   .cta-banner     { margin: 0 0 2rem; border-radius: 0; }
   .cta-content    { padding: 3rem 1.5rem; }
+}
+/* ============================================================
+   BEFORE & AFTER SLIDER
+============================================================ */
+.ba-section {
+  padding: 5rem 0;
+  background: #f8fdfc;
+}
+
+.ba-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.ba-card {
+  background: #fff;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.09);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.ba-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.13);
+}
+
+.ba-card-label {
+  background: var(--mint, #3ecfb2);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  padding: 0.45rem 1rem;
+  text-align: center;
+}
+
+/* ── Slider container ── */
+.ba-slider {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+  cursor: col-resize;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+
+/* After image — full width base layer */
+.ba-after {
+  position: absolute;
+  inset: 0;
+}
+
+.ba-after img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Before image — clipped layer on top */
+.ba-before {
+  position: absolute;
+  inset: 0 auto 0 0;
+  overflow: hidden;
+  width: 50%; /* JS controls this */
+  will-change: width;
+}
+
+.ba-before img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--ba-full-width, 100%); /* set by JS to full slider px width */
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  max-width: none; /* CRITICAL — prevents browser clamping */
+  filter: grayscale(40%) brightness(0.88);
+}
+
+/* Tags */
+.ba-tag {
+  position: absolute;
+  bottom: 0.6rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 0.22rem 0.6rem;
+  border-radius: 0.35rem;
+  color: #fff;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.ba-tag--before {
+  left: 0.6rem;
+  background: rgba(0,0,0,0.5);
+}
+
+.ba-tag--after {
+  right: 0.6rem;
+  background: var(--mint, #3ecfb2);
+}
+
+/* ── Draggable Handle ── */
+.ba-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  pointer-events: none;
+  will-change: left;
+}
+
+.ba-handle-line {
+  flex: 1;
+  width: 2.5px;
+  background: #fff;
+  box-shadow: 0 0 6px rgba(0,0,0,0.25);
+}
+
+.ba-handle-circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--mint, #3ecfb2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  flex-shrink: 0;
+}
+
+.ba-arrow {
+  font-size: 1.3rem;
+  line-height: 1;
+  color: var(--mint, #3ecfb2);
+  font-weight: 900;
+}
+
+/* Drag hint pulse on load */
+@keyframes ba-pulse {
+  0%,100% { transform: translateX(-50%) scale(1); }
+  50%      { transform: translateX(-50%) scale(1.15); }
+}
+
+.ba-handle-circle {
+  animation: ba-pulse 1.8s ease-in-out 0.6s 3;
+}
+
+/* Card footer */
+.ba-card-footer {
+  padding: 1.1rem 1.25rem 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex: 1;
+}
+
+.ba-result-text {
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.btn-sm {
+  padding: 0.45rem 1.1rem;
+  font-size: 0.82rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+  border-radius: 2rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 960px) {
+  .ba-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .ba-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .ba-slider {
+    height: 210px;
+  }
+
+  .ba-card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+
+  .btn-sm {
+    width: 100%;
+    text-align: center;
+  }
 }
