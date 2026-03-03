@@ -7,7 +7,7 @@
    ★  REPLACE THIS URL with your deployed Apps Script Web App URL
       Same URL used in book.js — keep them in sync.
 ────────────────────────────────────────────────────────────── */
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyD-DmsZPcmN54qu8TFHIFpGx_sFZtVTDbS7SmMD0vsQAB562DbJzX53tkSxdd0Wbbx/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbycgnGu6yry59NWWGaSKcOKpnilW6VcFO2OVWYIaFQIV8zR6o1Mzeab6L-viV0thVMp/exec';
 
 document.addEventListener('DOMContentLoaded', function () {
 
