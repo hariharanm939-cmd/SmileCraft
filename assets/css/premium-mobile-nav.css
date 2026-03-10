@@ -31,7 +31,7 @@
   display: block;
   height: 2px;
   border-radius: 2px;
-  background: var(--dark);
+  background: white;
   transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1),
               opacity   0.25s ease,
               width     0.3s ease;

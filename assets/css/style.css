@@ -1135,6 +1135,13 @@ a.btn, button.btn { min-height: unset; }
 .bk-success-msg   { font-size: 0.875rem; color: rgba(255,255,255,.7); line-height: 1.6; }
 
 /* ============================================================
+   MOBILE STATS — 480px and below (force 2 per row)
+   ============================================================ */
+@media (max-width: 480px) {
+  .stat-item { flex: 0 0 50%; max-width: 50%; }
+}
+
+/* ============================================================
    RESPONSIVE — 480px+ (small phones landscape / large phones)
    ============================================================ */
 @media (min-width: 480px) {
@@ -1203,7 +1210,7 @@ a.btn, button.btn { min-height: unset; }
   .hero-btns .btn { width: 100%; justify-content: center; }
 
   .quick-cards-grid { grid-template-columns: 1fr; }
-  .services-grid    { grid-template-columns: 1fr; max-width: 22rem; margin-inline: auto; }
+  .services-grid    { grid-template-columns: 1fr; max-width: 22rem; margin-inline: auto; gap: 1.5rem; }
 
   .who-float-card { right: 0; max-width: 200px; }
   .why-badge { right: 0; }
