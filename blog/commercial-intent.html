@@ -10,27 +10,128 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=IBM+Plex+Sans:wght@100..900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap"
         rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/css/service-detail.css" />
     <link rel="stylesheet" href="../assets/css/premium-mobile-nav.css" />
+
+    <style>
+        /* ── HERO TITLE FIX ───────────────────────────────── */
+        .svc-detail-hero-title {
+            white-space: normal !important;
+            word-break: break-word !important;
+            overflow-wrap: break-word !important;
+            font-size: clamp(1.35rem, 3.5vw, 2.6rem) !important;
+            line-height: 1.25 !important;
+            max-width: 100% !important;
+        }
+
+        /* ── HERO RESPONSIVE ──────────────────────────────── */
+        @media (max-width: 640px) {
+            .svc-detail-hero {
+                padding: 5rem 0 2.5rem !important;
+            }
+            .svc-detail-hero-title {
+                font-size: clamp(1.2rem, 5.5vw, 1.6rem) !important;
+            }
+            .svc-detail-hero-desc {
+                font-size: .93rem !important;
+            }
+        }
+
+        /* ── BREADCRUMB WRAP FIX ──────────────────────────── */
+        .breadcrumb {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: .15rem;
+            overflow: hidden;
+        }
+
+        /* ── WHITENING OPTIONS TABLE ──────────────────────── */
+        .compare-table-wrap {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,.08);
+            margin: 2rem 0;
+        }
+        .compare-table {
+            width: 100%;
+            min-width: 520px;
+            border-collapse: collapse;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: .95rem;
+        }
+        .compare-table thead tr {
+            background: var(--navy, #1a2e5e);
+            color: #fff;
+        }
+        .compare-table thead th {
+            padding: 1rem 1.25rem;
+            text-align: left;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        .compare-table thead th:first-child { border-radius: 16px 0 0 0; }
+        .compare-table thead th:last-child  { border-radius: 0 16px 0 0; }
+        .compare-table tbody tr:nth-child(even) { background: #f4f7fb; }
+        .compare-table tbody tr:hover { background: #e8f4f1; transition: background .15s; }
+        .compare-table td {
+            padding: .85rem 1.25rem;
+            vertical-align: top;
+            border-bottom: 1px solid #e8edf3;
+            color: #2d2d2d;
+        }
+        .compare-table td:first-child {
+            font-weight: 600;
+            color: #1a2e5e;
+            width: 30%;
+        }
+        .badge-good {
+            display: inline-block;
+            background: #d1fae5;
+            color: #065f46;
+            border-radius: 6px;
+            padding: .2rem .55rem;
+            font-size: .8rem;
+            font-weight: 700;
+            margin-left: .4rem;
+        }
+        .badge-mid {
+            display: inline-block;
+            background: #fef9c3;
+            color: #713f12;
+            border-radius: 6px;
+            padding: .2rem .55rem;
+            font-size: .8rem;
+            font-weight: 700;
+            margin-left: .4rem;
+        }
+
+        /* ── LINK STYLES ──────────────────────────────────── */
+        .detail-list a {
+            color: var(--mint-dark, #0d9e82);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .detail-list a:hover { color: var(--navy, #1a2e5e); }
+    </style>
+
+    <script>
+        const CLINIC = "Smile Craft Dental Clinic";
+        const DOCTOR = "Dr. Rishikumar. A, BDS, MDS";
+        const BRANCH_1 = "Porur, Chennai";
+        const BRANCH_2 = "Kolapakkam, Chennai";
+    </script>
 </head>
 
 <body>
 
-    <!-- ============================================================
-         PREMIUM MOBILE NAV — Backdrop + Drawer
-         Copy this block (and the hamburger button below) into every page
-    ============================================================ -->
-
-    <!-- Backdrop -->
     <div class="pmn-backdrop" id="pmnBackdrop" aria-hidden="true"></div>
 
-    <!-- Drawer -->
     <aside class="pmn-drawer" id="pmnDrawer" role="dialog" aria-modal="true" aria-label="Navigation menu">
-
-        <!-- Drawer header -->
         <div class="pmn-header">
             <a href="../index.html" class="pmn-logo">
                 <img src="../assets/images/logo.png" alt="Smile Craft Dental Clinic" class="logo-img" />
@@ -39,64 +140,33 @@
                 <span class="material-icons">close</span>
             </button>
         </div>
-
-        <!-- Scrollable body -->
         <div class="pmn-body">
-
-            <!-- Main navigation -->
             <nav aria-label="Mobile navigation">
-                <!-- CTA -->
-
                 <div class="pmn-section-label">Navigation</div>
                 <div class="pmn-nav">
-                    <a href="../index.html" class="pmn-nav-link">
-                        Home
-                        <span class="pmn-nav-arrow"><span class="material-icons">arrow_forward_ios</span></span>
-                    </a>
-                    <a href="../services.html" class="pmn-nav-link">
-                        Services
-                        <span class="pmn-nav-arrow"><span class="material-icons">arrow_forward_ios</span></span>
-                    </a>
-                    <a href="../blog.html" class="pmn-nav-link active">
-                        Blog
-                        <span class="pmn-nav-arrow"><span class="material-icons">arrow_forward_ios</span></span>
-                    </a>
-                    <a href="../about.html" class="pmn-nav-link">
-                        About Us
-                        <span class="pmn-nav-arrow"><span class="material-icons">arrow_forward_ios</span></span>
-                    </a>
-                    <a href="../contact.html" class="pmn-nav-link">
-                        Contact
-                        <span class="pmn-nav-arrow"><span class="material-icons">arrow_forward_ios</span></span>
-                    </a>
+                    <a href="../index.html" class="pmn-nav-link">Home <span class="pmn-nav-arrow"><span class="material-icons">arrow_forward_ios</span></span></a>
+                    <a href="../services.html" class="pmn-nav-link">Services <span class="pmn-nav-arrow"><span class="material-icons">arrow_forward_ios</span></span></a>
+                    <a href="../blog.html" class="pmn-nav-link active">Blog <span class="pmn-nav-arrow"><span class="material-icons">arrow_forward_ios</span></span></a>
+                    <a href="../about.html" class="pmn-nav-link">About Us <span class="pmn-nav-arrow"><span class="material-icons">arrow_forward_ios</span></span></a>
+                    <a href="../contact.html" class="pmn-nav-link">Contact <span class="pmn-nav-arrow"><span class="material-icons">arrow_forward_ios</span></span></a>
                 </div>
             </nav>
-
-            <!-- Branches -->
             <div>
                 <div class="pmn-section-label">Our Branches</div>
                 <div class="pmn-branches">
                     <a href="../branches/porur-branch.html" class="pmn-branch-card">
-                        <div class="pmn-branch-icon">
-                            <span class="material-icons">location_city</span>
-                        </div>
+                        <div class="pmn-branch-icon"><span class="material-icons">location_city</span></div>
                         <div class="pmn-branch-info">
                             <div class="pmn-branch-name">Porur Branch</div>
-                            <div class="pmn-branch-addr">G9/1 ground floor ssl green park Mugalivakkam Main Road Next
-                                to water tank
-                                Madanandapuram, Porur, Chennai, Tamil Nadu 600125</div>
+                            <div class="pmn-branch-addr">G9/1 ground floor ssl green park Mugalivakkam Main Road, Madanandapuram, Porur, Chennai 600125</div>
                         </div>
                         <span class="pmn-branch-chevron"><span class="material-icons">chevron_right</span></span>
                     </a>
                     <a href="../branches/kolapakkam-branch.html" class="pmn-branch-card">
-                        <div class="pmn-branch-icon">
-                            <span class="material-icons">location_city</span>
-                        </div>
+                        <div class="pmn-branch-icon"><span class="material-icons">location_city</span></div>
                         <div class="pmn-branch-info">
-                            <div class="pmn-branch-name">kolapakkam Branch</div>
-                            <div class="pmn-branch-addr">Plot no.C2 & C3, 1st Main Rd, opposite to PON VIDYASHRAM
-                                SCHOOL back gate,
-                                Vinod Garden, Maxworth Nagar Phase II, Kolapakkam, Chennai, Tamil Nadu 600128</div>
+                            <div class="pmn-branch-name">Kolapakkam Branch</div>
+                            <div class="pmn-branch-addr">Plot no.C2 &amp; C3, 1st Main Rd, opposite PON VIDYASHRAM SCHOOL back gate, Kolapakkam, Chennai 600128</div>
                         </div>
                         <span class="pmn-branch-chevron"><span class="material-icons">chevron_right</span></span>
                     </a>
@@ -106,19 +176,10 @@
                 <span class="material-icons">calendar_today</span>
                 Book an Appointment
             </a>
-
-        </div><!-- /pmn-body -->
-
-        <!-- Drawer footer -->
+        </div>
         <div class="pmn-footer">
-            <div class="pmn-footer-contact">
-                <span class="material-icons">phone</span>
-                <span>+91 8825745091</span>
-            </div>
-            <div class="pmn-footer-contact">
-                <span class="material-icons">alternate_email</span>
-                <span>hello@smilecraft.com</span>
-            </div>
+            <div class="pmn-footer-contact"><span class="material-icons">phone</span><span>+91 8825745091</span></div>
+            <div class="pmn-footer-contact"><span class="material-icons">alternate_email</span><span>hello@smilecraft.com</span></div>
             <div class="pmn-socials">
                 <a href="#" class="pmn-social" aria-label="Facebook"><span class="material-icons">facebook</span></a>
                 <a href="#" class="pmn-social" aria-label="Instagram"><span class="material-icons">camera_alt</span></a>
@@ -126,19 +187,14 @@
                 <a href="#" class="pmn-social" aria-label="YouTube"><span class="material-icons">play_circle</span></a>
             </div>
         </div>
-
     </aside>
-    <!-- /PREMIUM MOBILE NAV -->
 
-    <!-- HEADER -->
     <header class="site-header" id="site-header">
         <div class="container header-inner">
             <a href="../index.html" class="logo">
-                <img src="../assets/images/logo.png" alt="Smile Craft Dental Clinic" class="logo-img" /> <img
-                    src="../assets/images/name.png" alt="Smile Craft" class="logo-img logo-img--compact" />
+                <img src="../assets/images/logo.png" alt="Smile Craft Dental Clinic" class="logo-img" />
+                <img src="../assets/images/name.png" alt="Smile Craft" class="logo-img logo-img--compact" />
             </a>
-
-            <!-- Desktop nav -->
             <nav class="desktop-nav" aria-label="Main navigation">
                 <a href="../index.html" class="nav-link">Home</a>
                 <a href="../services.html" class="nav-link">Services</a>
@@ -157,16 +213,12 @@
                 <a href="../about.html" class="nav-link">About</a>
                 <a href="../contact.html" class="nav-link">Contact</a>
             </nav>
-
             <div class="header-actions">
                 <a href="../book.html" class="btn btn-mint header-cta" style="padding:.6rem 1.4rem;font-size:.875rem">
                     Book an Appointment
                     <span class="material-icons" style="font-size:.9rem!important">arrow_forward</span>
                 </a>
-
-                <!-- PREMIUM HAMBURGER -->
-                <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false"
-                    aria-controls="pmnDrawer">
+                <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="pmnDrawer">
                     <span class="hamburger-bar hamburger-bar--top"></span>
                     <span class="hamburger-bar hamburger-bar--mid"></span>
                     <span class="hamburger-bar hamburger-bar--bot"></span>
@@ -176,7 +228,6 @@
     </header>
 
     <main>
-        <!-- HERO -->
         <section class="svc-detail-hero">
             <div class="blob blob--tr"></div>
             <div class="blob blob--bl"></div>
@@ -193,9 +244,10 @@
                         <span class="material-icons" style="font-size:.9rem!important">star</span>
                         Cosmetic Dentistry · Dr. Rishikumar. A, BDS, MDS
                     </div>
-                    <h1 class="svc-detail-hero-title"
-                        style="font-size: clamp(1.1rem, 4vw, 2.6rem) !important; line-height: 1.2 !important; white-space: nowrap; width: 100%;">
-                        Teeth Whitening Procedure and Results</h1>
+                    <!-- ✅ FIXED: removed white-space:nowrap -->
+                    <h1 class="svc-detail-hero-title">
+                        Teeth Whitening in Chennai: Cost, Procedure and Results
+                    </h1>
                     <p class="svc-detail-hero-desc">Reviewed by Dr. Rishikumar. A, BDS, MDS — Smile Craft Dental Clinic,
                         Porur &amp; Kolapakkam, Chennai. Everything you need to know about professional teeth whitening
                         before you book your appointment.</p>
@@ -203,7 +255,6 @@
             </div>
         </section>
 
-        <!-- OVERVIEW -->
         <section class="overview-section" style="padding: 4rem 0;">
             <div class="container">
                 <div class="reveal">
@@ -215,177 +266,172 @@
                         kits offer excellent gradual whitening over 10–14 days. Over-the-counter strips and charcoal
                         powders are largely ineffective and can damage your enamel.</p>
 
-                    <!-- WHY TEETH STAIN -->
-                    <h2 class="section-title" style="margin-top: 3rem;">Why are your teeth not as white as they used to
-                        be?</h2>
+                    <!-- ✅ WHITENING OPTIONS COMPARISON TABLE -->
+                    <h2 class="section-title" style="margin-top: 3rem;">Whitening Options at a Glance</h2>
+                    <div class="compare-table-wrap">
+                        <table class="compare-table" aria-label="Teeth whitening options comparison">
+                            <thead>
+                                <tr>
+                                    <th>Treatment</th>
+                                    <th>Shades Improvement</th>
+                                    <th>Duration</th>
+                                    <th>Results Last</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Laser Whitening</td>
+                                    <td>6–8 shades <span class="badge-good">Fastest</span></td>
+                                    <td>60 minutes</td>
+                                    <td>12–18 months</td>
+                                </tr>
+                                <tr>
+                                    <td>Zoom Whitening</td>
+                                    <td>6–8 shades</td>
+                                    <td>60–90 minutes</td>
+                                    <td>12–18 months</td>
+                                </tr>
+                                <tr>
+                                    <td>Home Kit (dentist)</td>
+                                    <td>4–6 shades</td>
+                                    <td>10–14 days</td>
+                                    <td>12–18 months</td>
+                                </tr>
+                                <tr>
+                                    <td>Combined Treatment</td>
+                                    <td>Up to 10 shades <span class="badge-good">Best Results</span></td>
+                                    <td>1 session + 2 weeks</td>
+                                    <td>2–3 years</td>
+                                </tr>
+                                <tr>
+                                    <td>OTC Strips / Charcoal</td>
+                                    <td>Minimal / none</td>
+                                    <td>Varies</td>
+                                    <td>Not recommended</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h2 class="section-title" style="margin-top: 3rem;">Why are your teeth not as white as they used to be?</h2>
                     <p class="section-desc">Your teeth are not stained for one reason — they are stained for several,
                         and the right treatment depends on which type you have. At Smile Craft Dental Clinic in Porur
                         and Kolapakkam, this is the first thing Dr. Rishikumar checks before recommending any whitening
                         treatment.</p>
 
-                    <h2 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">Surface stains (extrinsic)
-                        are caused by</h2>
+                    <h3 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">Surface stains (extrinsic) are caused by</h3>
                     <ul class="detail-list" style="margin-top: 1rem;">
-                        <li><span class="material-icons">check_circle</span>Filter coffee and tea — the most common
-                            cause in Chennai patients</li>
-                        <li><span class="material-icons">check_circle</span>Tobacco — cigarettes, beedis, and pan masala
-                        </li>
-                        <li><span class="material-icons">check_circle</span>Red wine, fruit juices, and fizzy drinks
-                        </li>
-                        <li><span class="material-icons">check_circle</span>Poor brushing habits and tartar buildup over
-                            time</li>
+                        <li><span class="material-icons">check_circle</span>Filter coffee and tea — the most common cause in Chennai patients</li>
+                        <li><span class="material-icons">check_circle</span>Tobacco — cigarettes, beedis, and pan masala</li>
+                        <li><span class="material-icons">check_circle</span>Red wine, fruit juices, and fizzy drinks</li>
+                        <li><span class="material-icons">check_circle</span>Poor brushing habits and tartar buildup over time</li>
                     </ul>
 
-                    <h2 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">Deep stains (intrinsic) come
-                        from</h2>
+                    <h3 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">Deep stains (intrinsic) come from</h3>
                     <ul class="detail-list" style="margin-top: 1rem;">
-                        <li><span class="material-icons">check_circle</span>Natural ageing — enamel thins over decades,
-                            revealing the yellower dentine beneath</li>
-                        <li><span class="material-icons">check_circle</span>Tetracycline antibiotics taken during
-                            childhood</li>
-                        <li><span class="material-icons">check_circle</span>Excess fluoride during tooth development
-                            (dental fluorosis)</li>
-                        <li><span class="material-icons">check_circle</span>Trauma — a knocked or injured tooth can
-                            darken over time</li>
+                        <li><span class="material-icons">check_circle</span>Natural ageing — enamel thins over decades, revealing the yellower dentine beneath</li>
+                        <li><span class="material-icons">check_circle</span>Tetracycline antibiotics taken during childhood</li>
+                        <li><span class="material-icons">check_circle</span>Excess fluoride during tooth development (dental fluorosis)</li>
+                        <li><span class="material-icons">check_circle</span>Trauma — a knocked or injured tooth can darken over time</li>
                     </ul>
                     <p class="section-desc" style="margin-top: 1rem;">Surface stains respond very well to professional
                         whitening. Deep intrinsic stains respond partially — in some cases, veneers or composite bonding
                         give better final results. Dr. Rishikumar will assess your specific type of staining at your
                         consultation.</p>
 
-                    <!-- TREATMENT OPTIONS -->
-                    <h2 class="section-title" style="margin-top: 3rem;">Whitening options available at Smile Craft
-                        Dental Clinic</h2>
+                    <h2 class="section-title" style="margin-top: 3rem;">Whitening options available at Smile Craft Dental Clinic</h2>
 
-                    <h2 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">1. Laser Whitening — Fastest
-                        Results</h2>
+                    <h3 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">1. Laser Whitening — Fastest Results</h3>
                     <p class="section-desc">A high-concentration hydrogen peroxide gel is applied to your teeth and
                         activated with a laser or LED lamp. In about 60 minutes, teeth brighten by 6–8 shades. Best for
                         patients preparing for a wedding, interview, or event who want maximum results in a single
                         appointment. Results last 12–18 months with good maintenance.</p>
 
-                    <h2 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">2. Zoom Whitening — Popular
-                        Premium Option</h2>
+                    <h3 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">2. Zoom Whitening — Popular Premium Option</h3>
                     <p class="section-desc">Zoom whitening uses a dedicated lamp system to accelerate the whitening gel.
                         Delivers 6–8 shades improvement in one session and is associated with slightly lower
                         post-treatment sensitivity compared to standard laser whitening for some patients.</p>
 
-                    <h2 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">3. Dentist-Prescribed Home
-                        Whitening Kit</h2>
+                    <h3 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">3. Dentist-Prescribed Home Whitening Kit</h3>
                     <p class="section-desc">Custom-fitted trays and professional-grade whitening gel used at home for
                         1–2 hours daily over 10–14 days. Results are excellent — 4–6 shades improvement — and more
                         gradual. Best for patients who prefer whitening at home or have mild tooth sensitivity.</p>
 
-                    <h2 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">4. Combined Treatment — Best
-                        Long-Term Results</h2>
+                    <h3 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">4. Combined Treatment — Best Long-Term Results</h3>
                     <p class="section-desc">One in-office laser session followed by a dentist home kit. This achieves up
                         to 10 shades improvement with results lasting 2–3 years. Dr. Rishikumar recommends this most
                         often for patients who want lasting change rather than a one-time treatment.</p>
 
-                    <!-- REALISTIC RESULTS -->
                     <h2 class="section-title" style="margin-top: 3rem;">What results can you realistically expect?</h2>
                     <p class="section-desc">Dr. Rishikumar believes in setting honest expectations before any treatment.
                         Here is what patients at our Porur and Kolapakkam clinics typically experience:</p>
                     <ul class="detail-list" style="margin-top: 1rem;">
-                        <li><span class="material-icons">check_circle</span>Light tea and coffee staining — excellent
-                            response, 6–8 shades improvement predictable</li>
-                        <li><span class="material-icons">check_circle</span>Moderate tobacco or ageing-related yellowing
-                            — good response, 4–6 shades</li>
-                        <li><span class="material-icons">check_circle</span>Fluorosis or tetracycline staining — partial
-                            response, whitening alone may not be enough</li>
-                        <li><span class="material-icons">check_circle</span>Crowns, veneers, and bridges — these do NOT
-                            change colour with whitening gel</li>
-                        <li><span class="material-icons">check_circle</span>Teeth with active cavities or gum disease —
-                            whitening must wait until dental health is restored first</li>
+                        <li><span class="material-icons">check_circle</span>Light tea and coffee staining — excellent response, 6–8 shades improvement predictable</li>
+                        <li><span class="material-icons">check_circle</span>Moderate tobacco or ageing-related yellowing — good response, 4–6 shades</li>
+                        <li><span class="material-icons">check_circle</span>Fluorosis or tetracycline staining — partial response, whitening alone may not be enough</li>
+                        <li><span class="material-icons">check_circle</span>Crowns, veneers, and bridges — these do NOT change colour with whitening gel</li>
+                        <li><span class="material-icons">check_circle</span>Teeth with active cavities or gum disease — whitening must wait until dental health is restored first</li>
                     </ul>
 
-                    <!-- NATURAL METHODS -->
                     <h2 class="section-title" style="margin-top: 3rem;">Do natural whitening methods actually work?</h2>
-                    <p class="section-desc">Patients ask Dr. Rishikumar about DIY whitening constantly. Here is the
-                        honest clinical answer on each method:</p>
+                    <p class="section-desc">Patients ask Dr. Rishikumar about DIY whitening constantly. Here is the honest clinical answer on each method:</p>
                     <ul class="detail-list" style="margin-top: 1rem;">
-                        <li><span class="material-icons">check_circle</span><strong>Baking soda</strong> — mild effect
-                            on surface stains only, abrasive with long-term use, occasional use only</li>
-                        <li><span class="material-icons">check_circle</span><strong>Activated charcoal</strong> — no
-                            clinical evidence of whitening, may scratch enamel, not recommended</li>
-                        <li><span class="material-icons">check_circle</span><strong>Lemon juice</strong> — highly
-                            acidic, actively erodes enamel, avoid completely</li>
-                        <li><span class="material-icons">check_circle</span><strong>Oil pulling</strong> — no whitening
-                            effect but beneficial for gum health</li>
-                        <li><span class="material-icons">check_circle</span><strong>Whitening toothpaste</strong> — mild
-                            improvement on surface stains, safe and useful for daily maintenance</li>
+                        <li><span class="material-icons">check_circle</span><strong>Baking soda</strong> — mild effect on surface stains only, abrasive with long-term use, occasional use only</li>
+                        <li><span class="material-icons">check_circle</span><strong>Activated charcoal</strong> — no clinical evidence of whitening, may scratch enamel, not recommended</li>
+                        <li><span class="material-icons">check_circle</span><strong>Lemon juice</strong> — highly acidic, actively erodes enamel, avoid completely</li>
+                        <li><span class="material-icons">check_circle</span><strong>Oil pulling</strong> — no whitening effect but beneficial for gum health</li>
+                        <li><span class="material-icons">check_circle</span><strong>Whitening toothpaste</strong> — mild improvement on surface stains, safe and useful for daily maintenance</li>
                     </ul>
 
-                    <!-- MAINTENANCE CHECKLIST -->
-                    <h2 class="section-title" style="margin-top: 3rem;">How to keep your teeth white after treatment
-                    </h2>
+                    <h2 class="section-title" style="margin-top: 3rem;">How to keep your teeth white after treatment</h2>
                     <ul class="detail-list" style="margin-top: 1rem;">
-                        <li><span class="material-icons">check_circle</span>Brush twice daily with a
-                            whitening-maintenance toothpaste</li>
-                        <li><span class="material-icons">check_circle</span>Rinse your mouth with water immediately
-                            after coffee, tea, or wine</li>
-                        <li><span class="material-icons">check_circle</span>Use a straw for cold coloured drinks to
-                            reduce contact with teeth</li>
-                        <li><span class="material-icons">check_circle</span>Professional cleaning every 6 months at our
-                            Porur or Kolapakkam clinic</li>
-                        <li><span class="material-icons">check_circle</span>Use your take-home trays once a month for
-                            ongoing maintenance</li>
-                        <li><span class="material-icons">check_circle</span>Quit tobacco completely — the fastest way to
-                            undo whitening results</li>
+                        <li><span class="material-icons">check_circle</span>Brush twice daily with a whitening-maintenance toothpaste</li>
+                        <li><span class="material-icons">check_circle</span>Rinse your mouth with water immediately after coffee, tea, or wine</li>
+                        <li><span class="material-icons">check_circle</span>Use a straw for cold coloured drinks to reduce contact with teeth</li>
+                        <li><span class="material-icons">check_circle</span>Professional cleaning every 6 months at our Porur or Kolapakkam clinic</li>
+                        <li><span class="material-icons">check_circle</span>Use your take-home trays once a month for ongoing maintenance</li>
+                        <li><span class="material-icons">check_circle</span>Quit tobacco completely — the fastest way to undo whitening results</li>
                     </ul>
 
-                    <!-- FAQ -->
                     <h2 class="section-title" style="margin-top: 3rem;">Frequently Asked Questions</h2>
 
-                    <h2 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">Is teeth whitening safe?</h2>
+                    <h3 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">Is teeth whitening safe?</h3>
                     <p class="section-desc">Yes. Professional teeth whitening at Smile Craft Dental Clinic is completely
                         safe. Some patients experience mild, temporary sensitivity for 24–48 hours after treatment —
                         this is normal and resolves on its own. Whitening is not recommended during pregnancy or for
                         patients under 16.</p>
 
-                    <h2 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">How long does the treatment
-                        take?</h2>
+                    <h3 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">How long does the treatment take?</h3>
                     <p class="section-desc">In-office laser or Zoom whitening takes 60–90 minutes — a single
                         appointment. Home kits take 10–14 days of daily use. The combined approach takes one in-clinic
                         session plus two weeks at home for the best results.</p>
 
-                    <h2 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">Will whitening work on my
-                        crowns or veneers?</h2>
+                    <h3 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">Will whitening work on my crowns or veneers?</h3>
                     <p class="section-desc">No. Whitening gel only affects natural tooth enamel. Crowns, veneers, and
                         composite fillings will not change colour. If you have restorations on your front teeth, Dr.
                         Rishikumar will advise you at the consultation to avoid mismatched shades.</p>
 
-                    <h2 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">Does teeth whitening damage
-                        enamel?</h2>
+                    <h3 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">Does teeth whitening damage enamel?</h3>
                     <p class="section-desc">Professional whitening done correctly by a qualified dentist does not damage
                         enamel. Temporary sensitivity is related to the whitening gel's interaction with dentinal
                         tubules — not enamel damage — and resolves within 48 hours.</p>
 
-                    <h2 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">How long do the results last?
-                    </h2>
+                    <h3 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">How long do the results last?</h3>
                     <p class="section-desc">In-office whitening results last 12–24 months with good maintenance. Diet,
                         tobacco use, and oral hygiene are the main factors that determine how long results last. Monthly
                         at-home tray touch-ups significantly extend the results.</p>
 
-                    <!-- INTERNAL LINKS -->
                     <h2 class="section-title" style="margin-top: 3rem;">Related Reading</h2>
                     <ul class="detail-list" style="margin-top: 1rem;">
-                        <li><span class="material-icons">check_circle</span><a href="/blog/why-are-my-gums-bleeding">Why
-                                Are My Gums Bleeding When I Brush?</a></li>
-                        <li><span class="material-icons">check_circle</span><a href="/blog/how-to-prevent-cavities">10
-                                Ways to Prevent Cavities Naturally</a></li>
-                        <li><span class="material-icons">check_circle</span><a
-                                href="/blog/invisible-braces-vs-metal-braces">Invisible Braces vs Metal Braces: Which Is
-                                Better for You?</a></li>
-                        <li><span class="material-icons">check_circle</span><a href="/services/teeth-whitening">Teeth
-                                Whitening Service — Smile Craft Dental Clinic</a></li>
+                        <li><span class="material-icons">check_circle</span><a href="/blog/why-are-my-gums-bleeding">Why Are My Gums Bleeding When I Brush?</a></li>
+                        <li><span class="material-icons">check_circle</span><a href="/blog/how-to-prevent-cavities">10 Ways to Prevent Cavities Naturally</a></li>
+                        <li><span class="material-icons">check_circle</span><a href="/blog/invisible-braces-vs-metal-braces">Invisible Braces vs Metal Braces: Which Is Better for You?</a></li>
+                        <li><span class="material-icons">check_circle</span><a href="/services/teeth-whitening">Teeth Whitening Service — Smile Craft Dental Clinic</a></li>
                     </ul>
 
-                    <!-- SOURCES -->
                     <h2 class="section-title" style="margin-top: 3rem;">Sources</h2>
                     <ul class="detail-list" style="margin-top: 1rem;">
-                        <li><span class="material-icons">check_circle</span>American Dental Association Whitening
-                            Guidelines — ada.org</li>
+                        <li><span class="material-icons">check_circle</span>American Dental Association Whitening Guidelines — ada.org</li>
                         <li><span class="material-icons">check_circle</span>NHS Teeth Whitening Safety — nhs.uk</li>
                         <li><span class="material-icons">check_circle</span>IADR Bleaching Research — iadr.org</li>
                     </ul>
@@ -394,7 +440,6 @@
             </div>
         </section>
 
-        <!-- CTA BANNER -->
         <section class="cta-banner">
             <div class="container cta-inner">
                 <div class="cta-content reveal">
@@ -404,26 +449,24 @@
                 <div class="cta-img-wrap reveal reveal-d1"
                     style="background-color: var(--mint-light); border-radius: 24px; position:relative; overflow:hidden;">
                     <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=700&q=80"
-                        alt="Happy patient after teeth whitening" style="width:100%; height:100%; object-fit:cover;" />
+                        alt="Happy patient after teeth whitening at Smile Craft Dental Clinic"
+                        style="width:100%; height:100%; object-fit:cover;" />
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- FOOTER -->
     <footer class="site-footer">
         <div class="container">
             <div class="footer-divider"></div>
             <div class="footer-cols">
                 <div class="footer-brand">
                     <div class="footer-logo-wrap">
-                        <img src="/assets/images/logo.png" alt="Smile Craft Dental Clinic" class="logo-img" />
+                        <img src="/assets/images/logo2.png" alt="Smile Craft Dental Clinic" class="logo-img" />
                     </div>
                     <div class="footer-socials">
-                        <a href="#" class="footer-social" aria-label="Facebook"><span
-                                class="material-icons">facebook</span></a>
-                        <a href="#" class="footer-social" aria-label="Instagram"><span
-                                class="material-icons">camera_alt</span></a>
+                        <a href="#" class="footer-social" aria-label="Facebook"><span class="material-icons">facebook</span></a>
+                        <a href="#" class="footer-social" aria-label="Instagram"><span class="material-icons">camera_alt</span></a>
                     </div>
                 </div>
                 <div class="footer-col">
@@ -443,7 +486,6 @@
                     </ul>
                 </div>
             </div>
-
             <div class="footer-bottom">
                 <p class="footer-copy">Copyright &copy; Smile Craft Dental Clinic</p>
             </div>
@@ -452,6 +494,6 @@
 
     <script src="../assets/js/service-detail.js"></script>
     <script src="../assets/js/premium-mobile-nav.js"></script>
+    <script>document.querySelectorAll('.clinic-name').forEach(el => el.textContent = CLINIC);</script>
 </body>
-
 </html>

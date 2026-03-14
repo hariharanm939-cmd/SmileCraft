@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
         content="Invisible braces vs metal braces in Chennai — Dr. Rishikumar. A at Smile Craft Dental Clinic, Porur and Kolapakkam compares cost, comfort and results to help you decide." />
-    <title>Invisible Braces vs Metal Braces: Which Is Better for You? - Smile Craft Dental Clinic Blog</title>
+    <title>Invisible Braces vs Metal Braces — Which Is Better for You? - Smile Craft Dental Clinic Blog</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,6 +15,135 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/css/service-detail.css" />
     <link rel="stylesheet" href="../assets/css/premium-mobile-nav.css" />
+
+    <style>
+        /* ── HERO TITLE FIX ───────────────────────────────────────── */
+        /*  Remove white-space:nowrap so the title wraps on all viewports  */
+        .svc-detail-hero-title {
+            white-space: normal !important;
+            word-break: break-word !important;
+            overflow-wrap: break-word !important;
+            font-size: clamp(1.35rem, 3.5vw, 2.6rem) !important;
+            line-height: 1.25 !important;
+            max-width: 100% !important;
+        }
+
+        /* ── COMPARISON TABLE ─────────────────────────────────────── */
+        .compare-table-wrap {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,.08);
+            margin: 2rem 0;
+        }
+
+        .compare-table {
+            width: 100%;
+            min-width: 540px;
+            border-collapse: collapse;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: .95rem;
+        }
+
+        .compare-table thead tr {
+            background: var(--navy, #1a2e5e);
+            color: #fff;
+        }
+
+        .compare-table thead th {
+            padding: 1rem 1.25rem;
+            text-align: left;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .compare-table thead th:first-child {
+            border-radius: 16px 0 0 0;
+        }
+
+        .compare-table thead th:last-child {
+            border-radius: 0 16px 0 0;
+        }
+
+        .compare-table tbody tr:nth-child(even) {
+            background: #f4f7fb;
+        }
+
+        .compare-table tbody tr:hover {
+            background: #e8f4f1;
+            transition: background .15s;
+        }
+
+        .compare-table td {
+            padding: .85rem 1.25rem;
+            vertical-align: top;
+            border-bottom: 1px solid #e8edf3;
+            color: #2d2d2d;
+        }
+
+        .compare-table td:first-child {
+            font-weight: 600;
+            color: #1a2e5e;
+            width: 28%;
+        }
+
+        .compare-table .badge-good {
+            display: inline-block;
+            background: #d1fae5;
+            color: #065f46;
+            border-radius: 6px;
+            padding: .2rem .55rem;
+            font-size: .8rem;
+            font-weight: 700;
+            margin-left: .4rem;
+        }
+
+        .compare-table .badge-mid {
+            display: inline-block;
+            background: #fef9c3;
+            color: #713f12;
+            border-radius: 6px;
+            padding: .2rem .55rem;
+            font-size: .8rem;
+            font-weight: 700;
+            margin-left: .4rem;
+        }
+
+        /* ── HERO SECTION RESPONSIVE ──────────────────────────────── */
+        @media (max-width: 640px) {
+            .svc-detail-hero {
+                padding: 5rem 0 2.5rem !important;
+            }
+
+            .svc-detail-hero-title {
+                font-size: clamp(1.2rem, 5.5vw, 1.6rem) !important;
+            }
+
+            .svc-detail-hero-desc {
+                font-size: .93rem !important;
+            }
+        }
+
+        /* ── BREADCRUMB OVERFLOW FIX ──────────────────────────────── */
+        .breadcrumb {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: .15rem;
+            overflow: hidden;
+        }
+
+        /* ── DETAIL LIST LINK STYLE ───────────────────────────────── */
+        .detail-list a {
+            color: var(--mint-dark, #0d9e82);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .detail-list a:hover {
+            color: var(--navy, #1a2e5e);
+        }
+    </style>
 
     <script>
         const CLINIC = "Smile Craft Dental Clinic";
@@ -28,16 +157,10 @@
 
     <!-- ============================================================
          PREMIUM MOBILE NAV — Backdrop + Drawer
-         Copy this block (and the hamburger button below) into every page
     ============================================================ -->
-
-    <!-- Backdrop -->
     <div class="pmn-backdrop" id="pmnBackdrop" aria-hidden="true"></div>
 
-    <!-- Drawer -->
     <aside class="pmn-drawer" id="pmnDrawer" role="dialog" aria-modal="true" aria-label="Navigation menu">
-
-        <!-- Drawer header -->
         <div class="pmn-header">
             <a href="../index.html" class="pmn-logo">
                 <img src="../assets/images/logo.png" alt="Smile Craft Dental Clinic" class="logo-img" />
@@ -47,13 +170,8 @@
             </button>
         </div>
 
-        <!-- Scrollable body -->
         <div class="pmn-body">
-
-            <!-- Main navigation -->
             <nav aria-label="Mobile navigation">
-                <!-- CTA -->
-
                 <div class="pmn-section-label">Navigation</div>
                 <div class="pmn-nav">
                     <a href="../index.html" class="pmn-nav-link">
@@ -79,7 +197,6 @@
                 </div>
             </nav>
 
-            <!-- Branches -->
             <div>
                 <div class="pmn-section-label">Our Branches</div>
                 <div class="pmn-branches">
@@ -89,9 +206,8 @@
                         </div>
                         <div class="pmn-branch-info">
                             <div class="pmn-branch-name">Porur Branch</div>
-                            <div class="pmn-branch-addr">G9/1 ground floor ssl green park Mugalivakkam Main Road Next
-                                to water tank
-                                Madanandapuram, Porur, Chennai, Tamil Nadu 600125</div>
+                            <div class="pmn-branch-addr">G9/1 ground floor ssl green park Mugalivakkam Main Road,
+                                Madanandapuram, Porur, Chennai 600125</div>
                         </div>
                         <span class="pmn-branch-chevron"><span class="material-icons">chevron_right</span></span>
                     </a>
@@ -100,23 +216,21 @@
                             <span class="material-icons">location_city</span>
                         </div>
                         <div class="pmn-branch-info">
-                            <div class="pmn-branch-name">kolapakkam Branch</div>
-                            <div class="pmn-branch-addr">Plot no.C2 & C3, 1st Main Rd, opposite to PON VIDYASHRAM
-                                SCHOOL back gate,
-                                Vinod Garden, Maxworth Nagar Phase II, Kolapakkam, Chennai, Tamil Nadu 600128</div>
+                            <div class="pmn-branch-name">Kolapakkam Branch</div>
+                            <div class="pmn-branch-addr">Plot no.C2 &amp; C3, 1st Main Rd, opposite PON VIDYASHRAM
+                                SCHOOL back gate, Kolapakkam, Chennai 600128</div>
                         </div>
                         <span class="pmn-branch-chevron"><span class="material-icons">chevron_right</span></span>
                     </a>
                 </div>
             </div>
+
             <a href="../book.html" class="pmn-cta">
                 <span class="material-icons">calendar_today</span>
                 Book an Appointment
             </a>
+        </div>
 
-        </div><!-- /pmn-body -->
-
-        <!-- Drawer footer -->
         <div class="pmn-footer">
             <div class="pmn-footer-contact">
                 <span class="material-icons">phone</span>
@@ -133,19 +247,16 @@
                 <a href="#" class="pmn-social" aria-label="YouTube"><span class="material-icons">play_circle</span></a>
             </div>
         </div>
-
     </aside>
-    <!-- /PREMIUM MOBILE NAV -->
 
     <!-- HEADER -->
     <header class="site-header" id="site-header">
         <div class="container header-inner">
             <a href="../index.html" class="logo">
-                <img src="../assets/images/logo.png" alt="Smile Craft Dental Clinic" class="logo-img" /> <img
-                    src="../assets/images/name.png" alt="Smile Craft" class="logo-img logo-img--compact" />
+                <img src="../assets/images/logo.png" alt="Smile Craft Dental Clinic" class="logo-img" />
+                <img src="../assets/images/name.png" alt="Smile Craft" class="logo-img logo-img--compact" />
             </a>
 
-            <!-- Desktop nav -->
             <nav class="desktop-nav" aria-label="Main navigation">
                 <a href="../index.html" class="nav-link">Home</a>
                 <a href="../services.html" class="nav-link">Services</a>
@@ -170,8 +281,6 @@
                     Book an Appointment
                     <span class="material-icons" style="font-size:.9rem!important">arrow_forward</span>
                 </a>
-
-                <!-- PREMIUM HAMBURGER -->
                 <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false"
                     aria-controls="pmnDrawer">
                     <span class="hamburger-bar hamburger-bar--top"></span>
@@ -200,13 +309,13 @@
                         <span class="material-icons" style="font-size:.9rem!important">straighten</span>
                         Orthodontics · Dr. Rishikumar. A, BDS, MDS
                     </div>
-                    <h1 class="svc-detail-hero-title"
-                        style="font-size: clamp(1.1rem, 4vw, 2.6rem) !important; line-height: 1.2 !important; white-space: nowrap; width: 100%;">
+                    <!-- ✅ FIXED: removed white-space:nowrap and width:100% inline styles -->
+                    <h1 class="svc-detail-hero-title">
                         Invisible Braces vs Metal Braces: Which Is Better for You?
                     </h1>
-                    <p class="svc-detail-hero-desc">Reviewed by Dr. Rishikumar. A, BDS, MDS — Smile Craft Dental Clinic,
-                        Porur &amp; Kolapakkam, Chennai. A straight, honest comparison to help you decide before you
-                        even walk into a consultation.</p>
+                    <p class="svc-detail-hero-desc">Reviewed by Dr. Rishikumar. A, BDS, MDS — Smile Craft Dental
+                        Clinic, Porur &amp; Kolapakkam, Chennai. A straight, honest comparison to help you decide
+                        before you even walk into a consultation.</p>
                 </div>
             </div>
         </section>
@@ -222,6 +331,67 @@
                         The right choice depends on the complexity of your case, your lifestyle, and your budget. Metal
                         braces work for all alignment cases. Clear aligners are ideal for mild to moderate cases in
                         adults who prioritise aesthetics — but only if worn 20–22 hours every day without fail.</p>
+
+                    <!-- ✅ COMPARISON TABLE — added for quick visual reference -->
+                    <h2 class="section-title" style="margin-top: 3rem;">Side-by-Side Comparison</h2>
+                    <div class="compare-table-wrap">
+                        <table class="compare-table" aria-label="Clear aligners vs metal braces comparison">
+                            <thead>
+                                <tr>
+                                    <th>Factor</th>
+                                    <th>Clear Aligners</th>
+                                    <th>Metal Braces</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Visibility</td>
+                                    <td>Nearly invisible <span class="badge-good">Advantage</span></td>
+                                    <td>Clearly visible</td>
+                                </tr>
+                                <tr>
+                                    <td>Cost (Chennai)</td>
+                                    <td>₹60,000 – ₹2,50,000</td>
+                                    <td>₹20,000 – ₹45,000 <span class="badge-good">Advantage</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Case complexity</td>
+                                    <td>Mild to moderate only</td>
+                                    <td>All cases — mild to severe <span class="badge-good">Advantage</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Comfort</td>
+                                    <td>Smoother surface <span class="badge-good">Advantage</span></td>
+                                    <td>Brackets may irritate cheeks</td>
+                                </tr>
+                                <tr>
+                                    <td>Removable?</td>
+                                    <td>Yes — but must wear 20–22 hrs/day <span class="badge-mid">Discipline needed</span></td>
+                                    <td>No — fixed 24/7 <span class="badge-good">Consistent</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Eating &amp; drinking</td>
+                                    <td>Remove before meals <span class="badge-good">Advantage</span></td>
+                                    <td>Dietary restrictions apply</td>
+                                </tr>
+                                <tr>
+                                    <td>Oral hygiene</td>
+                                    <td>Easy — remove to brush <span class="badge-good">Advantage</span></td>
+                                    <td>Requires extra care around brackets</td>
+                                </tr>
+                                <tr>
+                                    <td>Treatment duration</td>
+                                    <td>6–18 months (compliance dependent)</td>
+                                    <td>12–24 months</td>
+                                </tr>
+                                <tr>
+                                    <td>Best for</td>
+                                    <td>Adults, professionals, weddings</td>
+                                    <td>Children, teens, complex cases <span class="badge-good">Versatile</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
                     <!-- WHAT ARE WE COMPARING -->
                     <h2 class="section-title" style="margin-top: 3rem;">What are we actually comparing?</h2>
@@ -291,8 +461,6 @@
                         less visibility than metal but whose case is too complex for aligners, or whose budget does not
                         stretch to full clear aligner treatment.</p>
 
-
-
                     <!-- QUESTIONS TO ASK -->
                     <h2 class="section-title" style="margin-top: 3rem;">Questions to ask before you decide</h2>
                     <ul class="detail-list" style="margin-top: 1rem;">
@@ -311,32 +479,32 @@
                     <!-- FAQ -->
                     <h2 class="section-title" style="margin-top: 3rem;">Frequently Asked Questions</h2>
 
-                    <h2 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">Can I get clear aligners if I
-                        have crowns or fillings?</h2>
+                    <h3 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">Can I get clear aligners if I
+                        have crowns or fillings?</h3>
                     <p class="section-desc">Yes, in most cases. Crowns and fillings do not automatically disqualify you
                         from aligner treatment. Dr. Rishikumar will assess how existing restorations affect aligner
                         attachment placement at your consultation at our Porur or Kolapakkam clinic.</p>
 
-                    <h2 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">Do braces hurt?</h2>
+                    <h3 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">Do braces hurt?</h3>
                     <p class="section-desc">Both clear aligners and metal braces cause temporary discomfort when new
                         pressure is applied — typically for 2–3 days after each new tray or adjustment. This is normal
                         and expected. Paracetamol or ibuprofen manages it well. Metal brackets can also cause minor
                         cheek irritation in the first few weeks, which dental wax addresses effectively.</p>
 
-                    <h2 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">How long do I have to wear
-                        retainers after braces?</h2>
+                    <h3 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">How long do I have to wear
+                        retainers after braces?</h3>
                     <p class="section-desc">Retainers are non-negotiable after any orthodontic treatment. Most patients
                         wear them full-time for 6–12 months after treatment, then every night indefinitely. Teeth have a
                         natural tendency to drift back toward their original position — retainers prevent this.</p>
 
-                    <h2 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">At what age can someone get
-                        braces?</h2>
+                    <h3 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">At what age can someone get
+                        braces?</h3>
                     <p class="section-desc">The ideal age is 11–14 when most permanent teeth have erupted and jaw growth
                         is still occurring. However, adults of any age can undergo orthodontic treatment successfully.
                         There is no upper age limit for braces or clear aligners at Smile Craft Dental Clinic.</p>
 
-                    <h2 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">Can I switch from metal
-                        braces to clear aligners mid-treatment?</h2>
+                    <h3 class="section-title" style="margin-top: 2rem; font-size: 1.1rem;">Can I switch from metal
+                        braces to clear aligners mid-treatment?</h3>
                     <p class="section-desc">In some cases yes — particularly if a patient begins with braces for complex
                         movement and transitions to aligners for final refinement. This depends entirely on your case
                         and Dr. Rishikumar's assessment. It is not always possible or advisable.</p>
@@ -379,7 +547,7 @@
                 <div class="cta-img-wrap reveal reveal-d1"
                     style="background-color: var(--mint-light); border-radius: 24px; position:relative; overflow:hidden;">
                     <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=700&q=80"
-                        alt="Happy patient" style="width:100%; height:100%; object-fit:cover;" />
+                        alt="Happy patient at Smile Craft Dental Clinic" style="width:100%; height:100%; object-fit:cover;" />
                 </div>
             </div>
         </section>
@@ -392,7 +560,7 @@
             <div class="footer-cols">
                 <div class="footer-brand">
                     <div class="footer-logo-wrap">
-                        <img src="/assets/images/logo.png" alt="Smile Craft Dental Clinic" class="logo-img" />
+                        <img src="/assets/images/logo2.png" alt="Smile Craft Dental Clinic" class="logo-img" />
                     </div>
                     <div class="footer-socials">
                         <a href="#" class="footer-social" aria-label="Facebook"><span
@@ -418,7 +586,6 @@
                     </ul>
                 </div>
             </div>
-
             <div class="footer-bottom">
                 <p class="footer-copy">Copyright &copy; Smile Craft Dental Clinic</p>
             </div>

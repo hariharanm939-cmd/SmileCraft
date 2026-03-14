@@ -1,87 +1,155 @@
 /* ============================================================
-   SMILE CRAFT DENTAL — index.js  (v3 — Fixed)
+   SMILE CRAFT DENTAL — index.js  (v6 — Updated)
    ============================================================ */
 
 'use strict';
 
-/* ──────────────────────────────────────────────────────────────
-   ★ Keep this URL in sync with book.js and contact.js
-────────────────────────────────────────────────────────────── */
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbycgnGu6yry59NWWGaSKcOKpnilW6VcFO2OVWYIaFQIV8zR6o1Mzeab6L-viV0thVMp/exec';
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  /* ──────────────────────────────────────────────
-     1. MOBILE MENU TOGGLE
-  ────────────────────────────────────────────── */
-  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-  const mobileMenu    = document.getElementById('mobileMenu');
+  /* ══════════════════════════════════════════════════════
+     1. DOCTOR INTRO SLIDESHOW — continuous loop
+  ══════════════════════════════════════════════════════ */
+  (function initIntroSlideshow() {
+    const DURATION = 6500;
+    const TOTAL    = 2;
 
-  if (mobileMenuBtn && mobileMenu) {
-    mobileMenuBtn.addEventListener('click', function () {
-      const isOpen = mobileMenu.classList.toggle('is-open');
-      mobileMenuBtn.setAttribute('aria-expanded', String(isOpen));
-      const icon = mobileMenuBtn.querySelector('.material-icons');
-      if (icon) icon.textContent = isOpen ? 'close' : 'menu';
-    });
+    const docData = [
+      { name: 'Dr. Rishikumar A',    role: 'Orthodontist · Both Branches',   yrs: '11+' },
+      { name: 'Dr. Rupha Lakshmi U', role: 'Dental Surgeon · Both Branches', yrs: '11+' }
+    ];
 
-    mobileMenu.querySelectorAll('.mobile-nav-link').forEach(function (link) {
-      link.addEventListener('click', function () {
-        mobileMenu.classList.remove('is-open');
-        mobileMenuBtn.setAttribute('aria-expanded', 'false');
-        const icon = mobileMenuBtn.querySelector('.material-icons');
-        if (icon) icon.textContent = 'menu';
+    let current = 0;
+    let startTs  = null;
+    let rafId    = null;
+    let paused   = false;
+
+    function switchDoc(idx) {
+      current = ((idx % TOTAL) + TOTAL) % TOTAL;
+
+      for (let i = 0; i < TOTAL; i++) {
+        const p = document.getElementById('sc-portrait-' + i);
+        if (p) {
+          p.classList.toggle('active', i === current);
+          p.setAttribute('aria-hidden', String(i !== current));
+        }
+        const b = document.getElementById('sc-bio-' + i);
+        if (b) b.classList.toggle('active', i === current);
+      }
+
+      document.querySelectorAll('.sc-doc-tab').forEach((tab, k) => {
+        tab.classList.toggle('active', k === current);
+        tab.setAttribute('aria-selected', String(k === current));
       });
-    });
-  }
 
-  /* ──────────────────────────────────────────────
-     2. STICKY HEADER SHADOW ON SCROLL
-  ────────────────────────────────────────────── */
+      document.querySelectorAll('.sc-prog-bar').forEach((bar, k) => {
+        bar.classList.toggle('active', k === current);
+        const fill = document.getElementById('sc-fill-' + k);
+        if (fill) fill.style.width = (k < current ? '100%' : '0%');
+      });
+
+      const d = docData[current];
+      const nameEl = document.getElementById('sc-card-name');
+      const roleEl = document.getElementById('sc-card-role');
+      const yrsEl  = document.getElementById('sc-card-yrs');
+      if (nameEl) nameEl.textContent = d.name;
+      if (roleEl) roleEl.textContent = d.role;
+      if (yrsEl)  yrsEl.textContent  = d.yrs;
+    }
+
+    function startTick() {
+      cancelAnimationFrame(rafId);
+      startTs = null;
+
+      function tick(ts) {
+        if (!startTs) startTs = ts;
+        const elapsed = ts - startTs;
+        const pct     = Math.min((elapsed / DURATION) * 100, 100);
+
+        const fill = document.getElementById('sc-fill-' + current);
+        if (fill) fill.style.width = pct + '%';
+
+        if (elapsed >= DURATION) {
+          switchDoc(current + 1);
+          if (!paused) startTick();
+          return;
+        }
+        rafId = requestAnimationFrame(tick);
+      }
+
+      rafId = requestAnimationFrame(tick);
+    }
+
+    const panel = document.getElementById('sc-portrait-panel');
+    if (panel) {
+      panel.addEventListener('mouseenter', () => { paused = true; cancelAnimationFrame(rafId); });
+      panel.addEventListener('mouseleave', () => { paused = false; startTick(); });
+      panel.addEventListener('click', () => { switchDoc(current + 1); startTick(); });
+    }
+
+    window.scSwitchDoc = function (idx) { switchDoc(idx); startTick(); };
+    startTick();
+  })();
+
+  /* ══════════════════════════════════════════════════════
+     2. STICKY HEADER SHADOW
+  ══════════════════════════════════════════════════════ */
   const siteHeader = document.getElementById('site-header');
   if (siteHeader) {
-    window.addEventListener('scroll', function () {
+    window.addEventListener('scroll', () => {
       siteHeader.classList.toggle('scrolled', window.scrollY > 20);
     }, { passive: true });
   }
 
-  /* ──────────────────────────────────────────────
-     3. SCROLL REVEAL
-     FIX #13: rootMargin bottom offset clears the
-     floating mobile nav bar (88px safe zone) so
-     elements near the bottom of the viewport still
-     trigger correctly on mobile.
-  ────────────────────────────────────────────── */
+  /* ══════════════════════════════════════════════════════
+     3. DESKTOP NAV DROPDOWN
+  ══════════════════════════════════════════════════════ */
+  document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+    const trigger = dropdown.querySelector('.nav-dropdown-trigger');
+    if (!trigger) return;
+    trigger.addEventListener('click', e => {
+      e.stopPropagation();
+      const isOpen = dropdown.classList.toggle('is-active');
+      trigger.setAttribute('aria-expanded', String(isOpen));
+    });
+  });
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.nav-dropdown.is-active').forEach(d => {
+      d.classList.remove('is-active');
+      const t = d.querySelector('.nav-dropdown-trigger');
+      if (t) t.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  /* ══════════════════════════════════════════════════════
+     4. SCROLL REVEAL
+  ══════════════════════════════════════════════════════ */
   const revealEls = document.querySelectorAll('.reveal');
   if (revealEls.length > 0 && 'IntersectionObserver' in window) {
-    const revealObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
+          observer.unobserve(entry.target);
         }
       });
-    }, {
-      threshold:  0.10,
-      rootMargin: '0px 0px -72px 0px', // clears floating nav on mobile
-    });
-    revealEls.forEach(function (el) { revealObserver.observe(el); });
+    }, { threshold: 0.10, rootMargin: '0px 0px -72px 0px' });
+    revealEls.forEach(el => observer.observe(el));
   } else {
-    revealEls.forEach(function (el) { el.classList.add('visible'); });
+    revealEls.forEach(el => el.classList.add('visible'));
   }
 
-  /* ──────────────────────────────────────────────
-     4. BOOKING POPUP
-     FIX #11: sessionStorage guard so the auto-popup
-     only fires once per browser session — not every
-     page load.
-  ────────────────────────────────────────────── */
+  /* ══════════════════════════════════════════════════════
+     5. BOOKING POPUP
+     - Opens automatically after 3 seconds (once per session)
+     - Navbar "Book an Appointment" button links directly to book.html
+     - All other "Book" links on the page open the popup
+  ══════════════════════════════════════════════════════ */
   const popup     = document.getElementById('bookPopup');
   const bkClose   = document.getElementById('bkClose');
   const bkForm    = document.getElementById('bkForm');
   const bkSuccess = document.getElementById('bkSuccess');
-
-  const POPUP_KEY = 'sc_popup_seen';
 
   function openPopup() {
     if (!popup) return;
@@ -93,90 +161,88 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!popup) return;
     popup.classList.remove('is-open');
     document.body.style.overflow = '';
-    // Mark as seen for this session
-    try { sessionStorage.setItem(POPUP_KEY, '1'); } catch (_) {}
   }
 
-  // Auto-show after 8s — only if not already seen this session
+  // Auto-show after 3 seconds — every page load (no session guard)
   if (popup) {
-    let alreadySeen = false;
-    try { alreadySeen = sessionStorage.getItem(POPUP_KEY) === '1'; } catch (_) {}
-    if (!alreadySeen) setTimeout(openPopup, 8000);
+    setTimeout(openPopup, 3000);
   }
 
   if (bkClose) bkClose.addEventListener('click', closePopup);
-
   if (popup) {
-    popup.addEventListener('click', function (e) {
-      if (e.target === popup) closePopup();
-    });
+    popup.addEventListener('click', e => { if (e.target === popup) closePopup(); });
   }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
 
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closePopup();
-  });
-
-  // "Book Appointment" links open popup (homepage only)
+  // Intercept book.html links to open popup — EXCEPT the navbar header CTA
+  // and the mobile nav CTA (those navigate directly to book.html)
   if (document.body.dataset.page === 'home') {
-    document.querySelectorAll('a[href="book.html"]').forEach(function (link) {
-      link.addEventListener('click', function (e) {
+    document.querySelectorAll('a[href="book.html"]').forEach(link => {
+      // Skip the header nav CTA and mobile nav CTA — let them navigate normally
+      if (link.id === 'headerBookBtn' || link.classList.contains('pmn-cta')) return;
+      link.addEventListener('click', e => {
         e.preventDefault();
         openPopup();
       });
     });
   }
 
-  /* ──────────────────────────────────────────────
-     POPUP FORM — collect data
-     FIX #12: Fields queried by ID / type only,
-     never by placeholder text (fragile). Popup HTML
-     must have: id="bkPopupName", id="bkPopupPhone",
-     id="bkPopupBranch", id="bkPopupDate".
-     Falls back gracefully if IDs are missing.
-  ────────────────────────────────────────────── */
+  /* ── Branch card visual selector ── */
+  window.bkSelectBranch = function (value, el) {
+    document.querySelectorAll('.bk-branch-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    const inp = document.getElementById('bkPopupBranch');
+    if (inp) inp.value = value;
+  };
+
+  document.querySelectorAll('.bk-branch-card').forEach(card => {
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); }
+    });
+  });
+
+  /* ── Date field min = today ── */
+  const dateEl = document.getElementById('bkPopupDate');
+  if (dateEl) {
+    const today = new Date();
+    const yyyy  = today.getFullYear();
+    const mm    = String(today.getMonth() + 1).padStart(2, '0');
+    const dd    = String(today.getDate()).padStart(2, '0');
+    dateEl.min  = `${yyyy}-${mm}-${dd}`;
+  }
+
+  /* ── Collect and submit form ── */
   function collectPopupData() {
-    const ref = 'SC-' + Math.floor(100000 + Math.random() * 900000);
-
-    // Robust selectors — no reliance on placeholder text
-    const nameEl   = document.getElementById('bkPopupName')   || bkForm.querySelector('input[type="text"]');
-    const phoneEl  = document.getElementById('bkPopupPhone')  || bkForm.querySelector('input[type="tel"]');
-    const branchEl = document.getElementById('bkPopupBranch') || bkForm.querySelector('select');
-    const dateEl   = document.getElementById('bkPopupDate')   || bkForm.querySelector('input[type="date"]');
-
+    const ref      = 'SC-' + Math.floor(100000 + Math.random() * 900000);
+    const nameEl   = document.getElementById('bkPopupName');
+    const phoneEl  = document.getElementById('bkPopupPhone');
+    const branchEl = document.getElementById('bkPopupBranch');
+    const dateEl2  = document.getElementById('bkPopupDate');
     return {
       ref,
-      source:    'homepage-popup',
-      fullName:  nameEl   ? nameEl.value.trim()   : '',
-      email:     '',
-      phone:     phoneEl  ? phoneEl.value.trim()  : '',
-      age:       '',
-      branch:    branchEl ? branchEl.value         : '',
-      date:      dateEl   ? dateEl.value           : '',
-      timeSlot:  '',
-      service:   '',
-      insurance: '',
-      emi:       false,
-      whatsapp:  false,
-      notes:     '',
+      source:   'homepage-popup',
+      fullName: nameEl   ? nameEl.value.trim()  : '',
+      email:    '',
+      phone:    phoneEl  ? phoneEl.value.trim() : '',
+      age:      '',
+      branch:   branchEl ? branchEl.value        : '',
+      date:     dateEl2  ? dateEl2.value         : '',
+      timeSlot: '', service: '', insurance: '',
+      emi: false, whatsapp: false, notes: '',
     };
   }
 
-  /* ── POPUP FORM SUBMIT → Google Sheets ── */
   if (bkForm && bkSuccess) {
     bkForm.addEventListener('submit', async function (e) {
       e.preventDefault();
-
-      const submitBtn = bkForm.querySelector('[type="submit"]');
+      const submitBtn = document.getElementById('bkSubmitBtn');
       if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
-
-      const data = collectPopupData();
 
       try {
         await fetch(APPS_SCRIPT_URL, {
-          method:  'POST',
-          mode:    'no-cors',
+          method: 'POST', mode: 'no-cors',
           headers: { 'Content-Type': 'text/plain' },
-          body:    JSON.stringify(data),
+          body: JSON.stringify(collectPopupData()),
         });
       } catch (err) {
         console.warn('Popup form Sheets error (non-critical):', err);
@@ -184,41 +250,33 @@ document.addEventListener('DOMContentLoaded', function () {
 
       bkForm.classList.add('is-hidden');
       bkSuccess.classList.add('is-shown');
-
-      // Mark popup as seen, then close
       setTimeout(closePopup, 3500);
 
-      setTimeout(function () {
+      setTimeout(() => {
         bkForm.classList.remove('is-hidden');
         bkSuccess.classList.remove('is-shown');
         bkForm.reset();
-        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Submit Request'; }
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<span class="material-icons" style="font-size:1rem!important">check_circle</span> Confirm Appointment';
+        }
+        document.querySelectorAll('.bk-branch-card').forEach(c => c.classList.remove('selected'));
+        const bi = document.getElementById('bkPopupBranch');
+        if (bi) bi.value = '';
       }, 4200);
     });
   }
 
-  /* ──────────────────────────────────────────────
-     5. CLINIC LOCATOR TAB SWITCHING
-  ────────────────────────────────────────────── */
-  const clinicItems = document.querySelectorAll('.clinic-item');
-  clinicItems.forEach(function (item) {
-    item.addEventListener('click', function () {
-      clinicItems.forEach(function (i) { i.classList.remove('active'); });
-      item.classList.add('active');
-    });
+  /* ══════════════════════════════════════════════════════
+     6. MAP — tap to activate iframe on touch
+  ══════════════════════════════════════════════════════ */
+  document.querySelectorAll('.branch-card-map').forEach(wrap => {
+    wrap.addEventListener('click', () => wrap.classList.add('is-active'));
   });
 
-  const locatorTabs = document.querySelectorAll('.locator-tab');
-  locatorTabs.forEach(function (tab) {
-    tab.addEventListener('click', function () {
-      locatorTabs.forEach(function (t) { t.classList.remove('active'); });
-      tab.classList.add('active');
-    });
-  });
-
-  /* ──────────────────────────────────────────────
-     6. STATS COUNTER ANIMATION
-  ────────────────────────────────────────────── */
+  /* ══════════════════════════════════════════════════════
+     7. STATS COUNTER ANIMATION
+  ══════════════════════════════════════════════════════ */
   const statNums = document.querySelectorAll('.stat-num');
 
   function animateCounter(el) {
@@ -228,16 +286,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const duration      = 1800;
     const startTime     = performance.now();
 
-    function step(currentTime) {
-      const elapsed  = currentTime - startTime;
+    function step(now) {
+      const elapsed  = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
       const eased    = 1 - Math.pow(1 - progress, 3);
-      const current  = eased * numericTarget;
-
+      const val      = eased * numericTarget;
       el.textContent = (numericTarget % 1 === 0)
-        ? Math.floor(current) + suffix
-        : current.toFixed(1) + suffix;
-
+        ? Math.floor(val) + suffix
+        : val.toFixed(1) + suffix;
       if (progress < 1) requestAnimationFrame(step);
       else el.textContent = target + suffix;
     }
@@ -246,38 +302,47 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   if (statNums.length > 0 && 'IntersectionObserver' in window) {
-    const statsObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          animateCounter(entry.target);
-          statsObserver.unobserve(entry.target);
-        }
+    const statsObs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { animateCounter(entry.target); statsObs.unobserve(entry.target); }
       });
     }, { threshold: 0.5 });
-    statNums.forEach(function (el) { statsObserver.observe(el); });
+    statNums.forEach(el => statsObs.observe(el));
   }
 
-  /* ──────────────────────────────────────────────
-     7. SMOOTH SCROLL
-  ────────────────────────────────────────────── */
-  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+  /* ══════════════════════════════════════════════════════
+     8. SMOOTH SCROLL
+  ══════════════════════════════════════════════════════ */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     });
   });
 
-  /* ──────────────────────────────────────────────
-     8. LOCATOR SEARCH (client-side filter)
-  ────────────────────────────────────────────── */
+  /* ══════════════════════════════════════════════════════
+     9. CLINIC LOCATOR (if present)
+  ══════════════════════════════════════════════════════ */
+  const clinicItems = document.querySelectorAll('.clinic-item');
+  clinicItems.forEach(item => {
+    item.addEventListener('click', () => {
+      clinicItems.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+    });
+  });
+
+  document.querySelectorAll('.locator-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.locator-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+
   const locatorInput = document.querySelector('.locator-input');
   if (locatorInput && clinicItems.length > 0) {
-    locatorInput.addEventListener('input', function () {
+    locatorInput.addEventListener('input', () => {
       const query = locatorInput.value.toLowerCase().trim();
-      clinicItems.forEach(function (item) {
+      clinicItems.forEach(item => {
         const name = item.querySelector('.clinic-item-name');
         const addr = item.querySelector('.clinic-item-addr');
         const text = ((name ? name.textContent : '') + ' ' + (addr ? addr.textContent : '')).toLowerCase();
@@ -286,4 +351,17 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-});
+  /* ══════════════════════════════════════════════════════
+     10. SWIPER — testimonials
+  ══════════════════════════════════════════════════════ */
+  if (typeof Swiper !== 'undefined') {
+    new Swiper('.js-testmonials-slider', {
+      grabCursor: true,
+      loop: true,
+      spaceBetween: 30,
+      pagination: { el: '.js-testmonials-pagination', clickable: true },
+      breakpoints: { 767: { slidesPerView: 3 } }
+    });
+  }
+
+}); // end DOMContentLoaded
