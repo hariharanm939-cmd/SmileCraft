@@ -414,8 +414,57 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ══════════════════════════════════════════════════════
-     11. WHATSAPP FLOAT BUTTON — always visible, no scroll trigger needed
+     11. WHATSAPP FLOAT BUTTON — branch popup logic
   ══════════════════════════════════════════════════════ */
-  // Button is always visible via CSS — no JS needed
+  const waBtn = document.getElementById('waFloatBtn');
+  if (waBtn) {
+    const originalHref = waBtn.getAttribute('href') || '';
+    
+    // Create popup container
+    const waPopup = document.createElement('div');
+    waPopup.style.cssText = 'display:none; position:fixed; background:#fff; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.15); padding:8px 0; z-index:99999; min-width:140px; flex-direction:column; overflow:hidden; font-family:inherit;';
+    
+    // Option generator
+    function createOption(name, phoneCode) {
+      const opt = document.createElement('a');
+      opt.textContent = name;
+      // Replace existing phone number (e.g. 918825745091) with the target
+      opt.href = originalHref.replace(/91\d{10}/, phoneCode);
+      opt.target = '_blank';
+      opt.rel = 'noopener';
+      opt.style.cssText = 'display:block; padding:10px 16px; color:#333; text-decoration:none; font-size:15px; font-weight:500; text-align:center; transition:background 0.2s;';
+      opt.addEventListener('mouseenter', () => opt.style.backgroundColor = '#f4f4f4');
+      opt.addEventListener('mouseleave', () => opt.style.backgroundColor = '#fff');
+      opt.addEventListener('click', () => { waPopup.style.display = 'none'; });
+      return opt;
+    }
+
+    // Porur -> 6382473705, Kolapakkam -> 8825745091
+    waPopup.appendChild(createOption('Porur', '916382473705'));
+    waPopup.appendChild(createOption('Kolapakkam', '918825745091'));
+    document.body.appendChild(waPopup);
+
+    // Toggle on button click
+    waBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (waPopup.style.display === 'none') {
+        const rect = waBtn.getBoundingClientRect();
+        // Position above the button
+        waPopup.style.bottom = (window.innerHeight - rect.top + 10) + 'px';
+        waPopup.style.right = (window.innerWidth - rect.right) + 'px';
+        waPopup.style.display = 'flex';
+      } else {
+        waPopup.style.display = 'none';
+      }
+    });
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (!waBtn.contains(e.target) && !waPopup.contains(e.target)) {
+        waPopup.style.display = 'none';
+      }
+    });
+  }
 
 }); // end DOMContentLoaded
