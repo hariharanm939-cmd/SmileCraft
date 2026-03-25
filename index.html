@@ -24,18 +24,18 @@
 }
 </script>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
   <meta name="google-site-verification" content="Z-sCP9EtShMJukTrRNr6UWWV6-gsXoj9UM2tTiYGu_Q" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Smile Craft Dental Clinic | Implants &amp; Braces in Chennai" />
   <meta property="og:description"
-    content="Professional dental clinic in Chennai providing advanced implants, orthodontics, cosmetic and complete family dental services. Book now." />
+    content="Top Invisalign provider in Chennai offering advanced dental implants, braces, cosmetic dentistry, and complete smile makeovers at Smile Craft Dental Clinic." />
   <meta property="og:url" content="https://yourdomain.com/" />
   <meta property="og:image" content="https://yourdomain.com/assets/images/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Smile Craft Dental Clinic | Chennai" />
-  <meta name="twitter:description" content="Modern, painless dentistry in Chennai. Book now." />
+  <meta name="twitter:description" content="Top Invisalign provider in Chennai offering advanced dental implants, braces, cosmetic dentistry, and complete smile makeovers at Smile Craft Dental Clinic." />
   <meta name="twitter:image" content="https://yourdomain.com/assets/images/og-image.jpg" />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#1E2F86" />
@@ -49,6 +49,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/premium-mobile-nav.css" />
   <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/float-contact.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
 </head>
 
@@ -908,8 +909,7 @@
           <div class="footer-contact-item"><span class="material-icons">location_on</span><span>Porur &amp; Kolapakkam,
               Chennai, Tamil Nadu</span></div>
           <div class="footer-contact-item"><span class="material-icons">alternate_email</span><span><a
-                href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                data-cfemail="98f0fdf4f4f7d8ebf5f1f4fdfbeaf9feecb6fbf7f5">smilecraft.rishi.rupha@gmail.com</a></span>
+                href="mailto:smilecraft.rishi.rupha@gmail.com">smilecraft.rishi.rupha@gmail.com</a></span>
           </div>
         </div>
       </div>
@@ -987,10 +987,52 @@
     </div>
   </div>
 
+  <!-- ── FLOATING CONTACT WIDGETS ── -->
+  <div id="fcBackdrop" class="fc-backdrop"></div>
+  <div class="fc-wrap" id="fcWrap">
+    <div class="fc-widget">
+      <div class="fc-popup" id="fcCallPopup">
+        <div class="fc-popup__header">Call a Branch</div>
+        <a class="fc-popup__branch" href="tel:+918825745091">
+          <span class="material-icons">location_on</span>
+          <div><strong>Porur</strong><span>+91 88257 45091</span></div>
+          <span class="material-icons fc-popup__arrow">call</span>
+        </a>
+        <a class="fc-popup__branch" href="tel:+916382473705">
+          <span class="material-icons">location_on</span>
+          <div><strong>Kolapakkam</strong><span>+91 63824 73705</span></div>
+          <span class="material-icons fc-popup__arrow">call</span>
+        </a>
+      </div>
+      <button class="fc-btn fc-btn--call" id="fcCallBtn" aria-label="Call us">
+        <span class="material-icons">call</span>
+      </button>
+    </div>
+    <div class="fc-widget">
+      <div class="fc-popup" id="fcMsgPopup">
+        <div class="fc-popup__header">Message a Branch</div>
+        <a class="fc-popup__branch" href="https://wa.me/918825745091" target="_blank" rel="noopener">
+          <span class="material-icons">location_on</span>
+          <div><strong>Porur</strong><span>+91 88257 45091</span></div>
+          <span class="material-icons fc-popup__arrow">chat</span>
+        </a>
+        <a class="fc-popup__branch" href="https://wa.me/916382473705" target="_blank" rel="noopener">
+          <span class="material-icons">location_on</span>
+          <div><strong>Kolapakkam</strong><span>+91 63824 73705</span></div>
+          <span class="material-icons fc-popup__arrow">chat</span>
+        </a>
+      </div>
+      <button class="fc-btn fc-btn--msg" id="fcMsgBtn" aria-label="Message us on WhatsApp">
+        <span class="material-icons">chat</span>
+      </button>
+    </div>
+  </div>
+
   <!-- Scripts: Swiper must load before index.js so Swiper global is available -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
   <script src="assets/js/index.js"></script>
   <script src="assets/js/premium-mobile-nav.js"></script>
+  <script src="assets/js/float-contact.js"></script>
 
 </body>
 

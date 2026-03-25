@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="assets/css/service.css" />
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="stylesheet" href="assets/css/premium-mobile-nav.css" />
+  <link rel="stylesheet" href="assets/css/float-contact.css" />
 </head>
 
 <body>
@@ -307,15 +308,46 @@
         <!-- </div>/cards-grid -->
       </div>
     </section>
-     <a href="https://wa.me/918825745091?text=Hi%20Smile%20Craft%2C%20I%27d%20like%20to%20book%20a%20consultation"
-      class="wa-float"
-      id="waFloatBtn"
-      target="_blank"
-      rel="noopener"
-      aria-label="Chat on WhatsApp">
-      <span class="material-icons">chat</span>
-    </a>
-
+    <!-- ── FLOATING CONTACT WIDGETS ── -->
+    <div id="fcBackdrop" class="fc-backdrop"></div>
+    <div class="fc-wrap" id="fcWrap">
+      <div class="fc-widget">
+        <div class="fc-popup" id="fcCallPopup">
+          <div class="fc-popup__header">Call a Branch</div>
+          <a class="fc-popup__branch" href="tel:+918825745091">
+            <span class="material-icons">location_on</span>
+            <div><strong>Porur</strong><span>+91 88257 45091</span></div>
+            <span class="material-icons fc-popup__arrow">call</span>
+          </a>
+          <a class="fc-popup__branch" href="tel:+916382473705">
+            <span class="material-icons">location_on</span>
+            <div><strong>Kolapakkam</strong><span>+91 63824 73705</span></div>
+            <span class="material-icons fc-popup__arrow">call</span>
+          </a>
+        </div>
+        <button class="fc-btn fc-btn--call" id="fcCallBtn" aria-label="Call us">
+          <span class="material-icons">call</span>
+        </button>
+      </div>
+      <div class="fc-widget">
+        <div class="fc-popup" id="fcMsgPopup">
+          <div class="fc-popup__header">Message a Branch</div>
+          <a class="fc-popup__branch" href="https://wa.me/918825745091" target="_blank" rel="noopener">
+            <span class="material-icons">location_on</span>
+            <div><strong>Porur</strong><span>+91 88257 45091</span></div>
+            <span class="material-icons fc-popup__arrow">chat</span>
+          </a>
+          <a class="fc-popup__branch" href="https://wa.me/916382473705" target="_blank" rel="noopener">
+            <span class="material-icons">location_on</span>
+            <div><strong>Kolapakkam</strong><span>+91 63824 73705</span></div>
+            <span class="material-icons fc-popup__arrow">chat</span>
+          </a>
+        </div>
+        <button class="fc-btn fc-btn--msg" id="fcMsgBtn" aria-label="Message us on WhatsApp">
+          <span class="material-icons">chat</span>
+        </button>
+      </div>
+    </div>
   </main>
 
   <!-- ============================================================
@@ -389,6 +421,7 @@
 
   <script src="assets/js/index.js"></script>
   <script src="assets/js/premium-mobile-nav.js"></script>
+  <script src="assets/js/float-contact.js"></script>
 </body>
 
 </html>

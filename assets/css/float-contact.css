@@ -1,0 +1,255 @@
+/* ============================================================
+   FLOAT-CONTACT.CSS
+   Global floating Call + Message widgets
+   Used on: all pages
+   Numbers: Porur +91 88257 45091 | Kolapakkam +91 63824 73705
+   ============================================================ */
+
+/* ── Wrapper: stacks buttons vertically, fixed bottom-right ── */
+.fc-wrap {
+  position: fixed;
+  right: 1.25rem;
+  bottom: max(7rem, calc(env(safe-area-inset-bottom) + 6.5rem));
+  z-index: 900;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.65rem;
+  pointer-events: none; /* children opt-in */
+}
+
+@media (min-width: 1024px) {
+  .fc-wrap {
+    bottom: 2rem;
+    right: 2rem;
+  }
+}
+
+/* ── Widget: button + its popup ── */
+.fc-widget {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  pointer-events: auto;
+}
+
+/* ── Floating button base ── */
+.fc-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.22);
+  transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1),
+              box-shadow 0.25s ease;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.fc-btn:hover {
+  transform: scale(1.12);
+}
+
+.fc-btn:active {
+  transform: scale(0.96);
+}
+
+.fc-btn .material-icons {
+  font-size: 1.4rem !important;
+  color: #fff;
+  transition: transform 0.3s ease;
+}
+
+/* Rotate icon when popup open */
+.fc-btn.is-open .material-icons {
+  transform: rotate(15deg);
+}
+
+/* ── Call button: brand blue ── */
+.fc-btn--call {
+  background: linear-gradient(135deg, #1E2F86 0%, #2d46cc 100%);
+  box-shadow: 0 4px 20px rgba(30,47,134,0.45);
+}
+
+.fc-btn--call:hover {
+  box-shadow: 0 6px 28px rgba(30,47,134,0.6);
+}
+
+/* ── Message button: WhatsApp green ── */
+.fc-btn--msg {
+  background: #25d366;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+}
+
+.fc-btn--msg:hover {
+  background: #1ebe5a;
+  box-shadow: 0 6px 28px rgba(37,211,102,0.55);
+}
+
+/* ── Pulse ring on message button ── */
+.fc-btn--msg::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(37,211,102,0.45);
+  animation: fc-pulse 2.4s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes fc-pulse {
+  0%   { opacity: 1; transform: scale(1); }
+  70%  { opacity: 0; transform: scale(1.5); }
+  100% { opacity: 0; transform: scale(1.5); }
+}
+
+/* ── Popup panel ── */
+.fc-popup {
+  position: absolute;
+  bottom: calc(100% + 0.6rem);
+  right: 0;
+  width: 230px;
+  border-radius: 18px;
+  background: #080f2e;
+  border: 1px solid rgba(199,208,248,0.14);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.04),
+    0 24px 60px rgba(0,0,0,0.55),
+    inset 0 1px 0 rgba(255,255,255,0.07);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  /* hidden by default */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px) scale(0.97);
+  transform-origin: bottom right;
+  transition:
+    opacity 0.22s ease,
+    visibility 0.22s ease,
+    transform 0.25s cubic-bezier(0.34,1.36,0.64,1);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.fc-popup.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Glow streak at top */
+.fc-popup::before {
+  content: '';
+  position: absolute;
+  top: -3rem; left: 50%;
+  transform: translateX(-50%);
+  width: 10rem; height: 6rem;
+  background: radial-gradient(ellipse, rgba(30,47,134,0.55) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Popup header ── */
+.fc-popup__header {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(199,208,248,0.45);
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 0.2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Branch option row ── */
+.fc-popup__branch {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 0.875rem;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  text-decoration: none;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.18s ease;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  min-height: 44px;
+}
+
+.fc-popup__branch:hover {
+  background: rgba(199,208,248,0.1);
+  border-color: rgba(199,208,248,0.25);
+  transform: translateX(-3px);
+}
+
+.fc-popup__branch:active {
+  transform: translateX(-1px) scale(0.98);
+}
+
+/* Location icon */
+.fc-popup__branch > .material-icons:first-child {
+  font-size: 1rem !important;
+  color: rgba(199,208,248,0.5);
+  flex-shrink: 0;
+}
+
+/* Text block */
+.fc-popup__branch > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.fc-popup__branch strong {
+  font-size: 0.845rem;
+  font-weight: 700;
+  color: #fff;
+  display: block;
+}
+
+.fc-popup__branch span:not(.material-icons) {
+  font-size: 0.72rem;
+  color: rgba(199,208,248,0.45);
+  display: block;
+}
+
+/* Action icon (call/chat) */
+.fc-popup__arrow {
+  font-size: 0.95rem !important;
+  color: rgba(199,208,248,0.4);
+  flex-shrink: 0;
+  transition: color 0.2s ease;
+}
+
+.fc-popup__branch:hover .fc-popup__arrow {
+  color: rgba(199,208,248,0.9);
+}
+
+/* ── Backdrop (closes popup on outside click) ── */
+.fc-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 899;
+  display: none;
+}
+
+.fc-backdrop.is-active {
+  display: block;
+}
