@@ -1406,6 +1406,10 @@ select {
 /* ── Gallery Container & Nav Buttons ── */
 .ba-gallery-container {
   position: relative;
+}
+
+.ba-scroll-wrapper {
+  position: relative;
   margin-top: 2.5rem;
 }
 
@@ -1413,49 +1417,59 @@ select {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 48px;
-  height: 48px;
-  background: var(--white);
+  background: transparent;
   color: var(--primary);
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 50;
+  z-index: 100;
   cursor: pointer;
-  box-shadow: var(--shadow-md);
   transition: all var(--transition);
-  border: 1px solid var(--border);
+  border: none;
+  padding: 0;
+  opacity: 0.65;
+}
+
+.ba-nav-btn .material-icons {
+  font-size: 2rem !important;
+  font-weight: bold;
 }
 
 .ba-nav-btn:hover {
-  background: var(--primary);
-  color: var(--white);
+  background: transparent;
+  color: var(--primary-dark);
   transform: translateY(-50%) scale(1.1);
-  box-shadow: var(--shadow-lg);
+  opacity: 1;
 }
 
-.ba-prev { left: -14px; }
-.ba-next { right: -14px; }
+.ba-prev { left: -5rem; }
+.ba-next { right: -5rem; }
 
-@media (min-width: 1200px) {
-  .ba-prev { left: -60px; }
-  .ba-next { right: -60px; }
+@media (max-width: 1400px) {
+  .ba-prev { left: -3rem; }
+  .ba-next { right: -3rem; }
+}
+
+@media (max-width: 1200px) {
+  .ba-prev { left: -1.5rem; }
+  .ba-next { right: -1.5rem; }
 }
 
 @media (max-width: 768px) {
   .ba-nav-btn {
-    width: 44px;
-    height: 44px;
-    background: rgba(255, 255, 255, 0.95);
+    opacity: 0.8;
   }
-  .ba-prev { left: 4px; }
-  .ba-next { right: 4px; }
+  .ba-nav-btn .material-icons {
+    font-size: 1.5rem !important;
+  }
+  .ba-prev { left: -0.5rem; }
+  .ba-next { right: -0.5rem; }
 }
 
-.ba-scroll-wrapper {
-  position: relative;
-}
+
+
+
+
 
 .ba-grid {
   display: flex;
@@ -1499,49 +1513,7 @@ select {
 }
 
 /* ── Scroll arrows ── */
-.ba-scroll-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--primary);
-  color: #fff;
-  border: none;
-  box-shadow: 0 4px 16px rgba(30, 47, 134, .35);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 10;
-  transition: all var(--transition);
-  opacity: 0.9;
-}
-
-.ba-scroll-btn:hover {
-  background: var(--primary-dark);
-  opacity: 1;
-  transform: translateY(-50%) scale(1.08);
-}
-
-.ba-scroll-btn--left {
-  left: -0.5rem;
-}
-
-.ba-scroll-btn--right {
-  right: -0.5rem;
-}
-
-.ba-scroll-btn .material-icons {
-  font-size: 1.4rem !important;
-}
-
-@media (max-width: 767px) {
-  .ba-scroll-btn {
-    display: none;
-  }
-}
+/* Removed redundant ba-scroll-btn styles */
 
 .ba-card {
   background: #fff;
