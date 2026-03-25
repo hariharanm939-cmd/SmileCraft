@@ -1,7 +1,4 @@
 {
-  "scripts": {
-    "build": "echo 'No build required'"
-  },
   "dependencies": {
     "vite": "^7.3.1"
   }
