@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const TOTAL = 2;
 
     const docData = [
-      { name: 'Dr. Rishikumar A', role: 'Orthodontist', yrs: '11+' },
+      { name: 'Dr. Rishikumar A', role: 'Orthodontist and Invisible Braces Specialist', yrs: '11+' },
       { name: 'Dr. Rupha Lakshmi U', role: 'Dental Surgeon', yrs: '11+' }
     ];
 

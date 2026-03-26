@@ -81,6 +81,62 @@
     @media (max-width: 1400px) { .ba-prev { left: -2.5rem !important; } .ba-next { right: -2.5rem !important; } }
     @media (max-width: 1200px) { .ba-prev { left: -1rem !important; } .ba-next { right: -1rem !important; } }
     @media (max-width: 768px) { .ba-nav-btn .material-icons { font-size: 1.8rem !important; } .ba-prev { left: -0.2rem !important; } .ba-next { right: -0.2rem !important; } }
+
+    /* Branch selector popover */
+    #branchPopover {
+      position: fixed;
+      z-index: 9999;
+      background: #fff;
+      border: 1px solid rgba(30,47,134,.15);
+      border-radius: 14px;
+      box-shadow: 0 8px 32px rgba(30,47,134,.18);
+      padding: 12px;
+      min-width: 200px;
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      animation: popFadeIn .18s ease;
+    }
+    #branchPopover.is-open { display: flex; }
+    @keyframes popFadeIn {
+      from { opacity: 0; transform: translateY(-6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    #branchPopover .bp-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #6B7280;
+      padding: 0 4px 4px;
+      border-bottom: 1px solid #E5E7EB;
+      margin-bottom: 2px;
+    }
+    #branchPopover .bp-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1.5px solid #E5E7EB;
+      background: #F8FAFC;
+      color: #1E2F86;
+      font-weight: 700;
+      font-size: .875rem;
+      cursor: pointer;
+      transition: all .2s ease;
+      text-decoration: none;
+      font-family: inherit;
+    }
+    #branchPopover .bp-btn:hover {
+      background: #EEF2FF;
+      border-color: #1E2F86;
+      transform: translateX(2px);
+    }
+    #branchPopover .bp-btn .material-icons {
+      font-size: 1rem !important;
+      color: #25D366;
+    }
   </style>
   <link rel="stylesheet" href="assets/css/premium-mobile-nav.css" />
   <script type="application/ld+json">
@@ -333,10 +389,10 @@
               <h3 class="svc-card-title">Invisalign, Metal and Ceramic Braces</h3>
               <p class="svc-card-desc">Advanced orthodontic care with Invisalign, metal, and ceramic braces for all
                 age.</p>
-              <a href="https://wa.me/918825745091" class="svc-card-link">
+              <button type="button" class="svc-card-link">
                 Free Consultation
                 <span class="material-icons svc-card-link-arrow">arrow_forward</span>
-              </a>
+              </button>
             </div>
           </div>
 
@@ -366,10 +422,10 @@
               <h3 class="svc-card-title">Braces & Teeth Alignment</h3>
               <p class="svc-card-desc">Metal braces, ceramic braces and clear aligners for kids, teens and adults in
                 Chennai.</p>
-              <a href="https://wa.me/918825745091" class="svc-card-link">
+              <button type="button" class="svc-card-link">
                 Free Consultation
                 <span class="material-icons svc-card-link-arrow">arrow_forward</span>
-              </a>
+              </button>
             </div>
           </div>
 
@@ -394,10 +450,10 @@
               <h3 class="svc-card-title">Oral Hygiene</h3>
               <p class="svc-card-desc">Scaling, polishing and gum infection treatment to reduce bleeding gums and bad
                 breath.</p>
-              <a href="https://wa.me/918825745091" class="svc-card-link">
+              <button type="button" class="svc-card-link">
                 Free Consultation
                 <span class="material-icons svc-card-link-arrow">arrow_forward</span>
-              </a>
+              </button>
             </div>
           </div>
 
@@ -419,10 +475,10 @@
               <h3 class="svc-card-title">Dental Treatment</h3>
               <p class="svc-card-desc">Pain-controlled root canal treatment (RCT), tooth fillings and crowns for damaged
                 teeth.</p>
-              <a href="https://wa.me/918825745091" class="svc-card-link">
+              <button type="button" class="svc-card-link">
                 Free Consultation
                 <span class="material-icons svc-card-link-arrow">arrow_forward</span>
-              </a>
+              </button>
             </div>
           </div>
 
@@ -451,10 +507,10 @@
               <h3 class="svc-card-title">Dental Surgery</h3>
               <p class="svc-card-desc">Safe and precise wisdom tooth removal and minor oral surgical procedures using
                 modern technology.</p>
-              <a href="https://wa.me/918825745091" class="svc-card-link">
+              <button type="button" class="svc-card-link">
                 Free Consultation
                 <span class="material-icons svc-card-link-arrow">arrow_forward</span>
-              </a>
+              </button>
             </div>
           </div>
 
@@ -483,10 +539,10 @@
               <h3 class="svc-card-title">Dental Implants</h3>
               <p class="svc-card-desc">Single tooth implants to full-mouth solutions with precise planning and strong
                 aftercare.</p>
-              <a href="https://wa.me/918825745091" class="svc-card-link">
+              <button type="button" class="svc-card-link">
                 Free Consultation
                 <span class="material-icons svc-card-link-arrow">arrow_forward</span>
-              </a>
+              </button>
             </div>
           </div>
 
@@ -1011,6 +1067,62 @@
   <script src="assets/js/index.js"></script>
   <script src="assets/js/premium-mobile-nav.js"></script>
   <script src="assets/js/float-contact.js"></script>
+
+  <!-- Branch selector popover for Free Consultation buttons -->
+  <div id="branchPopover" role="dialog" aria-label="Select branch">
+    <div class="bp-label">Choose your branch</div>
+    <a id="bp-porur" href="https://wa.me/918825745091" target="_blank" rel="noopener" class="bp-btn">
+      <span class="material-icons">chat</span> Porur
+    </a>
+    <a id="bp-kol" href="https://wa.me/916382473705" target="_blank" rel="noopener" class="bp-btn">
+      <span class="material-icons">chat</span> Kolapakkam
+    </a>
+  </div>
+  <script>
+  (function() {
+    var pop = document.getElementById('branchPopover');
+
+    function openPop(btn) {
+      var rect = btn.getBoundingClientRect();
+      var popW = 210;
+      // It is position: fixed, so use viewport-relative coordinates
+      var left = rect.left;
+      var top  = rect.bottom + 8;
+      
+      // Keep within viewport horizontally
+      if (left + popW > window.innerWidth - 8) left = window.innerWidth - popW - 8;
+      if (left < 8) left = 8;
+      
+      pop.style.left = left + 'px';
+      pop.style.top  = top  + 'px';
+      pop.classList.add('is-open');
+    }
+
+    document.querySelectorAll('.svc-card-link').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (pop.classList.contains('is-open')) {
+          pop.classList.remove('is-open');
+        } else {
+          openPop(btn);
+        }
+      });
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', function() {
+      pop.classList.remove('is-open');
+    });
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') pop.classList.remove('is-open');
+    });
+    // Prevent closing when clicking INSIDE the popover
+    pop.addEventListener('click', function(e) { 
+      e.stopPropagation(); 
+    });
+  })();
+  </script>
 </body>
 
 </html>
