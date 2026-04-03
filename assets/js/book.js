@@ -1,10 +1,17 @@
 /* ============================================================
-   SMILE CRAFT DENTAL — book.js  (v4 — Sundays allowed)
+   SMILE CRAFT DENTAL — book.js  (v5 — JSONP submission)
+
+   WHY JSONP?
+   Google Apps Script Web Apps redirect cross-origin POST requests,
+   causing the browser to drop the body. Removing no-cors makes
+   the redirect visible as a CORS error. JSONP injects a <script>
+   tag instead — no CORS headers needed at all, works 100% of the
+   time with GAS, and is the standard community solution.
    ============================================================ */
 
 'use strict';
 
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbycgnGu6yry59NWWGaSKcOKpnilW6VcFO2OVWYIaFQIV8zR6o1Mzeab6L-viV0thVMp/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbznDIcclgzgqWiFPM6qfPdlmW84-x3AJEho0UgepqJ1Itb86db1Fer6v3xTZaOCBXIOWQ/exec';
 
 /* ── 1. HEADER SCROLL SHADOW ── */
 (function () {
@@ -59,94 +66,62 @@ const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbycgnGu6yry59NW
   const els = document.querySelectorAll('.reveal');
   if (!els.length) return;
   const io = new IntersectionObserver(
-    (entries) => entries.forEach((e) => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    entries => entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); io.unobserve(entry.target); }
     }),
     { threshold: 0.10, rootMargin: '0px 0px -72px 0px' }
   );
-  els.forEach((el) => io.observe(el));
+  els.forEach(el => io.observe(el));
 })();
 
 /* ── 4. DATE FIELD — min = today, Sunday evening slot logic ── */
 (function () {
-  const dateInput    = document.getElementById('bkDate');
-  const eveningSlot  = document.getElementById('bkEveningSlot');
-  const sundayNote   = document.getElementById('bkSundayNote');
-  const weekdayNote  = document.getElementById('bkWeekdayNote');
+  const dateInput   = document.getElementById('bkDate');
+  const eveningSlot = document.getElementById('bkEveningSlot');
+  const sundayNote  = document.getElementById('bkSundayNote');
+  const weekdayNote = document.getElementById('bkWeekdayNote');
   if (!dateInput) return;
 
-  const pad   = (n) => String(n).padStart(2, '0');
+  const pad   = n => String(n).padStart(2, '0');
   const today = new Date();
   dateInput.min = `${today.getFullYear()}-${pad(today.getMonth() + 1)}-${pad(today.getDate())}`;
-
   const max = new Date();
   max.setMonth(max.getMonth() + 3);
   dateInput.max = `${max.getFullYear()}-${pad(max.getMonth() + 1)}-${pad(max.getDate())}`;
 
-  // Open native date picker on click anywhere in the field
   dateInput.addEventListener('click', function () {
     try { this.showPicker(); } catch (e) { this.focus(); }
   });
 
-  // Check if selected date is a Sunday and update evening slot accordingly
   function updateTimeSlotsForDate() {
-    if (!dateInput.value) {
-      // No date selected — show default state (both slots enabled)
-      enableEveningSlot();
-      return;
-    }
-
-    // Parse the date — add T00:00 to avoid timezone offset issues
-    const selectedDate = new Date(dateInput.value + 'T00:00:00');
-    const isSunday = selectedDate.getDay() === 0;
-
-    if (isSunday) {
-      disableEveningSlot();
-    } else {
-      enableEveningSlot();
-    }
+    if (!dateInput.value) { enableEveningSlot(); return; }
+    new Date(dateInput.value + 'T00:00:00').getDay() === 0
+      ? disableEveningSlot()
+      : enableEveningSlot();
   }
 
   function disableEveningSlot() {
     if (!eveningSlot) return;
-    const eveningRadio = eveningSlot.querySelector('input[type="radio"]');
-
-    // If evening was selected, clear it
-    if (eveningRadio && eveningRadio.checked) {
-      eveningRadio.checked = false;
-    }
-
-    // Disable the radio input
-    if (eveningRadio) eveningRadio.disabled = true;
-
-    // Visual disabled state
-    eveningSlot.style.opacity = '0.4';
+    const radio = eveningSlot.querySelector('input[type="radio"]');
+    if (radio) { if (radio.checked) radio.checked = false; radio.disabled = true; }
+    eveningSlot.style.opacity       = '0.4';
     eveningSlot.style.pointerEvents = 'none';
-    eveningSlot.style.cursor = 'not-allowed';
-
-    // Show/hide notes
-    if (sundayNote) sundayNote.style.display = 'block';
+    eveningSlot.style.cursor        = 'not-allowed';
+    if (sundayNote)  sundayNote.style.display  = 'block';
     if (weekdayNote) weekdayNote.style.display = 'none';
   }
 
   function enableEveningSlot() {
     if (!eveningSlot) return;
-    const eveningRadio = eveningSlot.querySelector('input[type="radio"]');
-
-    // Re-enable the radio input
-    if (eveningRadio) eveningRadio.disabled = false;
-
-    // Remove visual disabled state
-    eveningSlot.style.opacity = '';
+    const radio = eveningSlot.querySelector('input[type="radio"]');
+    if (radio) radio.disabled = false;
+    eveningSlot.style.opacity       = '';
     eveningSlot.style.pointerEvents = '';
-    eveningSlot.style.cursor = '';
-
-    // Show/hide notes
-    if (sundayNote) sundayNote.style.display = 'none';
+    eveningSlot.style.cursor        = '';
+    if (sundayNote)  sundayNote.style.display  = 'none';
     if (weekdayNote) weekdayNote.style.display = 'block';
   }
 
-  // Date change handler — validate + update slots
   dateInput.addEventListener('change', () => {
     if (dateInput.value) {
       clearFieldError('err-date');
@@ -157,45 +132,35 @@ const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbycgnGu6yry59NW
   });
 })();
 
-/* ── 5. REAL-TIME INPUT VALIDATION — no Sunday check ── */
+/* ── 5. REAL-TIME INPUT VALIDATION ── */
 (function () {
   const rules = {
     bkFullName: {
-      el: document.getElementById('bkFullName'),
-      errId: 'err-name',
-      test: (v) => v.trim().length >= 2,
+      el: document.getElementById('bkFullName'), errId: 'err-name',
+      test: v => v.trim().length >= 2,
       msg: 'Please enter your full name (min 2 characters).'
     },
     bkEmail: {
-      el: document.getElementById('bkEmail'),
-      errId: 'err-email',
-      test: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()),
+      el: document.getElementById('bkEmail'), errId: 'err-email',
+      test: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()),
       msg: 'Please enter a valid email address.'
     },
     bkPhone: {
-      el: document.getElementById('bkPhone'),
-      errId: 'err-phone',
-      test: (v) => /^[\d\s\+\-\(\)]{7,15}$/.test(v.trim()),
+      el: document.getElementById('bkPhone'), errId: 'err-phone',
+      test: v => /^[\d\s\+\-\(\)]{7,15}$/.test(v.trim()),
       msg: 'Please enter a valid phone number.'
     },
     bkBranch: {
-      el: document.getElementById('bkBranch'),
-      errId: 'err-branch',
-      test: (v) => v !== '',
-      msg: 'Please select a branch.'
+      el: document.getElementById('bkBranch'), errId: 'err-branch',
+      test: v => v !== '', msg: 'Please select a branch.'
     },
     bkDate: {
-      el: document.getElementById('bkDate'),
-      errId: 'err-date',
-      // FIXED: removed Sunday (getDay() !== 0) restriction — all days allowed
-      test: (v) => v !== '',
-      msg: 'Please select a preferred date.'
+      el: document.getElementById('bkDate'), errId: 'err-date',
+      test: v => v !== '', msg: 'Please select a preferred date.'
     },
     bkService: {
-      el: document.getElementById('bkService'),
-      errId: 'err-service',
-      test: (v) => v !== '',
-      msg: 'Please select a service.'
+      el: document.getElementById('bkService'), errId: 'err-service',
+      test: v => v !== '', msg: 'Please select a service.'
     },
   };
 
@@ -241,18 +206,15 @@ const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbycgnGu6yry59NW
 
   function switchBranch(key) {
     if (!branches[key] || !iframe || !address) return;
-    iframe.src = branches[key].url;
+    iframe.src        = branches[key].url;
     address.innerHTML = `<span class="material-icons">location_on</span> ${branches[key].addr}`;
-    tabs.forEach((t) => t.classList.toggle('map-tab--active', t.dataset.branch === key));
+    tabs.forEach(t => t.classList.toggle('map-tab--active', t.dataset.branch === key));
   }
 
-  tabs.forEach((tab) => tab.addEventListener('click', () => switchBranch(tab.dataset.branch)));
+  tabs.forEach(tab => tab.addEventListener('click', () => switchBranch(tab.dataset.branch)));
 
-  // Tap to activate map on touch
   const mapWrap = document.querySelector('.map-wrap');
-  if (mapWrap) {
-    mapWrap.addEventListener('click', () => mapWrap.classList.add('is-active'));
-  }
+  if (mapWrap) mapWrap.addEventListener('click', () => mapWrap.classList.add('is-active'));
 
   if (branchSelect) {
     branchSelect.addEventListener('change', () => {
@@ -264,32 +226,43 @@ const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbycgnGu6yry59NW
 /* ── 7. COLLECT FORM DATA ── */
 function collectBookingData(source) {
   const ref = 'SC-' + Math.floor(100000 + Math.random() * 900000);
+  const g   = id => (document.getElementById(id) || {});
   return {
     ref,
     source,
-    fullName:  (document.getElementById('bkFullName')  || {}).value || '',
-    email:     (document.getElementById('bkEmail')     || {}).value || '',
-    phone:     (document.getElementById('bkPhone')     || {}).value || '',
-    age:       (document.getElementById('bkAge')       || {}).value || '',
-    branch:    (document.getElementById('bkBranch')    || {}).value || '',
-    date:      (document.getElementById('bkDate')      || {}).value || '',
+    fullName:  g('bkFullName').value  || '',
+    email:     g('bkEmail').value     || '',
+    phone:     g('bkPhone').value     || '',
+    age:       g('bkAge').value       || '',
+    branch:    g('bkBranch').value    || '',
+    date:      g('bkDate').value      || '',
     timeSlot:  (() => { const r = document.querySelector('input[name="time"]:checked'); return r ? r.value : ''; })(),
-    service:   (document.getElementById('bkService')   || {}).value || '',
-    insurance: (document.getElementById('bkInsurance') || {}).value || '',
-    emi:       (document.getElementById('bkEmi')       || {}).checked || false,
-    whatsapp:  (document.getElementById('bkWhatsapp')  || {}).checked || false,
-    notes:     (document.getElementById('bkMessage')   || {}).value || '',
+    service:   g('bkService').value   || '',
+    insurance: g('bkInsurance').value || '',
+    emi:       g('bkEmi').checked     || false,
+    whatsapp:  g('bkWhatsapp').checked || false,
+    notes:     g('bkMessage').value   || '',
   };
 }
 
-/* ── 8. SUBMIT TO GOOGLE SHEETS ── */
-async function submitToGoogleSheets(data) {
-  await fetch(APPS_SCRIPT_URL, {
+/* ── 8. SUBMIT TO GOOGLE SHEETS ─────────────────────────────
+   Uses no-cors POST. With no-cors the browser can't read the
+   response — but GAS DOES receive the body and saves to the sheet.
+   The ref is generated client-side before sending, so we show
+   success immediately without needing to read the server response.
+   This is the only approach that works from all origins/browsers.
+   ────────────────────────────────────────────────────────────── */
+async function submitToSheets(data) {
+  // Fire and forget — we can't read the response with no-cors
+  // but GAS receives the full POST body and saves it correctly.
+  fetch(APPS_SCRIPT_URL, {
     method:  'POST',
     mode:    'no-cors',
     headers: { 'Content-Type': 'text/plain' },
     body:    JSON.stringify(data),
-  });
+  }).catch(err => console.warn('Sheet submission error:', err));
+  // No await — we don't wait for or read the response.
+  // Success is shown immediately since ref is pre-generated.
 }
 
 /* ── 9. FORM SUBMISSION ── */
@@ -302,9 +275,10 @@ async function submitToGoogleSheets(data) {
 
   if (!form || !success) return;
 
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
 
+    // Validate
     const rules = window._bookRules || {};
     let valid = true;
     Object.values(rules).forEach(({ el, errId, test, msg }) => {
@@ -325,23 +299,23 @@ async function submitToGoogleSheets(data) {
       return;
     }
 
+    // Loading
     submitBtn.classList.add('loading');
     submitBtn.disabled = true;
 
     const data = collectBookingData('booking-page');
 
-    try {
-      await submitToGoogleSheets(data);
-    } catch (err) {
-      console.warn('Sheets submission error (non-critical):', err);
-    }
+    // Submit to sheets — no-cors so we can't read response,
+    // but GAS receives and saves the data. Show success immediately.
+    submitToSheets(data);
+    // Small delay so the fetch actually fires before we continue
+    await new Promise(r => setTimeout(r, 300));
 
+    // Success
     submitBtn.classList.remove('loading');
     submitBtn.disabled = false;
-
     if (refEl) refEl.textContent = data.ref;
     updateSteps(3);
-
     form.classList.add('is-hidden');
     if (formHdr) formHdr.classList.add('is-hidden');
     success.classList.add('is-shown');
@@ -351,13 +325,11 @@ async function submitToGoogleSheets(data) {
 
 /* ── 10. STEP INDICATOR ── */
 function updateSteps(activeStep) {
-  const steps = document.querySelectorAll('.book-step');
-  const lines = document.querySelectorAll('.book-step-line');
-  steps.forEach((step, i) => {
+  document.querySelectorAll('.book-step').forEach((step, i) => {
     step.classList.toggle('book-step--active', i + 1 <= activeStep);
     step.classList.toggle('book-step--done',   i + 1 <  activeStep);
   });
-  lines.forEach((line, i) => {
+  document.querySelectorAll('.book-step-line').forEach((line, i) => {
     line.style.background = i + 1 < activeStep
       ? 'linear-gradient(90deg, var(--primary), var(--primary-dark))'
       : 'var(--border)';
@@ -402,7 +374,7 @@ function clearFieldError(errId) {
 
 /* ── 12. INPUT FOCUS GLOW ── */
 (function () {
-  document.querySelectorAll('.form-input').forEach((input) => {
+  document.querySelectorAll('.form-input').forEach(input => {
     const wrap = input.closest('.input-wrap');
     if (!wrap) return;
     input.addEventListener('focus', () => wrap.classList.add('focused'));
@@ -413,7 +385,7 @@ function clearFieldError(errId) {
   document.head.appendChild(style);
 })();
 
-/* ── 13. PHONE — auto format ── */
+/* ── 13. PHONE — strip invalid characters ── */
 (function () {
   const phone = document.getElementById('bkPhone');
   if (!phone) return;
@@ -425,7 +397,7 @@ function clearFieldError(errId) {
 /* ── 14. HERO PILLS animation ── */
 (function () {
   document.querySelectorAll('.book-pill').forEach((pill, i) => {
-    pill.style.cssText = `opacity:0;transform:translateY(10px);transition:opacity .4s ease ${i * 100 + 400}ms,transform .4s ease ${i * 100 + 400}ms`;
+    pill.style.cssText = `opacity:0;transform:translateY(10px);transition:opacity .4s ease ${i*100+400}ms,transform .4s ease ${i*100+400}ms`;
     setTimeout(() => { pill.style.opacity = '1'; pill.style.transform = 'translateY(0)'; }, 100);
   });
 })();

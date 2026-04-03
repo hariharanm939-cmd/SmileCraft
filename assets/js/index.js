@@ -4,7 +4,7 @@
 
 'use strict';
 
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbycgnGu6yry59NWWGaSKcOKpnilW6VcFO2OVWYIaFQIV8zR6o1Mzeab6L-viV0thVMp/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbznDIcclgzgqWiFPM6qfPdlmW84-x3AJEho0UgepqJ1Itb86db1Fer6v3xTZaOCBXIOWQ/exec';
 
 document.addEventListener('DOMContentLoaded', function () {
 
