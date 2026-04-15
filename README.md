@@ -52,13 +52,11 @@ BOOKING PAGE
 
 
 
-
 ## 🎯 Outcome
 
-The project successfully delivers a professional web presence for the clinic, improving accessibility, user engagement, and overall experience for patients.
-
+Delivered a professional and responsive web presence for the clinic, enhancing accessibility, improving user engagement, and providing a seamless experience for patients.
 ---
 
 ## 📌 Note
 
-This project was developed as part of a collaborative team effort at Levrotec.
+This project was developed as part of a collaborative team effort at Levrotec, with contributions focused on frontend development and user experience improvements.
