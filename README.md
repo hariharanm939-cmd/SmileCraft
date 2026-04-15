@@ -59,4 +59,4 @@ Delivered a professional and responsive web presence for the clinic, enhancing a
 
 ## 📌 Note
 
-This project was developed as part of a collaborative team effort at Levrotec, with contributions focused on frontend development and user experience improvements.
+This project was developed as part of a collaborative team effort at Levrotec, with contributions focused on frontend development, Search Engine Optimization and user experience improvements.
